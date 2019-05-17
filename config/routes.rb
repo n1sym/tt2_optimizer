@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  get 'static_pages/cards'
-  get 'static_pages/raidrank'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'static_pages#home'
+  get  '/cards',    to: 'static_pages#cards'
+  get  '/raidrank',   to: 'static_pages#raidrank'
+  get  '/link',   to: 'static_pages#link'
+  get  '/contact', to: 'static_pages#contact'
 
 end

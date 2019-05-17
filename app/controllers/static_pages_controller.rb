@@ -8,4 +8,10 @@ class StaticPagesController < ApplicationController
   def raidrank
   end
   
+  def contact
+  end
+
+  def link
+  end
+  
 end
