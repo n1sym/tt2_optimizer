@@ -44,8 +44,8 @@ h2 {
 }
 
 p {
-  font-size: 1.5em;
-  line-height: 2em;
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
 
 /* header */
@@ -100,4 +100,14 @@ footer ul li {
 img {
     max-width: 100%;
     height: auto;
+}
+
+table {
+	border-collapse: collapse;
+	width: 600px;
+}
+td {
+	border: solid 1px;
+	border-color: #c0c0c0;
+	padding: 0.5em;
 }
