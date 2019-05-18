@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get  '/raidrank',   to: 'static_pages#raidrank'
   get  '/link',   to: 'static_pages#link'
   get  '/contact', to: 'static_pages#contact'
+  get  '/optimiser', to: 'static_pages#optimiser'
 
 end

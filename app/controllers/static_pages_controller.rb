@@ -14,4 +14,7 @@ class StaticPagesController < ApplicationController
   def link
   end
   
+  def optimiser
+  end
+
 end
