@@ -1,8 +1,30 @@
 <% provide(:title, "Cards") %>
 
-<h1>Cards</h1>
+<h1>レイドカード 日本語訳</h1>
+<p><b>v3.1.1 対応</b></p>
+<br>
 <p> 
+カードのタイプ
+<table>
+  <tr>
+    <td><%= image_tag("burst.png", width:"20px") %> Burst / バースト</td>
+    <td>1タップ毎に数％の確率でバーストダメージを与える効果をプレイヤーに付与する。</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩</td>
+    <td>1タップ毎に数％の確率で、ダメージを継続的に与える苦悩効果を部位に付与する。重ね掛け（スタック）が出来る。<br>
+        直接タップしていない部位にも継続ダメージが入るので、複数の部位に全体的にダメージを与えたい時に有効。</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポート</td>
+    <td>1タップ毎に数％の確率でサポート効果をプレイヤーに付与する。どのデッキにも1枚以上は挿したほうがよい。</td>
+  </tr>
+</table>
+<br>
+</p>
+<p>
 
+カード詳細
 
 <table>
   <tr>
@@ -66,6 +88,255 @@
   </tr>
 </table>
 <br>
+
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("whipoflightning.png", width:"55px") %></td>
+    <td>Whip Of Lightning / 雷の鞭</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("burst.png", width:"20px") %> Burst / バーストカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">苦悩効果が掛かっている部位の数だけ、このカードのバースト確率が上がる<br>
+<font color="#808080">Whip of Lightning's chance to activate increases for each afflicted Titan Lord part.</font></td>
+  </tr>
+</table>
+<br>
+
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("clanshipbarrage.png", width:"55px") %></td>
+    <td>Clanship Barrage / 藩閥の弾幕</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("burst.png", width:"20px") %> Burst / バーストカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">バースト効果（他のカードでも有効）が発動する毎に、このカードのバーストダメージが上がる。<br>
+<font color="#808080">Clanship Barrage's damage is increased for the remainder of the attack whenever any Burst card is activated.</font></td>
+  </tr>
+</table>
+<br>
+
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("purifyingblast.png", width:"55px") %></td>
+    <td>Purifying Blast / 浄化ブラスト</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("burst.png", width:"20px") %> Burst / バーストカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">バースト発動に伴い、その部位の苦悩スタックを取り除く。取り除いた分だけダメージが上がる。<br>
+<font color="#808080">Purifying Blast will consume all Affliction stacks on the damaged part, which increases this card's damage per Affliction stack consumed.</font></td>
+  </tr>
+</table>
+<br>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("blazinginferno.png", width:"55px") %></td>
+    <td>Blazing Inferno / 燃える地獄</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">燃焼している部位が多いほど燃焼発動確率が上がる。<br>
+<font color="#808080">For each part that is afflicted by Inferno, this card's activation chance is increased.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("aciddrench.png", width:"55px") %></td>
+    <td>Acid Drench / 酸水薬</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">重ね掛けされる度に継続時間がリセットされる。<br>
+<font color="#808080">When a stack of Acid is applied to a Titan Lord part, the duration of all over Acid stacks on that part are reset.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("decayingstrike.png", width:"55px") %></td>
+    <td>Decaying Strike / 減衰ストライキ</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">選択部位のHPが多いほどダメージが上がる。<br>
+<font color="#808080">Decaying Strike's damage is multiplied by the remaining health percentage of the damaged part.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("fusionbomb.png", width:"55px") %></td>
+    <td>Fusion Bomb / 融合爆弾</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">3秒後に爆発する爆弾を設置。所定時間に達する前に爆弾をタップすると爆弾タイマーはリセットされる。
+     <br>また、浄化ブラストで取り除かれた爆弾は爆発せずに消える。<br>
+     
+     <font color="#808080">When the Fusion affliction expires, it detonates and deals damage to the afflicted Titan Lord part.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("grimshadow.png", width:"55px") %></td>
+    <td>Grim Shadow / 厳しい影</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">最大スタック時にダメージが上がる。<br>
+<font color="#808080">When a part is afflicted with the maximum number of shadow stacks, all Shadow stacks of that part will deal bonus damage.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("thrivingplague.png", width:"55px") %></td>
+    <td>Thriving Plague / 繁栄ペスト</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">疫病部位が多いほどダメージが上がる。<br>
+<font color="#808080">For each part that is afflicted by Plague, all stacks of Plague will deal additional damage per second.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("radioactivity.png", width:"55px") %></td>
+    <td>Radioctivity / 放射能</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">時間経過でダメージ上昇。この効果は同じ部位で発動している放射能すべてに掛かる。<br>
+<font color="#808080">For each second a part is afflicted by Radioactivity, all Radioactivity stacks on that part will deal additional damage per second.</font></td>
+  </tr>
+</table>
+<br>
+<br>
+
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("crushinginstinct.png", width:"55px") %></td>
+    <td>Crushing Instinct / 破砕本能</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">頭部位へのダメージ上昇。<br>
+<font color="#808080">which increases Raid Damage dealt to the Titan Lord's Head.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("rancidgas.png", width:"55px") %></td>
+    <td> Rancid Gas / 顕微鏡的提携</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">苦悩カードの発動確率とダメージを強化する。<br>
+<font color="#808080">whichi increases all Affliction Damage and Affliction Chance.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("inspiringforce.png", width:"55px") %></td>
+    <td>Inspiring Force / 感動的な力</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">Body層へのダメージ上昇。<br>
+<font color="#808080">which increases Raid Damage dealt to the Titan Lord's Body.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("soulfire.png", width:"55px") %></td>
+    <td>Soul Fire / 魂の火</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">胴部位へのダメージ上昇。<br>
+<font color="#808080">which increases Raid Damage dealt to the Titan Lord's Torso.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("victorymarch.png", width:"55px") %></td>
+    <td>Victory March / タイタンの悩みの種</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">スケルトン層が露出している部位数に応じて全てのダメージ上昇。<br>
+<font color="#808080">which increases Raid Damage dealt for each exposed Titan Lord Skelton part.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("prismaticrift.png", width:"55px") %></td>
+    <td>Prismatic Rift / 角柱状の切れ間</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">鎧層へのダメージ上昇。<br>
+<font color="#808080">which increases Damage dealt to the Titan Lord's Armor.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("ancestralfavor.png", width:"55px") %></td>
+    <td>Ancestral Favor / 先祖の賛成</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">バーストカードの発動確率とダメージを強化する。<br>
+<font color="#808080">which increases all Burst Damage and Burst chance.</font></td>
+  </tr>
+</table>
+<br>
+
+
+
 
 
 
