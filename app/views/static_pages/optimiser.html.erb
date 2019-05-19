@@ -23,19 +23,19 @@
 		  
 		  <form>
       <div class="form-group">
-       <label for="bos">累計BoS:</label>
-       <input type="integer" id="bos" class="form-control">
+       <label for="relic">累計レリック:</label>
+       <input type="integer" id="relic" class="form-control">
       </div>
       
       <form>
       <div class="form-group">
-       <label for="bos%">影率(%):</label>
-       <input type="integer" id="bos%" class="form-control">
+       <label for="bos">影率(%):</label>
+       <input type="integer" id="bos" class="form-control">
       </div>
       
       <div class="form-group">
-      <label for="selection1">ビルド:</label>
-       <select id="selection1" class="form-control">
+      <label for="build">ビルド:</label>
+       <select id="build" class="form-control">
       <option>SC
       <option>PET
       <option>CS
@@ -44,8 +44,8 @@
       </div>
       
       <div class="form-group">
-      <label for="selection2">金策:</label>
-       <select id="selection2" class="form-control">
+      <label for="gold">金策:</label>
+       <select id="gold" class="form-control">
       <option>フェアリー
       <option>pHoM
       <option>チェスターソン
@@ -53,16 +53,16 @@
       </div>
       
       <div class="form-group">
-      <label for="selection3">ヒーローの属性①:</label>
-       <select id="selection3" class="form-control">
+      <label for="hero1">ヒーローの属性①:</label>
+       <select id="hero1" class="form-control">
       <option>地面
       <option>飛行
       </select>
       </div>
       
       <div class="form-group">
-      <label for="selection4">ヒーローの属性②:</label>
-       <select id="selection4" class="form-control">
+      <label for="hero2">ヒーローの属性②:</label>
+       <select id="hero2" class="form-control">
       <option>近接
       <option>遠隔
       <option>魔術
@@ -70,16 +70,21 @@
       </div>
       
       
-      <input type="button" class="btn btn-primary" value="OK">
+      <input type="button" id="optimise" class="btn btn-primary" value="OK">
+     
     
       </form>
+      
+      
 		  
 		  
 		</p>
 	</div>
 	<div class="tab-pane" id="sampleContentC">
 	  <br>
-		<p>結果</p>
+		
+		<div id="result-area"></div>
 	</div>
 
 </div>
+
