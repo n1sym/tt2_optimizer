@@ -296,7 +296,7 @@ window.onload = function(){
  var buildv = [0,0,0,0]; // SC,PET,CS,HS
  var goldv  = [0,0,0]; // フェア,phom,チェスた
  var hero1v = [0,0]; // 地面,飛行
- var hero2v = [0,0]; // 近・遠・魔
+ var hero2v = [0,0,0]; // 近・遠・魔
   
    if (build == "SC"){buildv[0] = 1;}
    if (build == "PET"){buildv[1] = 1;}
@@ -318,7 +318,7 @@ window.onload = function(){
   r[0]  = 0; //bos
   r[1]  = 0.79; // CCa
   r[2]  = 0.79*4; // SotV
-  r[3]  = 0.79*(goldv[0]+gold[2]); //CoC
+  r[3]  = 0.79*(goldv[0]+goldv[2]); //CoC
   r[4]  = 0.79*(goldv[1]); //HSh
   r[5]  = 0.79; // BoP
   r[6]  = 0.79; // KB
@@ -326,7 +326,7 @@ window.onload = function(){
   r[8]  = 0.79*(goldv[0]); //GDM
   r[9]  = 0.79*(goldv[1]); //NS
   r[10] = 0.79*(goldv[2]); //CoE
-  r[11] = 0.79*(goldv[0]+gold[1]); //TBC
+  r[11] = 0.79*(goldv[0]+goldv[1]); //TBC
   r[12] = 1; // ES
   r[13] = 4; // FotS
   r[14] = 1; //HSw
@@ -334,44 +334,44 @@ window.onload = function(){
   r[16] = 0.6*buildv[0]+(buildv[1]+buildv[3]); //DH
   r[17] = 0.6*buildv[0]+0.8*buildv[3]; //SS
   r[18] = 1; //Ret
-  r[19] = r[16] + r[20]; //SP
+  r[19] = 0.6*buildv[0]+(buildv[1]+buildv[3]) + 0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]; //SP
   r[20] = 0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]; //HB
-  r[21] = r[20]*hero2v[0]; // TSoS
-  r[22] = r[20]*hero2v[1]; // FB
-  r[23] = r[20]*hero2v[2]; //CotA
-  r[24] = r[20]*hero1v[0]; //TTI
-  r[25] = r[20]*hero1v[1]; //HoH
+  r[21] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero2v[0]; // TSoS
+  r[22] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero2v[1]; // FB
+  r[23] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero2v[2]; //CotA
+  r[24] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero1v[0]; //TTI
+  r[25] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero1v[1]; //HoH
   r[26] = buildv[1]; //FoE
   r[27] = buildv[2]; //IE
   r[28] = buildv[1]+buildv[0]+buildv[2]; //ORC
-  r[29] = 4*r[20]+2*r[16]*2; //HoS
+  r[29] = 4*(0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])+2*(0.6*buildv[0]+(buildv[1]+buildv[3]))+2; //HoS
   r[30] = 0.79*2; //AO
   r[31] = 1; //EoP
   r[32] = 0; //AF
   r[33] = 0; // CRH
   r[34] = 0; //DSw
   r[35] = 1; //HSk
-  r[36] = 2*r[16]+r[26]; //OB
-  r[37] = 2*r[20]+r[27]; //CotC
-  r[38] = r[52]+r[54]+r[57]; //TSc
-  r[39] = r[8]+r[32]+r[53];//FG
-  r[40] = r[41]+r[42]+r[43]+r[44]+r[45]; //RoC
+  r[36] = 2*(0.6*buildv[0]+(buildv[1]+buildv[3]))+(buildv[1]); //OB
+  r[37] = 2*(0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])+(buildv[2]); //CotC
+  r[38] = (buildv[3])+((0.6*0.79)*(goldv[1]+goldv[0]))+(buildv[0]); //TSc
+  r[39] = (0.79*(goldv[0]))+(0.6*buildv[0]+0.5*buildv[2]+0.7*buildv[1]);//FG
+  r[40] = (1)+(Math.max(0.6*buildv[0]+0.8*buildv[3],0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]))+(0.79)+(Math.max(1, Math.max(0.6*buildv[0]+0.8*buildv[3],0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])))+(1); //RoC
   r[41] = 1; //BoD
-  r[42] = Math.max(r[17],r[20]); // HoM
+  r[42] = Math.max(0.6*buildv[0]+0.8*buildv[3],0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]); // HoM
   r[43] = 0.79; //TP
-  r[44] = Math.max(r[41],r[42],r[45]); //MB
+  r[44] = Math.max(1, Math.max(0.6*buildv[0]+0.8*buildv[3],0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])); //MB
   r[45] = 1;//AS
-  r[46] = r[21]+r[41]; //SotR
-  r[47] = r[25]+r[42]; //SV
-  r[48] = r[24]+r[43]; //TCP
-  r[49] = r[23]+r[44]; //SoJ
-  r[50] = r[22]+r[45]; //FotK
-  r[51] = r[52]+r[53]+r[54]+r[55]+r[56]+r[57]; //IG
+  r[46] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero2v[0]+1; //SotR
+  r[47] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero1v[1]+Math.max(0.6*buildv[0]+0.8*buildv[3],0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]); //SV
+  r[48] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero1v[0]+0.79; //TCP
+  r[49] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero2v[2]+Math.max(1, Math.max(0.6*buildv[0]+0.8*buildv[3],0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])); //SoJ
+  r[50] = (0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])*hero2v[1]+1; //FotK
+  r[51] = buildv[3]+0.6*buildv[0]+0.5*buildv[2]+0.7*buildv[1]+(0.6*0.79)*(goldv[1]+goldv[0])+0.6*buildv[0]+(buildv[1]+buildv[3])+0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]+buildv[0]; //IG
   r[52] = buildv[3]; //TM
   r[53] = 0.6*buildv[0]+0.5*buildv[2]+0.7*buildv[1]; //RT
-  r[54] = (0.6*0.79)*goldv[1]+0.79*goldv[0]; //LP
-  r[55] = r[16]; //BoR
-  r[56] = r[20]; //PoF
+  r[54] = (0.6*0.79)*(goldv[1]+goldv[0]); //LP
+  r[55] = 0.6*buildv[0]+(buildv[1]+buildv[3]); //BoR
+  r[56] = 0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]; //PoF
   r[57] = buildv[0]; //EoE
   
   
@@ -382,9 +382,7 @@ window.onload = function(){
   }
   
   var costweight_sum;
-  for (var i=0; i<r.length; i++){
-    costweight_sum += costweight[i];
-  }
+  costweight_sum = costweight.reduce((a,x) => a+=x,0);
   
   var cost_percent = [];
   for (var i=0; i<r.length; i++){
@@ -402,7 +400,7 @@ window.onload = function(){
     const paragraph = document.createElement('p');
     let result = answers;
     var num = total_relic*100;
-    result = result.replace(/{relic}/g, total_relic) + bos_percent + num.toExponential(2);
+    result = result.replace(/{relic}/g, total_relic) + r + bos_percent + num.toExponential(2);
     
     paragraph.innerText = result;
     resultDivided.appendChild(paragraph);
