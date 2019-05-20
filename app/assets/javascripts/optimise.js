@@ -543,17 +543,27 @@ window.onload = function(){
     const header = document.createElement('h3');
     header.innerText = '結果';
     resultDivided.appendChild(header);
-
-    const paragraph = document.createElement('p');
-    let result = " ";
+    
     for (var i=0; i<r.length; i++){
-    result += RoundLv[i] + " " + afname[i] + "\n";
-    // result[i] = result.replace(/{lv[i]}/g, RoundLv[i]);
+    var output = "af"+i;
+    var target = document.getElementById(output);
+    target.innerText = RoundLv[i];
+    var af = "output"+i;
+    var target2 = document.getElementById(af);
+    target2.innerText = afname[i];
     }
     
-    paragraph.innerText = result;
+    //const paragraph = document.createElement('p');
+    //let result = " ";
+    //for (var i=0; i<r.length; i++){
+    //result += RoundLv[i] + " " + afname[i] + "\n";
+    // result[i] = result.replace(/{lv[i]}/g, RoundLv[i]);
+    //}
     
-    resultDivided.appendChild(paragraph);
+    //paragraph.innerText = result ;
+    
+    
+    //resultDivided.appendChild(paragraph);
   
   };
 
