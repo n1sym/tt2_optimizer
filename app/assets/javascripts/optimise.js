@@ -17,9 +17,9 @@ window.onload = function(){
  const optimiseButton = document.getElementById('optimise');
  
  // 出力欄のテンプレート
- const answers = "bos:{relic}\n bos2:{relic}\n ~~~";
+
  
- // 計算 ⇒ 最終的に 配列optimiseLV[] に各々AFの最適lvを配置したい。
+ 
  
  // afデータ一覧
  /**
@@ -83,6 +83,68 @@ window.onload = function(){
  Artifact7	56	Parchment of Foresight
  Artifact6	57	Elixir of Eden
 */
+
+ const afname = [
+   "Book of Shadows",
+   "Charged Card",
+   "Stone of the Valrunes",
+   "Chest of Contentment",
+   "Heroic Shield",
+   "Book of Prophecy",
+   "Khrysos Bowl",
+   "Zakynthos Coin",
+   "Great Fay Medallion",
+   "Neko Sculpture",
+   "Coins of Ebizu",
+   "The Bronzed Compass",
+   "Evergrowing Stack",
+   "Flute of the Soloist",
+   "Heavenly Sword",
+   "Divine Retribution",
+   "Drunken Hammer",
+   "Samosek Sword",
+   "The Retaliator",
+   "Stryfe's Peace",
+   "Hero's Blade",
+   "The Sword of Storms",
+   "Furies Bow",
+   "Charm of the Ancient",
+   "Tiny Titan Tree",
+   "Helm of Hermes",
+   "Fruit of Eden",
+   "Influential Elixir",
+   "O'Ryan's Charm",
+   "Heart of Storms",
+   "Apollo Orb",
+   "Earrings of Portara",
+   "Avian Feather",
+   "Corrupted Rune Heart",
+   "Durendal Sword",
+   "Helheim Skull",
+   "Oath's Burden",
+   "Crown of the Constellation",
+   "Titania's Sceptre",
+   "Fagin's Grip",
+   "Ring of Calisto",
+   "Blade of Damocles",
+   "Helmet of Madness",
+   "Titanium Plating",
+   "Moonlight Bracelet",
+   "Amethyst Staff",
+   "Sword of the Royals",
+   "Spearit's Vigil",
+   "The Cobalt Plate",
+   "Sigils of Judgement",
+   "Foliage of the Keeper",
+   "Invader's Gjalarhorn",
+   "Titan's Mask",
+   "Royal Toxin",
+   "Laborer's Pendant",
+   "Bringer of Ragnarok",
+   "Parchment of Foresight",
+   "Elixir of Eden",
+   
+   ];
 
  const growthExpo =[
    1.087,
@@ -205,6 +267,67 @@ window.onload = function(){
    2.7000,
    2.7000
    ];
+   
+ const tcoef = [
+   0.2000,
+   0.2143,
+   0.2143,
+   0.3571,
+   0.2500,
+   0.2188,
+   0.2500,
+   0.2500,
+   0.3571,
+   0.2500,
+   0.2500,
+   0.2500,
+   0.1875,
+   0.1875,
+   0.2188,
+   0.3333,
+   0.2222,
+   0.2333,
+   0.2222,
+   0.3333,
+   0.2593,
+   0.2593,
+   0.2593,
+   0.2593,
+   0.2593,
+   0.2593,
+   0.2333,
+   0.2593,
+   0.2500,
+   0.2188,
+   0.2188,
+   0.2222,
+   0.2222,
+   0.2222,
+   0.3333,
+   0.3333,
+   0.2031,
+   0.2031,
+   0.2031,
+   0.2031,
+   0.2031,
+   0.2167,
+   0.2167,
+   0.2167,
+   0.2167,
+   0.2167,
+   0.2188,
+   0.2188,
+   0.2188,
+   0.2188,
+   0.2188,
+   0.2143,
+   0.2222,
+   0.2222,
+   0.2222,
+   0.2222,
+   0.2222,
+   0.2222
+   ];
   
  const effectWeight = [
   1.016396,
@@ -291,7 +414,7 @@ window.onload = function(){
       return;
     }
     
- // Reduction の計算
+ // 計算 ⇒ 最終的に 配列optimiseLV[] に各々AFの最適lvを配置したい。
  
  var buildv = [0,0,0,0]; // SC,PET,CS,HS
  var goldv  = [0,0,0]; // フェア,phom,チェスた
@@ -389,7 +512,27 @@ window.onload = function(){
     cost_percent[i] = costweight[i]/costweight_sum;
   }
   
-    
+  var ideal_relic = [];
+  ideal_relic[0] = total_relic * bos_percent;
+  
+  var relic_other_bos = total_relic - ideal_relic[0];
+  
+  for (var i=1; i<r.length; i++){
+    ideal_relic[i] = cost_percent[i] * relic_other_bos;
+  }
+  
+  var Estlvl = [];
+  for (var i=0; i<r.length; i++){
+    Estlvl[i] = (ideal_relic[i] / tcoef[i])**(1/texpo[i]) ;
+  }
+  
+  var RoundLv = [];
+  for (var i=0; i<r.length; i++){
+    var num = Estlvl[i];
+    RoundLv[i] = num.toExponential(2);
+  }
+  
+    // const answers = "bos:{lv[0]}\n bos2:{lv[1]}\n ~~~";
     
      // 結果表示エリア
     removeAllChildren(resultDivided);
@@ -398,11 +541,14 @@ window.onload = function(){
     resultDivided.appendChild(header);
 
     const paragraph = document.createElement('p');
-    let result = answers;
-    var num = total_relic*100;
-    result = result.replace(/{relic}/g, total_relic) + r + bos_percent + num.toExponential(2);
+    let result = " ";
+    for (var i=0; i<r.length; i++){
+    result += RoundLv[i] + " " + afname[i] + "\n";
+    // result[i] = result.replace(/{lv[i]}/g, RoundLv[i]);
+    }
     
     paragraph.innerText = result;
+    
     resultDivided.appendChild(paragraph);
   
   };
