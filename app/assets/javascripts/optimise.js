@@ -504,8 +504,10 @@ window.onload = function(){
     costweight[i] = (effectWeight[i]*growthExpo[i]*r[i])/texpo[i];
   }
   
-  var costweight_sum;
-  costweight_sum = costweight.reduce((a,x) => a+=x,0);
+  var costweight_sum = 0;
+  for (var i=0; i<r.length; i++){
+    costweight_sum += costweight[i];
+  }
   
   var cost_percent = [];
   for (var i=0; i<r.length; i++){
@@ -523,8 +525,10 @@ window.onload = function(){
   
   var Estlvl = [];
   for (var i=0; i<r.length; i++){
-    Estlvl[i] = (ideal_relic[i] / tcoef[i])**(1/texpo[i]) ;
+    Estlvl[i] = Math.pow((ideal_relic[i]/tcoef[i]), (1/texpo[i]));
   }
+  
+  
   
   var RoundLv = [];
   for (var i=0; i<r.length; i++){
@@ -547,7 +551,7 @@ window.onload = function(){
     // result[i] = result.replace(/{lv[i]}/g, RoundLv[i]);
     }
     
-    paragraph.innerText = result;
+    paragraph.innerText = costweight + result;
     
     resultDivided.appendChild(paragraph);
   
