@@ -867,6 +867,7 @@ window.onload = function(){
     for (var i=0; i<r.length; i++){
     
     var sisuu = Number(String(RoundLv[i]).slice(5)) ;
+    if(sisuu > 14){
     var cof;
     if(sisuu % 3 == 0){cof = String(Estlvl[i]).slice(0, 1);}
     if(sisuu % 3 == 1){cof = String(Estlvl[i]).replace(".","").slice(0, 2);}
@@ -874,7 +875,7 @@ window.onload = function(){
     
     RoundLv[i] = cof + letter[sisuu];
        
-      }
+      }}
     
   }
   
