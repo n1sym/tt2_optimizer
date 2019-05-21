@@ -4,8 +4,9 @@
 
 <!-- タブ・メニュー -->
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#sampleContentA" data-toggle="tab">使い方</a></li>
+	<li class="active"><a href="#sampleContentA" data-toggle="tab">説明</a></li>
 	<li><a href="#sampleContentB" data-toggle="tab">入力</a></li>
+		<li><a href="#sampleContentD" data-toggle="tab">所持AF選択</a></li>
 	<li><a href="#sampleContentC" data-toggle="tab">結果</a></li>
 
 </ul>
@@ -14,7 +15,17 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
-		<p>説明</p>
+		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
+		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p><br>
+		<p>できるだけ簡略化して設計したので、本家ツールとの誤差は1%前後あります。</p><br>
+		
+		<p>累計レリックはステータス(統計)欄で確認して、影率は影の書に振ったレリック（AF説明欄から確認できます）を累計レリックで割った値を入力してください。影の書を持っていない場合は0を入力でOKです。</p>
+		<p>数字は科学的記数法（オプション欄で変更できます）で入力してください。</p><br>
+		<p>ヒーローの属性は、MS付近で最も強いヒーローの属性を入力してください。</p>
+		
+		<p>未所持AFがある場合は、AF選択タブから持っていないAFにチェックを入れてください</p><br>
+		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://twitter.com/mr_nish_">twitter</a>までお願いします。</p>
+		
 	</div>
 	<div class="tab-pane" id="sampleContentB">
 	  <br>
@@ -27,9 +38,9 @@
        <input type="integer" id="relic" class="form-control" placeholder="例: 8.43e50">
       </div>
       
-      <form>
+      
       <div class="form-group">
-       <label for="bos">影率(%):</label>
+       <label for="bos">影率(%)</label>
        <input type="integer" id="bos" class="form-control" placeholder="例: 0.50 (50%の場合)">
        
       </div>
@@ -70,6 +81,12 @@
       </select>
       </div>
       
+      	
+     
+
+      
+      
+      
       
       <input type="button" id="optimise" class="btn btn-primary" value="OK">
       
@@ -86,11 +103,81 @@
     
       </form>
       
-      
+     
 		  
 		  
 		</p>
 	</div>
+	
+		<div class="tab-pane" id="sampleContentD">
+		 <br>
+		 <p>
+		 持ってないAFにチェックを入れてください。</p>
+<form name="form1">
+  <input type="checkbox" name="fruits"> <%= image_tag("Book_of_Shadows.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Charged_Card.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Stone_of_the_Valrunes.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Chest_of_Contentment.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Heroic_Shield.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Book_of_Prophecy.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Khrysos_Bowl.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Zakynthos_Coin.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Great_Fay_Medallion.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Neko_Sculpture.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Coins_of_Ebizu.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("The_Bronzed_Compass.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Evergrowing_Stack.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Flute_of_the_Soloist.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Heavenly_Sword.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Divine_Retribution.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Drunken_Hammer.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Samosek_Sword.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("The_Retaliator.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Stryfes_Peace.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Hero's_Blade.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("The_Sword_of_Storms.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Furies_Bow.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Charm_of_the_Ancient.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Tiny_Titan_Tree.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Helm_of_Hermes.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Fruit_of_Eden.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Influential_Elixir.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("ORyans_Charm.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Heart_of_Storms.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Apollo_Orb.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Earrings_of_Portara.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Avian_Feather.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Corrupted_Rune_Heart.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Durendal_Sword.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Helheim_Skull.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Oaths_Burden.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Crown_of_the_Constellation.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Titanias_Sceptre.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Fagin's_Grip.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Ring_of_Calisto.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Blade_of_Damocles.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Helmet_of_Madness.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Titanium_Plating.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Moonlight_Bracelet.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Amethyst_Staff.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Sword_of_the_Royals.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Spearits_Vigil.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("The_Cobalt_Plate.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Sigils_of_Judgement.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Foliage_of_the_Keeper.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Invaders_Gjalarhorn.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Titans_Mask.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Royal_Toxin.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Laborers_Pendant.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Bringer_of_Ragnarok.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Parchment_of_Foresight.png", width:"40px") %><br>
+  <input type="checkbox" name="fruits"> <%= image_tag("Elixir_of_Eden.png", width:"40px") %><br>
+
+   
+</form>
+
+	 </div> 
+	
 	<div class="tab-pane" id="sampleContentC">
 	  <br>
 		

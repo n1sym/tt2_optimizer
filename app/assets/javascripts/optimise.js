@@ -497,11 +497,23 @@ window.onload = function(){
   r[56] = 0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]; //PoF
   r[57] = buildv[0]; //EoE
   
+  var c =[];
+  for (var i = 0; i < document.form1.fruits.length; i++) {
+ 
+    // i番目のチェックボックスがチェックされているかを判定
+    if (document.form1.fruits[i].checked) {
+      c[i] = 0;
+    } else {
+      c[i] = 1;
+    }
+    
+  }
+  
   
   
   var costweight = [];
   for (var i=0; i<r.length; i++){
-    costweight[i] = (effectWeight[i]*growthExpo[i]*r[i])/texpo[i];
+    costweight[i] = (effectWeight[i]*growthExpo[i]*r[i]*c[i])/texpo[i];
   }
   
   var costweight_sum = 0;
@@ -535,6 +547,24 @@ window.onload = function(){
     var num = Estlvl[i];
     RoundLv[i] = num.toExponential(2);
   }
+  
+  
+ 
+ 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
     // const answers = "bos:{lv[0]}\n bos2:{lv[1]}\n ~~~";
     
