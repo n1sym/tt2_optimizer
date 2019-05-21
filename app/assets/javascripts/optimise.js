@@ -402,7 +402,7 @@ window.onload = function(){
 
  optimiseButton.onclick = () => {
    
-   const total_relic = relicInput.value;
+   var total_relic = relicInput.value;
    const bos_percent = bosInput.value;
    const build = buildInput.value;
    const gold = goldInput.value;
@@ -413,6 +413,45 @@ window.onload = function(){
       alert("入力が不十分です");
       return;
     }
+  
+  
+  // 入力BOSのKMBT変換
+  
+  function henkanK(string){
+      var number = Number(string);
+    return number *1000;
+  }
+  
+  function henkanM(string){
+    var number = Number(string);
+    return number *1000000;
+  }
+  
+  function henkanB(string){
+    var number = Number(string);
+    return number *1000000000;
+  }
+  
+  function henkanT(string){
+    var number = Number(string);
+    return number *1000000000000;
+  }
+  
+  
+  function search(string){
+
+    for(var i=0; i<string.length; i++){
+    if (string[i]=='K'){return henkanK(string.slice(0, -1));}
+    else if (string[i]=='M'){ return henkanM(string.slice(0, -1));}
+    else if (string[i]=='B'){ return henkanB(string.slice(0, -1));}
+    else if (string[i]=='T'){ return henkanT(string.slice(0, -1));}
+    }
+    return Number(string);
+  }
+
+   var relican = search(total_relic); 
+   
+   
     
  // 計算 ⇒ 最終的に 配列optimiseLV[] に各々AFの最適lvを配置したい。
  
@@ -527,9 +566,9 @@ window.onload = function(){
   }
   
   var ideal_relic = [];
-  ideal_relic[0] = total_relic * bos_percent;
+  ideal_relic[0] = relican * bos_percent;
   
-  var relic_other_bos = total_relic - ideal_relic[0];
+  var relic_other_bos = relican - ideal_relic[0];
   
   for (var i=1; i<r.length; i++){
     ideal_relic[i] = cost_percent[i] * relic_other_bos;
@@ -545,13 +584,103 @@ window.onload = function(){
   var RoundLv = [];
   for (var i=0; i<r.length; i++){
     var num = Estlvl[i];
-    RoundLv[i] = num.toExponential(2);
+    RoundLv[i] = num.toExponential(1);
+  }
+  
+  // RoundLVの単位変換
+  
+  function henkan1(string){
+    var num = Number(string);
+    return Math.round(num *10);
+  }
+  
+  function henkan2(string){
+    var num = Number(string);
+    return Math.round(num *100);
+  }
+  
+  function henkan3(string){
+    return string+'K';
+  }
+  
+  function henkan4(string){
+    var num = Number(string);
+    return Math.round(num*10)+'K';
+  }
+  
+  function henkan5(string){
+    var num = Number(string);
+    return Math.round(num*100)+'K';
+  }
+  
+  function henkan6(string){
+    return string+'M';
+  }
+  
+  function henkan7(string){
+    var num = Number(string);
+    return Math.round(num*10)+'M';
+  }
+  
+  function henkan8(string){
+   var num = Number(string);
+    return Math.round(num*100)+'M';
+  }
+  
+   function henkan9(string){
+    return string+'B';
+  }
+  
+  function henkan10(string){
+    var num = Number(string);
+    return Math.round(num*10)+'B';
+  }
+  
+  function henkan11(string){
+   var num = Number(string);
+    return Math.round(num*100)+'B';
+  }
+  
+   function henkan12(string){
+    return string+'T';
+  }
+  
+  function henkan13(string){
+    var num = Number(string);
+    return Math.round(num*10)+'T';
+  }
+  
+  function henkan14(string){
+   var num = Number(string);
+    return Math.round(num*100)+'T';
   }
   
   
+  function search2(string) {
+  for (var i=0; i<r.length; i++){
+  if(string.slice(-2) == "+0"){return Math.round(Number(string.slice(0, -3)));}
+  if(string.slice(-2) == "+1"){return henkan1(string.slice(0, -3));}
+  if(string.slice(-2) == "+2"){return henkan2(string.slice(0, -3));}
+  if(string.slice(-2) == "+3"){return henkan3(string.slice(0, -3));}
+  if(string.slice(-2) == "+4"){return henkan4(string.slice(0, -3));}
+  if(string.slice(-2) == "+5"){return henkan5(string.slice(0, -3));}
+  if(string.slice(-2) == "+6"){return henkan6(string.slice(0, -3));}
+  if(string.slice(-2) == "+7"){return henkan7(string.slice(0, -3));}
+  if(string.slice(-2) == "+8"){return henkan8(string.slice(0, -3));}
+  if(string.slice(-2) == "+9"){return henkan9(string.slice(0, -3));}
+  if(string.slice(-2) == "+10"){return henkan10(string.slice(0, -3));}
+  if(string.slice(-2) == "+11"){return henkan11(string.slice(0, -3));}
+  if(string.slice(-2) == "+12"){return henkan12(string.slice(0, -3));}
+  if(string.slice(-2) == "+13"){return henkan13(string.slice(0, -3));}
+  if(string.slice(-2) == "+14"){return henkan14(string.slice(0, -3));}
+  
+  }
+  return Number(string).toExponential(1);
+  }
  
- 
-
+  for (var i=0; i<r.length; i++){
+    RoundLv[i] = search2(RoundLv[i]);
+  }
   
   
   
