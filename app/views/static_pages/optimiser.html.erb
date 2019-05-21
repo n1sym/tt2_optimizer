@@ -25,7 +25,8 @@
 		<%= image_tag("relic22.png") %><br><br>
 		<%= image_tag("relic11.png") %><br><br>
 		
-		<p>数字は科学的記数法（オプション欄で変更できます）で入力してください。K,M,B,T表記にも対応しています。</p><br>
+		<p>数字は科学的記数法（オプション欄で変更できます）で入力してください。K,M,B,T表記にも対応しています。</p>
+		<p>(追記)レター表記(aa,ab,ac,...)にも対応しました</p><br>
 		<p>ヒーローの属性は、MS付近で最も強いヒーローの属性を入力してください。</p>
 		
 		<p>未所持AFがある場合は、AF選択タブから持っていないAFにチェックを入れてください</p><br>
@@ -40,7 +41,7 @@
 		  <form>
       <div class="form-group">
        <label for="relic">累計レリック:</label>
-       <input type="integer" id="relic" class="form-control" placeholder="例: 8.43e50">
+       <input type="integer" id="relic" class="form-control" placeholder="例: 7.18e72 または 7.18at ">
       </div>
       
       
@@ -107,6 +108,10 @@
      
     
       </form>
+      <p>
+      <form name="form2"><input type="checkbox" name="letter">letter表記(aa,ab,ac,...)で結果を表示する</form>
+       </p>
+      
       <hr>
       OKを押しても結果が反映されない場合、一度更新してからもう一度入力すると上手くいくと思います。お手数おかけします...。
 		  
@@ -259,7 +264,9 @@
 	 <br>
 	 <p>■2019/05/21 19:30</p><p>K,M,B,T表記に対応。</p>
 	 <p>⇒ e15以下の数値が科学的記数法に対応していない問題を対処しました。</p>
-	 <p>説明欄を加筆。</p>
+	 <p>説明欄を加筆。</p><br>
+	 <p>■2019/05/21 22:10</p>
+	 <p>レター表記(aa,ab,ac,...)に対応しました。</p>
 	 </div>
 
 </div>

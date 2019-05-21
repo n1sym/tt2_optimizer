@@ -414,6 +414,48 @@ window.onload = function(){
       return;
     }
   
+  //if(document.form2.letter.checked){
+    if(String(total_relic).slice(-2) == "aa"){total_relic = Number(total_relic.slice(0, -2)+'e15')}
+    if(String(total_relic).slice(-2) == "ab"){total_relic = Number(total_relic.slice(0, -2)+'e18')}
+    if(String(total_relic).slice(-2) == "ac"){total_relic = Number(total_relic.slice(0, -2)+'e21')}
+    if(String(total_relic).slice(-2) == "ad"){total_relic = Number(total_relic.slice(0, -2)+'e24')}
+    if(String(total_relic).slice(-2) == "ae"){total_relic = Number(total_relic.slice(0, -2)+'e27')}
+    if(String(total_relic).slice(-2) == "af"){total_relic = Number(total_relic.slice(0, -2)+'e30')}
+    if(String(total_relic).slice(-2) == "ag"){total_relic = Number(total_relic.slice(0, -2)+'e33')}
+    if(String(total_relic).slice(-2) == "ah"){total_relic = Number(total_relic.slice(0, -2)+'e36')}
+    if(String(total_relic).slice(-2) == "ai"){total_relic = Number(total_relic.slice(0, -2)+'e39')}
+    if(String(total_relic).slice(-2) == "aj"){total_relic = Number(total_relic.slice(0, -2)+'e42')}
+    if(String(total_relic).slice(-2) == "ak"){total_relic = Number(total_relic.slice(0, -2)+'e45')}
+    if(String(total_relic).slice(-2) == "al"){total_relic = Number(total_relic.slice(0, -2)+'e48')}
+    if(String(total_relic).slice(-2) == "am"){total_relic = Number(total_relic.slice(0, -2)+'e51')}
+    if(String(total_relic).slice(-2) == "an"){total_relic = Number(total_relic.slice(0, -2)+'e54')}
+    if(String(total_relic).slice(-2) == "ao"){total_relic = Number(total_relic.slice(0, -2)+'e57')}
+    if(String(total_relic).slice(-2) == "ap"){total_relic = Number(total_relic.slice(0, -2)+'e60')}
+    if(String(total_relic).slice(-2) == "aq"){total_relic = Number(total_relic.slice(0, -2)+'e63')}
+    if(String(total_relic).slice(-2) == "ar"){total_relic = Number(total_relic.slice(0, -2)+'e66')}
+    if(String(total_relic).slice(-2) == "as"){total_relic = Number(total_relic.slice(0, -2)+'e69')}
+    if(String(total_relic).slice(-2) == "at"){total_relic = Number(total_relic.slice(0, -2)+'e72')}
+    if(String(total_relic).slice(-2) == "au"){total_relic = Number(total_relic.slice(0, -2)+'e75')}
+    if(String(total_relic).slice(-2) == "av"){total_relic = Number(total_relic.slice(0, -2)+'e78')}
+    if(String(total_relic).slice(-2) == "aw"){total_relic = Number(total_relic.slice(0, -2)+'e81')}
+    if(String(total_relic).slice(-2) == "ax"){total_relic = Number(total_relic.slice(0, -2)+'e84')}
+    if(String(total_relic).slice(-2) == "ay"){total_relic = Number(total_relic.slice(0, -2)+'e87')}
+    if(String(total_relic).slice(-2) == "az"){total_relic = Number(total_relic.slice(0, -2)+'e90')}
+    if(String(total_relic).slice(-2) == "ba"){total_relic = Number(total_relic.slice(0, -2)+'e93')}
+    if(String(total_relic).slice(-2) == "bb"){total_relic = Number(total_relic.slice(0, -2)+'e96')}
+    if(String(total_relic).slice(-2) == "bc"){total_relic = Number(total_relic.slice(0, -2)+'e99')}
+    if(String(total_relic).slice(-2) == "bd"){total_relic = Number(total_relic.slice(0, -2)+'e102')}
+    if(String(total_relic).slice(-2) == "be"){total_relic = Number(total_relic.slice(0, -2)+'e105')}
+    if(String(total_relic).slice(-2) == "bf"){total_relic = Number(total_relic.slice(0, -2)+'e108')}
+    if(String(total_relic).slice(-2) == "bg"){total_relic = Number(total_relic.slice(0, -2)+'e111')}
+    if(String(total_relic).slice(-2) == "bh"){total_relic = Number(total_relic.slice(0, -2)+'e114')}
+    if(String(total_relic).slice(-2) == "bi"){total_relic = Number(total_relic.slice(0, -2)+'e117')}
+    if(String(total_relic).slice(-2) == "bj"){total_relic = Number(total_relic.slice(0, -2)+'e120')}
+    if(String(total_relic).slice(-2) == "bk"){total_relic = Number(total_relic.slice(0, -2)+'e123')}
+    if(String(total_relic).slice(-2) == "bl"){total_relic = Number(total_relic.slice(0, -2)+'e126')}
+    
+    
+  //}
   
   // 入力BOSのKMBT変換
   
@@ -668,11 +710,11 @@ window.onload = function(){
   if(string.slice(-2) == "+7"){return henkan7(string.slice(0, -3));}
   if(string.slice(-2) == "+8"){return henkan8(string.slice(0, -3));}
   if(string.slice(-2) == "+9"){return henkan9(string.slice(0, -3));}
-  if(string.slice(-2) == "+10"){return henkan10(string.slice(0, -3));}
-  if(string.slice(-2) == "+11"){return henkan11(string.slice(0, -3));}
-  if(string.slice(-2) == "+12"){return henkan12(string.slice(0, -3));}
-  if(string.slice(-2) == "+13"){return henkan13(string.slice(0, -3));}
-  if(string.slice(-2) == "+14"){return henkan14(string.slice(0, -3));}
+  if(string.slice(-3) == "+10"){return henkan10(string.slice(0, -4));}
+  if(string.slice(-3) == "+11"){return henkan11(string.slice(0, -4));}
+  if(string.slice(-3) == "+12"){return henkan12(string.slice(0, -4));}
+  if(string.slice(-3) == "+13"){return henkan13(string.slice(0, -4));}
+  if(string.slice(-3) == "+14"){return henkan14(string.slice(0, -4));}
   
   }
   return Number(string).toExponential(1);
@@ -685,13 +727,156 @@ window.onload = function(){
   
   
   
+    var letter = [0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    'aa',
+    'aa',
+    'aa',
+    'ab',
+    'ab',
+    'ab',
+    'ac',
+    'ac',
+    'ac',
+    'ad',
+    'ad',
+    'ad',
+    'ae',
+    'ae',
+    'ae',
+    'af',
+    'af',
+    'af',
+    'ag',
+    'ag',
+    'ag',
+    'ah',
+    'ah',
+    'ah',
+    'ai',
+    'ai',
+    'ai',
+    'aj',
+    'aj',
+    'aj',
+    'ak',
+    'ak',
+    'ak',
+    'al',
+    'al',
+    'al',
+    'am',
+    'am',
+    'am',
+    'an',
+    'an',
+    'an',
+    'ao',
+    'ao',
+    'ao',
+    'ap',
+    'ap',
+    'ap',
+    'aq',
+    'aq',
+    'aq',
+    'ar',
+    'ar',
+    'ar',
+    'as',
+    'as',
+    'as',
+    'at',
+    'at',
+    'at',
+    'au',
+    'au',
+    'au',
+    'av',
+    'av',
+    'av',
+    'aw',
+    'aw',
+    'aw',
+    'ax',
+    'ax',
+    'ax',
+    'ay',
+    'ay',
+    'ay',
+    'az',
+    'az',
+    'az',
+    'ba',
+    'ba',
+    'ba',
+    'bb',
+    'bb',
+    'bb',
+    'bc',
+    'bc',
+    'bc',
+    'bd',
+    'bd',
+    'bd',
+    'be',
+    'be',
+    'be',
+    'bf',
+    'bf',
+    'bf',
+    'bg',
+    'bg',
+    'bg',
+    'bh',
+    'bh',
+    'bh',
+    'bi',
+    'bi',
+    'bi',
+    'bj',
+    'bj',
+    'bj',
+    'bk',
+    'bk',
+    'bk',
+    'bl',
+    'bl',
+    'bl',
+    'bm',
+    'bm',
+    'bm',
+    ];
   
   
-  
-  
-  
-  
-  
+
+  if (document.form2.letter.checked) {
+    for (var i=0; i<r.length; i++){
+    
+    var sisuu = Number(String(RoundLv[i]).slice(5)) ;
+    var cof;
+    if(sisuu % 3 == 0){cof = String(Estlvl[i]).slice(0, 1);}
+    if(sisuu % 3 == 1){cof = String(Estlvl[i]).replace(".","").slice(0, 2);}
+     if(sisuu % 3 == 2){cof = String(Estlvl[i]).replace(".","").slice(0, 3);}
+    
+    RoundLv[i] = cof + letter[sisuu];
+       
+      }
+    
+  }
   
   
   
