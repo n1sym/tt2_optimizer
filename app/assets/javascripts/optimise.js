@@ -7,6 +7,7 @@ window.onload = function(){
  // 入力欄からデータをセット
  const relicInput = document.getElementById('relic');
  const bosInput = document.getElementById('bos');
+ const afcInput = document.getElementById('afc');
  const buildInput = document.getElementById('build');
  const goldInput = document.getElementById('gold');
  const hero1Input = document.getElementById('hero1');
@@ -389,6 +390,288 @@ window.onload = function(){
   1.032280,
   1.032280
   ];
+  
+ const af_cost = [
+   1.00E+00,
+   4.00E+00,
+   1.10E+01,
+   2.30E+01,
+   4.20E+01,
+   7.20E+01,
+   1.18E+02,
+   1.87E+02,
+   2.89E+02,
+   4.38E+02,
+   6.52E+02,
+   9.59E+02,
+   1.39E+03,
+   2.01E+03,
+   2.87E+03,
+   4.07E+03,
+   5.75E+03,
+   8.07E+03,
+   1.13E+04,
+   1.57E+04,
+   2.18E+04,
+   3.02E+04,
+   4.16E+04,
+   5.73E+04,
+   7.87E+04,
+   1.08E+05,
+   1.47E+05,
+   2.01E+05,
+   2.74E+05,
+   3.73E+05,
+   5.07E+05,
+   6.88E+05,
+   9.33E+05,
+   1.26E+06,
+   1.71E+06,
+   2.31E+06,
+   3.12E+06,
+   4.20E+06,
+   5.66E+06,
+   7.63E+06,
+   1.04E+07,
+   1.47E+07,
+   2.12E+07,
+   3.13E+07,
+   4.69E+07,
+   7.12E+07,
+   1.09E+08,
+   1.69E+08,
+   2.63E+08,
+   4.13E+08,
+   6.52E+08,
+   1.04E+09,
+   1.65E+09,
+   2.65E+09,
+   4.28E+09,
+   6.95E+09,
+   1.13E+10,
+   1.86E+10,
+   3.06E+10,
+   5.07E+10,
+   8.44E+10,
+   1.41E+11,
+   2.37E+11,
+   4.01E+11,
+   6.81E+11,
+   4.52E+12,
+   5.77E+13,
+   7.96E+14,
+   1.11E+16,
+   1.55E+17,
+   2.19E+18,
+   3.10E+19,
+   4.40E+20,
+   6.29E+21,
+   9.05E+22,
+   1.30E+24,
+   1.89E+25,
+   2.75E+26,
+   4.01E+27,
+   5.90E+28,
+   8.71E+29,
+   1.29E+31,
+   1.92E+32,
+   3.15E+33,
+   4.36E+34,
+   6.55E+35,
+   9.92E+36,
+   1.51E+38,
+   2.32E+39,
+   3.56E+40,
+   5.19E+42,
+   8.05E+44,
+   1.26E+47,
+   1.96E+49,
+   3.09E+51
+   ];
+   
+ const damage_bonus = [
+   0.3,
+   0.2,
+   0.2,
+   0.4,
+   0.4,
+   0.3,
+   0.3,
+   0.3,
+   0.4,
+   0.5,
+   0.3,
+   0.3,
+   0.2,
+   0.2,
+   1,
+   1,
+   0.3,
+   0.5,
+   0.2,
+   1,
+   0.5,
+   0.3,
+   0.3,
+   0.3,
+   0.3,
+   0.3,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.3,
+   0.3,
+   0.3,
+   1,
+   1,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.2,
+   0.2,
+   0.2,
+   0.2,
+   0.2,
+   0.2,
+   0.2
+   ];   
+   
+ const cost_coef = [
+   0.7,
+   0.6,
+   0.6,
+   1,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   1,
+   0.7,
+   0.7,
+   0.7,
+   0.6,
+   0.6,
+   0.7,
+   1,
+   0.6,
+   0.7,
+   0.6,
+   1,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.6,
+   0.6,
+   0.6,
+   1,
+   1,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.65,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.7,
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.6
+   ];
+
+ const cost_expo = [
+   2.5,
+   1.8,
+   1.8,
+   1.8,
+   1.8,
+   2.2,
+   1.8,
+   1.8,
+   1.8,
+   1.8,
+   1.8,
+   1.8,
+   2.2,
+   2.2,
+   2.2,
+   2,
+   1.7,
+   2,
+   1.7,
+   2,
+   1.7,
+   1.7,
+   1.7,
+   1.7,
+   1.7,
+   1.7,
+   2,
+   1.7,
+   1.8,
+   2.2,
+   2.2,
+   1.7,
+   1.7,
+   1.7,
+   2,
+   2,
+   2.2,
+   2.2,
+   2.2,
+   2.2,
+   2.2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2.2,
+   2.2,
+   2.2,
+   2.2,
+   2.2,
+   1.8,
+   1.7,
+   1.7,
+   1.7,
+   1.7,
+   1.7,
+   1.7
+   ]
+ 
 
 
  // ページの動作など
@@ -403,7 +686,8 @@ window.onload = function(){
  optimiseButton.onclick = () => {
    
    var total_relic = relicInput.value;
-   const bos_percent = bosInput.value;
+   var bos_percent = bosInput.value;
+   const afcost = afcInput.value;
    const build = buildInput.value;
    const gold = goldInput.value;
    const hero1 = hero1Input.value;
@@ -414,7 +698,8 @@ window.onload = function(){
       return;
     }
   
-  //if(document.form2.letter.checked){
+  // レター入力⇒指数変換(レリック)
+  // {
     if(String(total_relic).slice(-2) == "aa"){total_relic = Number(total_relic.slice(0, -2)+'e15')}
     if(String(total_relic).slice(-2) == "ab"){total_relic = Number(total_relic.slice(0, -2)+'e18')}
     if(String(total_relic).slice(-2) == "ac"){total_relic = Number(total_relic.slice(0, -2)+'e21')}
@@ -457,7 +742,8 @@ window.onload = function(){
     
   //}
   
-  // 入力BOSのKMBT変換
+  // 入力レリックのKMBT変換
+  // {
   
   function henkanK(string){
       var number = Number(string);
@@ -492,10 +778,63 @@ window.onload = function(){
   }
 
    var relican = search(total_relic); 
-   
-   
+  //} 
+  
+  // 入力BOSのレター⇒e変換
+  // {
+    if(String(bos_percent).slice(-2) == "aa"){bos_percent = Number(bos_percent.slice(0, -2)+'e15')}
+    if(String(bos_percent).slice(-2) == "ab"){bos_percent = Number(bos_percent.slice(0, -2)+'e18')}
+    if(String(bos_percent).slice(-2) == "ac"){bos_percent = Number(bos_percent.slice(0, -2)+'e21')}
+    if(String(bos_percent).slice(-2) == "ad"){bos_percent = Number(bos_percent.slice(0, -2)+'e24')}
+    if(String(bos_percent).slice(-2) == "ae"){bos_percent = Number(bos_percent.slice(0, -2)+'e27')}
+    if(String(bos_percent).slice(-2) == "af"){bos_percent = Number(bos_percent.slice(0, -2)+'e30')}
+    if(String(bos_percent).slice(-2) == "ag"){bos_percent = Number(bos_percent.slice(0, -2)+'e33')}
+    if(String(bos_percent).slice(-2) == "ah"){bos_percent = Number(bos_percent.slice(0, -2)+'e36')}
+    if(String(bos_percent).slice(-2) == "ai"){bos_percent = Number(bos_percent.slice(0, -2)+'e39')}
+    if(String(bos_percent).slice(-2) == "aj"){bos_percent = Number(bos_percent.slice(0, -2)+'e42')}
+    if(String(bos_percent).slice(-2) == "ak"){bos_percent = Number(bos_percent.slice(0, -2)+'e45')}
+    if(String(bos_percent).slice(-2) == "al"){bos_percent = Number(bos_percent.slice(0, -2)+'e48')}
+    if(String(bos_percent).slice(-2) == "am"){bos_percent = Number(bos_percent.slice(0, -2)+'e51')}
+    if(String(bos_percent).slice(-2) == "an"){bos_percent = Number(bos_percent.slice(0, -2)+'e54')}
+    if(String(bos_percent).slice(-2) == "ao"){bos_percent = Number(bos_percent.slice(0, -2)+'e57')}
+    if(String(bos_percent).slice(-2) == "ap"){bos_percent = Number(bos_percent.slice(0, -2)+'e60')}
+    if(String(bos_percent).slice(-2) == "aq"){bos_percent = Number(bos_percent.slice(0, -2)+'e63')}
+    if(String(bos_percent).slice(-2) == "ar"){bos_percent = Number(bos_percent.slice(0, -2)+'e66')}
+    if(String(bos_percent).slice(-2) == "as"){bos_percent = Number(bos_percent.slice(0, -2)+'e69')}
+    if(String(bos_percent).slice(-2) == "at"){bos_percent = Number(bos_percent.slice(0, -2)+'e72')}
+    if(String(bos_percent).slice(-2) == "au"){bos_percent = Number(bos_percent.slice(0, -2)+'e75')}
+    if(String(bos_percent).slice(-2) == "av"){bos_percent = Number(bos_percent.slice(0, -2)+'e78')}
+    if(String(bos_percent).slice(-2) == "aw"){bos_percent = Number(bos_percent.slice(0, -2)+'e81')}
+    if(String(bos_percent).slice(-2) == "ax"){bos_percent = Number(bos_percent.slice(0, -2)+'e84')}
+    if(String(bos_percent).slice(-2) == "ay"){bos_percent = Number(bos_percent.slice(0, -2)+'e87')}
+    if(String(bos_percent).slice(-2) == "az"){bos_percent = Number(bos_percent.slice(0, -2)+'e90')}
+    if(String(bos_percent).slice(-2) == "ba"){bos_percent = Number(bos_percent.slice(0, -2)+'e93')}
+    if(String(bos_percent).slice(-2) == "bb"){bos_percent = Number(bos_percent.slice(0, -2)+'e96')}
+    if(String(bos_percent).slice(-2) == "bc"){bos_percent = Number(bos_percent.slice(0, -2)+'e99')}
+    if(String(bos_percent).slice(-2) == "bd"){bos_percent = Number(bos_percent.slice(0, -2)+'e102')}
+    if(String(bos_percent).slice(-2) == "be"){bos_percent = Number(bos_percent.slice(0, -2)+'e105')}
+    if(String(bos_percent).slice(-2) == "bf"){bos_percent = Number(bos_percent.slice(0, -2)+'e108')}
+    if(String(bos_percent).slice(-2) == "bg"){bos_percent = Number(bos_percent.slice(0, -2)+'e111')}
+    if(String(bos_percent).slice(-2) == "bh"){bos_percent = Number(bos_percent.slice(0, -2)+'e114')}
+    if(String(bos_percent).slice(-2) == "bi"){bos_percent = Number(bos_percent.slice(0, -2)+'e117')}
+    if(String(bos_percent).slice(-2) == "bj"){bos_percent = Number(bos_percent.slice(0, -2)+'e120')}
+    if(String(bos_percent).slice(-2) == "bk"){bos_percent = Number(bos_percent.slice(0, -2)+'e123')}
+    if(String(bos_percent).slice(-2) == "bl"){bos_percent = Number(bos_percent.slice(0, -2)+'e126')}
+  //}
+  
+  // 入力BOSのKMBT変換
+  // {
+    var bos_percent = search(bos_percent);
+  //}
+  
+  
+  // 影率計算 {
+  if (bos_percent > 1){
+    bos_percent = bos_percent / relican;
+  }
+    //}
     
- // 計算 ⇒ 最終的に 配列optimiseLV[] に各々AFの最適lvを配置したい。
+  // 選択要素を配置{
  
  var buildv = [0,0,0,0]; // SC,PET,CS,HS
  var goldv  = [0,0,0]; // フェア,phom,チェスた
@@ -517,7 +856,11 @@ window.onload = function(){
    if (hero2 == "近接"){hero2v[0] = 1;}
    if (hero2 == "遠隔"){hero2v[1] = 1;} 
    if (hero2 == "魔術"){hero2v[2] = 1;} 
+ //}
  
+ 
+  // リダクション計算
+  // {
  var r = []; // reduction
   r[0]  = 0; //bos
   r[1]  = 0.79; // CCa
@@ -577,7 +920,13 @@ window.onload = function(){
   r[55] = 0.6*buildv[0]+(buildv[1]+buildv[3]); //BoR
   r[56] = 0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2]; //PoF
   r[57] = buildv[0]; //EoE
+  //}
   
+ 
+  
+  
+  
+  // 未所持AF選択
   var c =[];
   for (var i = 0; i < document.form1.fruits.length; i++) {
  
@@ -587,14 +936,20 @@ window.onload = function(){
     } else {
       c[i] = 1;
     }
-    
   }
   
   
+  // 主な計算
+  var AD = 0;
+  if (document.mainform.AD.checked){AD=1;}
+  var ADstuff =[];
+  for (var i=0; i<r.length; i++){
+    ADstuff[i] = (Math.pow((Math.pow(damage_bonus[i],1.24)*cost_coef[i]/cost_expo[i]),texpo[i]))*AD;
+  }
   
   var costweight = [];
   for (var i=0; i<r.length; i++){
-    costweight[i] = (effectWeight[i]*growthExpo[i]*r[i]*c[i])/texpo[i];
+    costweight[i] = ((effectWeight[i]*growthExpo[i]*r[i]*c[i])/texpo[i])+ADstuff[i];
   }
   
   var costweight_sum = 0;
@@ -606,6 +961,8 @@ window.onload = function(){
   for (var i=0; i<r.length; i++){
     cost_percent[i] = costweight[i]/costweight_sum;
   }
+
+  relican -= af_cost[afcost-1];
   
   var ideal_relic = [];
   ideal_relic[0] = relican * bos_percent;
@@ -621,15 +978,15 @@ window.onload = function(){
     Estlvl[i] = Math.pow((ideal_relic[i]/tcoef[i]), (1/texpo[i]));
   }
   
-  
-  
   var RoundLv = [];
   for (var i=0; i<r.length; i++){
     var num = Estlvl[i];
     RoundLv[i] = num.toExponential(1);
   }
   
-  // RoundLVの単位変換
+
+  
+  // RoundLVのe⇒KMBT変換{
   
   function henkan1(string){
     var num = Number(string);
@@ -724,9 +1081,10 @@ window.onload = function(){
     RoundLv[i] = search2(RoundLv[i]);
   }
   
+  //}
   
   
-  
+  // RoundLvのe⇒レター変換{
     var letter = [0,
     0,
     0,
@@ -863,7 +1221,7 @@ window.onload = function(){
   
   
 
-  if (document.form2.letter.checked) {
+  if (document.mainform.letter.checked) {
     for (var i=0; i<r.length; i++){
     
     var sisuu = Number(String(RoundLv[i]).slice(5)) ;
@@ -879,11 +1237,11 @@ window.onload = function(){
     
   }
   
+  //}
   
-  
-    // const answers = "bos:{lv[0]}\n bos2:{lv[1]}\n ~~~";
+
     
-     // 結果表示エリア
+  // 結果表示エリア
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
     header.innerText = '結果';
@@ -898,17 +1256,6 @@ window.onload = function(){
     target2.innerText = afname[i];
     }
     
-    //const paragraph = document.createElement('p');
-    //let result = " ";
-    //for (var i=0; i<r.length; i++){
-    //result += RoundLv[i] + " " + afname[i] + "\n";
-    // result[i] = result.replace(/{lv[i]}/g, RoundLv[i]);
-    //}
-    
-    //paragraph.innerText = result ;
-    
-    
-    //resultDivided.appendChild(paragraph);
   
   };
 

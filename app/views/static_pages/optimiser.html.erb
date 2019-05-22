@@ -16,20 +16,25 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
+		<p>■ v1.2 更新しました (5/22)</p>
 		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
-		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p><br>
-		<p>できるだけ簡略化して設計したので、本家ツールとの誤差は1%前後あります。</p><br>
+		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p>
+		<p>できるだけ簡略化して設計したので、本家ツールとの誤差は1%前後あります。</p><hr>
+		<p>【使用方法】</p>
 		
-		<p>累計レリックはステータス(統計)欄で確認して、影率は影の書に振ったレリック（AF説明欄から確認できます）を累計レリックで割った値を入力してください。影の書を持っていない場合は0を入力でOKです。</p>
-		<p>また理想の影率を入力して、累計レリックを多めに入力しておくと、一定の影率を保ちながら効率的にレリックを振ることもできます。</p>
-		<%= image_tag("relic22.png") %><br><br>
-		<%= image_tag("relic11.png") %><br><br>
-		
-		<p>数字は科学的記数法（オプション欄で変更できます）で入力してください。K,M,B,T表記にも対応しています。</p>
-		<p>(追記)レター表記(aa,ab,ac,...)にも対応しました</p><br>
+		<p>累計レリックはステータス(統計)欄で確認して入力してください。</p>
+		<p>影率は影の書に振ったレリック（AF説明欄から確認できます）を累計レリックで割った値のことです。</p>
+		<p>影率は各自で設定してください。特にこだわりが無い場合は0.5(50%)くらいが良いと思います。</p>
+		<p>またトーナメント中など影以外のAFにレリックを振りたい場合は、影の書に振ったレリックをそのまま入力してもらっても大丈夫です。</p>
 		<p>ヒーローの属性は、MS付近で最も強いヒーローの属性を入力してください。</p>
 		
 		<p>未所持AFがある場合は、AF選択タブから持っていないAFにチェックを入れてください</p><br>
+		<p></p>
+		<%= image_tag("relic22.png") %><br><br>
+		<%= image_tag("relic11.png") %><br><br>
+		
+		
+		
 		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://twitter.com/mr_nish_">@mr_nish_</a>までお願いします。</p>
 		
 	</div>
@@ -38,18 +43,25 @@
 		<p>
 		  
 		  
-		  <form>
+		  <form name="mainform">
       <div class="form-group">
        <label for="relic">累計レリック:</label>
-       <input type="integer" id="relic" class="form-control" placeholder="例: 7.18e72 または 7.18at ">
+       <input type="integer" name="relic" id="relic" class="form-control" placeholder="例: 7.18e72 または 7.18at ">
       </div>
       
       
       <div class="form-group">
-       <label for="bos">影率(%)</label>
+       <label for="bos">影率(%) or 影に振ったレリック数:</label>
        <input type="integer" id="bos" class="form-control" placeholder="例: 0.50 (50%の場合)">
        
       </div>
+      
+      <div class="form-group">
+       <label for="afc">所持アーティファクト数:</label>
+       <input type="integer" id="afc" class="form-control" value="95">
+       
+      </div>
+      
       
       <div class="form-group">
       <label for="build">ビルド:</label>
@@ -62,7 +74,7 @@
       </div>
       
       <div class="form-group">
-      <label for="gold">金策:</label>
+      <label for="gold">ゴールド:</label>
        <select id="gold" class="form-control">
       <option>フェアリー
       <option>pHoM
@@ -87,37 +99,37 @@
       </select>
       </div>
       
-      	
-     
-
+      <div class="form-group">
+       <input type="checkbox" name="letter"> letter表記(aa,ab,ac,...)で結果を表示する
+      </div>
       
+      <div class="form-group">
+       <input type="checkbox" name="AD"> AD(アーティファクトダメージ)を考慮する
+      </div>
       
-      
-      
+   
       <input type="button" id="optimise" class="btn btn-primary" value="OK">
       
        <!-- jQuery -->
  　　　<script>
       $(function() {
+      
       // ボタンクリックでタブを切り替え
       $('#optimise').click(function(e) {
       $('.nav-tabs a[href="#sampleContentC"]').tab('show');
+      
       });    
       });
       </script>
      
-    
       </form>
-      <p>
-      <form name="form2"><input type="checkbox" name="letter">letter表記(aa,ab,ac,...)で結果を表示する</form>
-       </p>
-      
+    
       <hr>
       OKを押しても結果が反映されない場合、一度更新してからもう一度入力すると上手くいくと思います。お手数おかけします...。
-		  
-		  
 		</p>
 	</div>
+	
+	
 	
 		<div class="tab-pane" id="sampleContentD">
 		 <br>
@@ -262,11 +274,18 @@
 	</div>
 	<div class="tab-pane" id="sampleContentE">
 	 <br>
-	 <p>■2019/05/21 19:30</p><p>K,M,B,T表記に対応。</p>
-	 <p>⇒ e15以下の数値が科学的記数法に対応していない問題を対処しました。</p>
-	 <p>説明欄を加筆。</p><br>
-	 <p>■2019/05/21 22:10</p>
-	 <p>レター表記(aa,ab,ac,...)に対応しました。</p>
+	 <p>■ v1.2 (2019/05/22 21:20)</p>
+	 <p>AF取得コストを算出過程に追加<br>
+	    AD(アーティファクトダメージ)に対応<br>
+	    影に振ったレリックを入力することで自動で影率を算出できるように変更
+	    </p>
+	 <br>
+	 <p>■ v1.1 (2019/05/21 22:10)</p>
+	 <p>レター表記(aa,ab,ac,...)にも対応</p><br>
+	 <p>■ v1.0 (2019/05/21 19:30)</p><p>K,M,B,T表記に対応<br>
+	 ⇒ e15以下の数値が科学的記数法に対応していない問題を解決 <br>
+	 説明欄を加筆</p><br>
+	 
 	 </div>
 
 </div>
