@@ -984,7 +984,7 @@ window.onload = function(){
     RoundLv[i] = num.toExponential(1);
   }
   
-
+  afname[0]= "Book of Shadows (" + String(((bos_percent)*100).toFixed(1)) + "%)";
   
   // RoundLVのe⇒KMBT変換{
   
@@ -1239,7 +1239,7 @@ window.onload = function(){
   
   //}
   
-
+  
     
   // 結果表示エリア
     removeAllChildren(resultDivided);
