@@ -1,7 +1,5 @@
-
-
 window.onload = function(){
-  
+
 'use strict';
 
  // 入力欄からデータをセット
@@ -17,10 +15,7 @@ window.onload = function(){
  
  const optimiseButton = document.getElementById('optimise');
  
- // 出力欄のテンプレート
 
- 
- 
  
  // afデータ一覧
  /**
@@ -683,6 +678,9 @@ window.onload = function(){
 
 
 
+
+ // 入力後の操作
+
  optimiseButton.onclick = () => {
    
    var total_relic = relicInput.value;
@@ -826,13 +824,13 @@ window.onload = function(){
   // {
     var bos_percent = search(bos_percent);
   //}
-  
+
   
   // 影率計算 {
   if (bos_percent > 1){
     bos_percent = bos_percent / relican;
   }
-    //}
+  //}
     
   // 選択要素を配置{
  
@@ -939,6 +937,8 @@ window.onload = function(){
   }
   
   
+  
+  
   // 主な計算
   var AD = 0;
   if (document.mainform.AD.checked){AD=1;}
@@ -985,6 +985,8 @@ window.onload = function(){
   }
   
   afname[0]= "Book of Shadows (" + String(((bos_percent)*100).toFixed(1)) + "%)";
+  
+  
   
   // RoundLVのe⇒KMBT変換{
   
@@ -1082,7 +1084,6 @@ window.onload = function(){
   }
   
   //}
-  
   
   // RoundLvのe⇒レター変換{
     var letter = [0,
@@ -1238,6 +1239,7 @@ window.onload = function(){
   }
   
   //}
+  
   
   
     
