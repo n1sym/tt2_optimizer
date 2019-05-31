@@ -681,7 +681,7 @@ window.onload = function(){
 
  // 入力後の操作
 
- optimiseButton.onclick = () => {
+ optimiseButton.onclick = function() {
    
    var total_relic = relicInput.value;
    var bos_percent = bosInput.value;
@@ -695,6 +695,28 @@ window.onload = function(){
       alert("入力が不十分です");
       return;
     }
+  
+  // cookie保存
+  var date1;
+  var date2;
+  var kigen = 30;   //cookieの期限（今回は30日）
+
+  //現在の日付データを取得
+  date1 = new Date();
+  
+  //30日後の日付データを作成
+  date1.setTime(date1.getTime() + kigen*24*60*60*1000);
+  
+  //GMT形式に変換して変数date2に格納する
+  date2 = date1.toGMTString();
+
+  document.cookie = "relic=" + total_relic + ";expires=" + date2;
+   document.cookie = "bos=" + bos_percent + ";expires=" + date2;
+    document.cookie = "afc=" + afcost + ";expires=" + date2;
+     document.cookie = "build=" + build + ";expires=" + date2;
+      document.cookie = "gold=" + gold + ";expires=" + date2;
+       document.cookie = "hero1=" + hero1 + ";expires=" + date2;
+       document.cookie = "hero2=" + hero2 + ";expires=" + date2;
   
   // レター入力⇒指数変換(レリック)
   // {
