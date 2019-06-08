@@ -966,7 +966,7 @@ window.onload = function(){
   if (document.mainform.AD.checked){AD=1;}
   var ADstuff =[];
   for (var i=0; i<r.length; i++){
-    ADstuff[i] = (Math.pow((Math.pow(damage_bonus[i],1.24)*cost_coef[i]/cost_expo[i]),texpo[i]))*AD;
+    ADstuff[i] = (Math.pow((Math.pow(damage_bonus[i],1.24)*cost_coef[i]/cost_expo[i]),texpo[i]))*AD*c[i];
   }
   
   var costweight = [];
