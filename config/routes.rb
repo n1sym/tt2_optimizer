@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get  '/link',   to: 'static_pages#link'
   get  '/contact', to: 'static_pages#contact'
   get  '/optimiser', to: 'static_pages#optimiser'
+  post '/optimise',   to: 'static_pages#optimise'
 
 end

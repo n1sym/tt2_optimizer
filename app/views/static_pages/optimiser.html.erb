@@ -5,15 +5,88 @@
 <!-- タブ・メニュー -->
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#sampleContentA" data-toggle="tab">説明</a></li>
-	<li><a href="#sampleContentB" data-toggle="tab">入力</a></li>
-		<li><a href="#sampleContentD" data-toggle="tab">AF選択</a></li>
+	<li><a href="#sampleContentT" data-toggle="tab">入力</a></li>
+
 	<li><a href="#sampleContentC" data-toggle="tab">結果</a></li>
 	<li><a href="#sampleContentE" data-toggle="tab">変更点</a></li>
+
+	
 
 </ul>
 
 <!-- タブ内容 -->
 <div class="tab-content">
+ <div class="tab-pane" id="sampleContentT">
+  <br>
+	 
+		<%= form_for(:data, url: optimise_path, remote: true) do |f| %>
+   <%= f.label :累計レリック %>
+   <%= f.text_field :relic, class: 'form-control', id: "relic",  placeholder: "例: 7.18e72 または 7.18at ", value: cookies[:relic] %>
+   <br>
+   <%= f.label :"影率(%) または 影に振ったレリック数" %>
+   <%= f.text_field :bos, class: 'form-control', id: "bos", placeholder: "例: 0.50（50%の場合） ", value: cookies[:bos] %>
+   <br>
+   <%= f.label :"所持アーティファクト数（サルべージは含まず）" %>
+   <%= f.text_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>
+   
+   <br>
+   
+   <%= f.label :ビルド： %>
+   <%= f.text_field :build, class: 'form-control', id: "build", placeholder:"SC PET CS HS いずれかを入力(大文字)", value: cookies[:build] %>
+    
+
+   <br>
+   <%= f.label :ゴールド： %>
+   <%= f.text_field :gold, class: 'form-control', id: "gold", placeholder:"フェアリー pHoM チェスターソン いずれかを入力", value: cookies[:gold] %>
+
+   
+   <br>
+   <%= f.label :ヒーローの属性①： %>
+   <%= f.text_field :hero1, class: 'form-control', id: "hero1", placeholder:"地面 飛行 いずれかを入力", value: cookies[:hero1] %>
+
+   
+   <br>
+   <%= f.label :ヒーローの属性②： %>
+   <%= f.text_field :hero2, class: 'form-control', id: "hero2", placeholder:"近接 遠隔 魔術 いずれかを入力", value: cookies[:hero2] %>
+
+   
+   <br>
+   <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">未所持AF選択 ▼</button>
+   <div id="demo" class="collapse">
+    <br>
+    持っていないAFにチェックをいれてください（画像クリックでも反応します）<br>
+   <% (0..57).each do |i| %>
+   <br>
+   <%= f.label :"af#{i}" do %>
+   <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:"af#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
+   <% end %> 
+   <% end %> 
+   </div>
+   
+   <br><br>
+   <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %> letter表記(aa,ab,ac,...)で結果を表示する
+   <br><br>
+   <%= f.check_box :AD , id: "AD", checked: ischeck(cookies[:AD]) %>AD(アーティファクトダメージ)を考慮する
+   <br><br>
+   <%= f.submit "保存",  class: "btn btn-success" %>
+   <input type="button" id= "optimise", class="btn btn-primary" value="計算">
+   
+  <% end %>
+  
+ <br>
+		<span id="follow_form"> </span>
+　<script>
+      $(function() {
+      
+      // ボタンクリックでタブを切り替え
+      $('#optimise').click(function(e) {
+      $('.nav-tabs a[href="#sampleContentC"]').tab('show');
+      
+      });    
+      });
+      </script>
+
+	</div>
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
 		<p>■ v1.4 更新しました (06/03)</p>
@@ -38,166 +111,8 @@
 		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://twitter.com/mr_nish_">@mr_nish_</a>までお願いします。</p>
 		
 	</div>
-	<div class="tab-pane" id="sampleContentB">
-	  <br>
-		<p>
-		  
-		  
-		  <form name="mainform">
-      <div class="form-group">
-       <label for="relic">累計レリック:</label>
-       <input type="integer" name="relic" id="relic" class="form-control" placeholder="例: 7.18e72 または 7.18at ">
-      </div>
-      
-      
-      <div class="form-group">
-       <label for="bos">影率(%) or 影に振ったレリック数:</label>
-       <input type="integer" id="bos" class="form-control" placeholder="例: 0.50 (50%の場合)">
-       
-      </div>
-      
-      <div class="form-group">
-       <label for="afc">所持アーティファクト数（サルべージは含まず）:</label>
-       <input type="integer" id="afc" class="form-control" value="95">
-       
-      </div>
-      
-      
-      <div class="form-group">
-      <label for="build">ビルド:</label>
-       <select id="build" class="form-control">
-      <option>SC
-      <option>PET
-      <option>CS
-      <option>HS
-      </select>
-      </div>
-      
-      <div class="form-group">
-      <label for="gold">ゴールド:</label>
-       <select id="gold" class="form-control">
-      <option>フェアリー
-      <option>pHoM
-      <option>チェスターソン
-      </select>
-      </div>
-      
-      <div class="form-group">
-      <label for="hero1">ヒーローの属性①:</label>
-       <select id="hero1" class="form-control">
-      <option>地面
-      <option>飛行
-      </select>
-      </div>
-      
-      <div class="form-group">
-      <label for="hero2">ヒーローの属性②:</label>
-       <select id="hero2" class="form-control">
-      <option>近接
-      <option>遠隔
-      <option>魔術
-      </select>
-      </div>
-      
-      <div class="form-group">
-       <input type="checkbox" name="letter"> letter表記(aa,ab,ac,...)で結果を表示する
-      </div>
-      
-      <div class="form-group">
-       <input type="checkbox" name="AD"> AD(アーティファクトダメージ)を考慮する
-      </div>
-      
-   
-      <input type="button" id="optimise" class="btn btn-primary" value="OK">
-      
-       <!-- jQuery -->
- 　　　<script>
-      $(function() {
-      
-      // ボタンクリックでタブを切り替え
-      $('#optimise').click(function(e) {
-      $('.nav-tabs a[href="#sampleContentC"]').tab('show');
-      
-      });    
-      });
-      </script>
-     
-      </form>
-    
-      
-		</p>
-	</div>
-	
-	
-	
-		<div class="tab-pane" id="sampleContentD">
-		 <br>
-		 <p>
-		 持ってないAFにチェックを入れてください。</p>
-<form name="form1">
-  <input type="checkbox" name="fruits"> <%= image_tag("Book_of_Shadows.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Charged_Card.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Stone_of_the_Valrunes.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Chest_of_Contentment.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Heroic_Shield.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Book_of_Prophecy.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Khrysos_Bowl.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Zakynthos_Coin.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Great_Fay_Medallion.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Neko_Sculpture.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Coins_of_Ebizu.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("The_Bronzed_Compass.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Evergrowing_Stack.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Flute_of_the_Soloist.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Heavenly_Sword.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Divine_Retribution.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Drunken_Hammer.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Samosek_Sword.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("The_Retaliator.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Stryfes_Peace.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Hero's_Blade.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("The_Sword_of_Storms.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Furies_Bow.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Charm_of_the_Ancient.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Tiny_Titan_Tree.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Helm_of_Hermes.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Fruit_of_Eden.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Influential_Elixir.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("ORyans_Charm.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Heart_of_Storms.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Apollo_Orb.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Earrings_of_Portara.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Avian_Feather.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Corrupted_Rune_Heart.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Durendal_Sword.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Helheim_Skull.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Oaths_Burden.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Crown_of_the_Constellation.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Titanias_Sceptre.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Fagin's_Grip.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Ring_of_Calisto.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Blade_of_Damocles.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Helmet_of_Madness.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Titanium_Plating.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Moonlight_Bracelet.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Amethyst_Staff.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Sword_of_the_Royals.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Spearits_Vigil.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("The_Cobalt_Plate.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Sigils_of_Judgement.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Foliage_of_the_Keeper.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Invaders_Gjalarhorn.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Titans_Mask.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Royal_Toxin.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Laborers_Pendant.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Bringer_of_Ragnarok.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Parchment_of_Foresight.png", width:"40px") %><br>
-  <input type="checkbox" name="fruits"> <%= image_tag("Elixir_of_Eden.png", width:"40px") %><br>
 
-   
-</form>
-
-	 </div> 
+		
 	
 	<div class="tab-pane" id="sampleContentC">
 	  <br>
@@ -225,7 +140,7 @@
   <tr><td><%= image_tag("Drunken_Hammer.png", width:"30px") %></td><td><div id="af16"></div></td><td><div id="output16"></div></td></tr>
   <tr><td><%= image_tag("Samosek_Sword.png", width:"30px") %></td><td><div id="af17"></div></td><td><div id="output17"></div></td></tr>
   <tr><td><%= image_tag("The_Retaliator.png", width:"30px") %></td><td><div id="af18"></div></td><td><div id="output18"></div></td></tr>
-  <tr><td><%= image_tag("Stryfes_Peace.png", width:"30px") %></td><td><div id="af19"></div></td><td><div id="output19"></div></td></tr>
+  <tr><td><%= image_tag("Stryfe's_Peace.png", width:"30px") %></td><td><div id="af19"></div></td><td><div id="output19"></div></td></tr>
   <tr><td><%= image_tag("Hero's_Blade.png", width:"30px") %></td><td><div id="af20"></div></td><td><div id="output20"></div></td></tr>
   <tr><td><%= image_tag("The_Sword_of_Storms.png", width:"30px") %></td><td><div id="af21"></div></td><td><div id="output21"></div></td></tr>
   <tr><td><%= image_tag("Furies_Bow.png", width:"30px") %></td><td><div id="af22"></div></td><td><div id="output22"></div></td></tr>
@@ -234,7 +149,7 @@
   <tr><td><%= image_tag("Helm_of_Hermes.png", width:"30px") %></td><td><div id="af25"></div></td><td><div id="output25"></div></td></tr>
   <tr><td><%= image_tag("Fruit_of_Eden.png", width:"30px") %></td><td><div id="af26"></div></td><td><div id="output26"></div></td></tr>
   <tr><td><%= image_tag("Influential_Elixir.png", width:"30px") %></td><td><div id="af27"></div></td><td><div id="output27"></div></td></tr>
-  <tr><td><%= image_tag("ORyans_Charm.png", width:"30px") %></td><td><div id="af28"></div></td><td><div id="output28"></div></td></tr>
+  <tr><td><%= image_tag("O'Ryan's_Charm.png", width:"30px") %></td><td><div id="af28"></div></td><td><div id="output28"></div></td></tr>
   <tr><td><%= image_tag("Heart_of_Storms.png", width:"30px") %></td><td><div id="af29"></div></td><td><div id="output29"></div></td></tr>
   <tr><td><%= image_tag("Apollo_Orb.png", width:"30px") %></td><td><div id="af30"></div></td><td><div id="output30"></div></td></tr>
   <tr><td><%= image_tag("Earrings_of_Portara.png", width:"30px") %></td><td><div id="af31"></div></td><td><div id="output31"></div></td></tr>
@@ -242,9 +157,9 @@
   <tr><td><%= image_tag("Corrupted_Rune_Heart.png", width:"30px") %></td><td><div id="af33"></div></td><td><div id="output33"></div></td></tr>
   <tr><td><%= image_tag("Durendal_Sword.png", width:"30px") %></td><td><div id="af34"></div></td><td><div id="output34"></div></td></tr>
   <tr><td><%= image_tag("Helheim_Skull.png", width:"30px") %></td><td><div id="af35"></div></td><td><div id="output35"></div></td></tr>
-  <tr><td><%= image_tag("Oaths_Burden.png", width:"30px") %></td><td><div id="af36"></div></td><td><div id="output36"></div></td></tr>
+  <tr><td><%= image_tag("Oath's_Burden.png", width:"30px") %></td><td><div id="af36"></div></td><td><div id="output36"></div></td></tr>
   <tr><td><%= image_tag("Crown_of_the_Constellation.png", width:"30px") %></td><td><div id="af37"></div></td><td><div id="output37"></div></td></tr>
-  <tr><td><%= image_tag("Titanias_Sceptre.png", width:"30px") %></td><td><div id="af38"></div></td><td><div id="output38"></div></td></tr>
+  <tr><td><%= image_tag("Titania's_Sceptre.png", width:"30px") %></td><td><div id="af38"></div></td><td><div id="output38"></div></td></tr>
   <tr><td><%= image_tag("Fagin's_Grip.png", width:"30px") %></td><td><div id="af39"></div></td><td><div id="output39"></div></td></tr>
   <tr><td><%= image_tag("Ring_of_Calisto.png", width:"30px") %></td><td><div id="af40"></div></td><td><div id="output40"></div></td></tr>
   <tr><td><%= image_tag("Blade_of_Damocles.png", width:"30px") %></td><td><div id="af41"></div></td><td><div id="output41"></div></td></tr>
@@ -253,14 +168,14 @@
   <tr><td><%= image_tag("Moonlight_Bracelet.png", width:"30px") %></td><td><div id="af44"></div></td><td><div id="output44"></div></td></tr>
   <tr><td><%= image_tag("Amethyst_Staff.png", width:"30px") %></td><td><div id="af45"></div></td><td><div id="output45"></div></td></tr>
   <tr><td><%= image_tag("Sword_of_the_Royals.png", width:"30px") %></td><td><div id="af46"></div></td><td><div id="output46"></div></td></tr>
-  <tr><td><%= image_tag("Spearits_Vigil.png", width:"30px") %></td><td><div id="af47"></div></td><td><div id="output47"></div></td></tr>
+  <tr><td><%= image_tag("Spearit's_Vigil.png", width:"30px") %></td><td><div id="af47"></div></td><td><div id="output47"></div></td></tr>
   <tr><td><%= image_tag("The_Cobalt_Plate.png", width:"30px") %></td><td><div id="af48"></div></td><td><div id="output48"></div></td></tr>
   <tr><td><%= image_tag("Sigils_of_Judgement.png", width:"30px") %></td><td><div id="af49"></div></td><td><div id="output49"></div></td></tr>
   <tr><td><%= image_tag("Foliage_of_the_Keeper.png", width:"30px") %></td><td><div id="af50"></div></td><td><div id="output50"></div></td></tr>
-  <tr><td><%= image_tag("Invaders_Gjalarhorn.png", width:"30px") %></td><td><div id="af51"></div></td><td><div id="output51"></div></td></tr>
-  <tr><td><%= image_tag("Titans_Mask.png", width:"30px") %></td><td><div id="af52"></div></td><td><div id="output52"></div></td></tr>
+  <tr><td><%= image_tag("Invader's_Gjalarhorn.png", width:"30px") %></td><td><div id="af51"></div></td><td><div id="output51"></div></td></tr>
+  <tr><td><%= image_tag("Titan's_Mask.png", width:"30px") %></td><td><div id="af52"></div></td><td><div id="output52"></div></td></tr>
   <tr><td><%= image_tag("Royal_Toxin.png", width:"30px") %></td><td><div id="af53"></div></td><td><div id="output53"></div></td></tr>
-  <tr><td><%= image_tag("Laborers_Pendant.png", width:"30px") %></td><td><div id="af54"></div></td><td><div id="output54"></div></td></tr>
+  <tr><td><%= image_tag("Laborer's_Pendant.png", width:"30px") %></td><td><div id="af54"></div></td><td><div id="output54"></div></td></tr>
   <tr><td><%= image_tag("Bringer_of_Ragnarok.png", width:"30px") %></td><td><div id="af55"></div></td><td><div id="output55"></div></td></tr>
   <tr><td><%= image_tag("Parchment_of_Foresight.png", width:"30px") %></td><td><div id="af56"></div></td><td><div id="output56"></div></td></tr>
   <tr><td><%= image_tag("Elixir_of_Eden.png", width:"30px") %></td><td><div id="af57"></div></td><td><div id="output57"></div></td></tr>

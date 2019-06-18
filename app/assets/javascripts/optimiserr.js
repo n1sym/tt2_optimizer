@@ -14,6 +14,7 @@ window.onload = function(){
  const resultDivided = document.getElementById('result-area');
  
  const optimiseButton = document.getElementById('optimise');
+
  
 
  
@@ -685,38 +686,20 @@ window.onload = function(){
    
    var total_relic = relicInput.value;
    var bos_percent = bosInput.value;
-   const afcost = afcInput.value;
+   const afcost = Number(afcInput.value);
+
    const build = buildInput.value;
    const gold = goldInput.value;
    const hero1 = hero1Input.value;
    const hero2 = hero2Input.value;
+    
    
     if (total_relic.length === 0 || bos_percent.length === 0) { // 入力が空の時は処理を終了する
       alert("入力が不十分です");
       return;
     }
   
-  // cookie保存
-  var date1;
-  var date2;
-  var kigen = 30;   //cookieの期限（今回は30日）
-
-  //現在の日付データを取得
-  date1 = new Date();
   
-  //30日後の日付データを作成
-  date1.setTime(date1.getTime() + kigen*24*60*60*1000);
-  
-  //GMT形式に変換して変数date2に格納する
-  date2 = date1.toGMTString();
-
-  document.cookie = "relic=" + total_relic + ";expires=" + date2;
-   document.cookie = "bos=" + bos_percent + ";expires=" + date2;
-    document.cookie = "afc=" + afcost + ";expires=" + date2;
-     document.cookie = "build=" + build + ";expires=" + date2;
-      document.cookie = "gold=" + gold + ";expires=" + date2;
-       document.cookie = "hero1=" + hero1 + ";expires=" + date2;
-       document.cookie = "hero2=" + hero2 + ";expires=" + date2;
   
   // レター入力⇒指数変換(レリック)
   // {
@@ -794,7 +777,7 @@ window.onload = function(){
     else if (string[i]=='B'){ return henkanB(string.slice(0, -1));}
     else if (string[i]=='T'){ return henkanT(string.slice(0, -1));}
     }
-    return Number(string);
+    return string;
   }
 
    var relican = search(total_relic); 
@@ -847,6 +830,10 @@ window.onload = function(){
     var bos_percent = search(bos_percent);
   //}
 
+  if (typeof(total_relic) == typeof(build)){relican = Number(total_relic)}
+  if (typeof(bos_percent) == typeof(build)){bos_percent = Number(bos_percent)}
+  
+  
   
   // 影率計算 {
   if (bos_percent > 1){
@@ -945,13 +932,12 @@ window.onload = function(){
  
   
   
-  
   // 未所持AF選択
   var c =[];
-  for (var i = 0; i < document.form1.fruits.length; i++) {
- 
+  for (var i = 0; i < 58; i++) {
+    var ut = "afhave"+i;
     // i番目のチェックボックスがチェックされているかを判定
-    if (document.form1.fruits[i].checked) {
+    if (document.getElementById(ut).checked) {
       c[i] = 0;
     } else {
       c[i] = 1;
@@ -963,7 +949,7 @@ window.onload = function(){
   
   // 主な計算
   var AD = 0;
-  if (document.mainform.AD.checked){AD=1;}
+  if (document.getElementById("AD").checked){AD=1;}
   var ADstuff =[];
   for (var i=0; i<r.length; i++){
     ADstuff[i] = (Math.pow((Math.pow(damage_bonus[i],1.24)*cost_coef[i]/cost_expo[i]),texpo[i]))*AD*c[i];
@@ -1244,7 +1230,7 @@ window.onload = function(){
   
   
 
-  if (document.mainform.letter.checked) {
+  if (document.getElementById("letter").checked) {
     for (var i=0; i<r.length; i++){
     
     var sisuu = Number(String(RoundLv[i]).slice(5)) ;
