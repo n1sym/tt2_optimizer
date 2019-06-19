@@ -54,19 +54,19 @@
    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">未所持AF選択 ▼</button>
    <div id="demo" class="collapse">
     <br>
-    持っていないAFにチェックをいれてください（画像クリックでも反応します）<br>
+    持っていないAFにチェックをいれてください<br>
    <% (0..57).each do |i| %>
    <br>
-   <%= f.label :"af#{i}" do %>
-   <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:"af#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
-   <% end %> 
+    <%= f.label :"af#{i}" do %>
+    <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:"af#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
+    <% end %> 
    <% end %> 
    </div>
    
    <br><br>
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %> letter表記(aa,ab,ac,...)で結果を表示する
    <br><br>
-   <%= f.check_box :AD , id: "AD", checked: ischeck(cookies[:AD]) %>AD(アーティファクトダメージ)を考慮する
+   <%= f.check_box :AD , id: "AD", checked: ischeck(cookies[:AD]) %> AD(アーティファクトダメージ)を考慮する
    <br><br>
    <%= f.submit "保存",  class: "btn btn-success" %>
    <input type="button" id= "optimise", class="btn btn-primary" value="計算">
@@ -89,7 +89,8 @@
 	</div>
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
-		<p>■ v1.5更新(6/19) フォームの内容を保存できるようにしました（仮）</p>
+		<p>■ v1.5更新(6/19) <br>フォームの内容を保存できるようにしました。
+		使っているブラウザに保存する形です。いつも使っているブラウザで保存してください。(何か不具合ありましたら<%= link_to "作者", "https://twitter.com/mr_nish_" %>にまでお願いします)</p>
 		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
 		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p>
 		<p>できるだけ簡略化して設計したので、本家ツールとの誤差は1%前後あります。</p><hr>
