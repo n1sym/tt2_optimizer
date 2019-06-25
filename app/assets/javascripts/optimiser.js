@@ -771,16 +771,16 @@ window.onload = function(){
   
   function search(string){
 
-    for(var i=0; i<string.length; i++){
-    if (string[i]=='K'){return henkanK(string.slice(0, -1));}
-    else if (string[i]=='M'){ return henkanM(string.slice(0, -1));}
-    else if (string[i]=='B'){ return henkanB(string.slice(0, -1));}
-    else if (string[i]=='T'){ return henkanT(string.slice(0, -1));}
-    }
+    if (string.slice(-1)=='K'){return henkanK(string.slice(0, -1));}
+    else if (string.slice(-1)=='M'){ return henkanM(string.slice(0, -1));}
+    else if (string.slice(-1)=='B'){ return henkanB(string.slice(0, -1));}
+    else if (string.slice(-1)=='T'){ return henkanT(string.slice(0, -1));}
+    
     return string;
   }
-
+   var testa = total_relic.slice(-1);
    var relican = search(total_relic); 
+   var relican2 = search(total_relic); 
   //} 
   
   // 入力BOSのレター⇒e変換
@@ -830,7 +830,7 @@ window.onload = function(){
     var bos_percent = search(bos_percent);
   //}
 
-  if (typeof(total_relic) == typeof(build)){relican = Number(total_relic)}
+  if (typeof(relican) == typeof(build)){relican = Number(total_relic)}
   if (typeof(bos_percent) == typeof(build)){bos_percent = Number(bos_percent)}
   
   
@@ -1254,7 +1254,7 @@ window.onload = function(){
   // 結果表示エリア
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
-    header.innerText = '結果';
+    header.innerText = '結果'+testa+relican+relican2;
     resultDivided.appendChild(header);
     
     for (var i=0; i<r.length; i++){
