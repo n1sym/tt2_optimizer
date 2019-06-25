@@ -1254,7 +1254,7 @@ window.onload = function(){
   // 結果表示エリア
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
-    header.innerText = '結果'+testa+relican+relican2;
+    header.innerText = '結果';
     resultDivided.appendChild(header);
     
     for (var i=0; i<r.length; i++){
