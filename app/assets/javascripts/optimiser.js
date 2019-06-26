@@ -699,48 +699,49 @@ window.onload = function(){
       return;
     }
   
-  
+  var rt1 = total_relic; 
+  var relican = 0;
   
   // レター入力⇒指数変換(レリック)
   // {
-    if(String(total_relic).slice(-2) == "aa"){total_relic = Number(total_relic.slice(0, -2)+'e15')}
-    if(String(total_relic).slice(-2) == "ab"){total_relic = Number(total_relic.slice(0, -2)+'e18')}
-    if(String(total_relic).slice(-2) == "ac"){total_relic = Number(total_relic.slice(0, -2)+'e21')}
-    if(String(total_relic).slice(-2) == "ad"){total_relic = Number(total_relic.slice(0, -2)+'e24')}
-    if(String(total_relic).slice(-2) == "ae"){total_relic = Number(total_relic.slice(0, -2)+'e27')}
-    if(String(total_relic).slice(-2) == "af"){total_relic = Number(total_relic.slice(0, -2)+'e30')}
-    if(String(total_relic).slice(-2) == "ag"){total_relic = Number(total_relic.slice(0, -2)+'e33')}
-    if(String(total_relic).slice(-2) == "ah"){total_relic = Number(total_relic.slice(0, -2)+'e36')}
-    if(String(total_relic).slice(-2) == "ai"){total_relic = Number(total_relic.slice(0, -2)+'e39')}
-    if(String(total_relic).slice(-2) == "aj"){total_relic = Number(total_relic.slice(0, -2)+'e42')}
-    if(String(total_relic).slice(-2) == "ak"){total_relic = Number(total_relic.slice(0, -2)+'e45')}
-    if(String(total_relic).slice(-2) == "al"){total_relic = Number(total_relic.slice(0, -2)+'e48')}
-    if(String(total_relic).slice(-2) == "am"){total_relic = Number(total_relic.slice(0, -2)+'e51')}
-    if(String(total_relic).slice(-2) == "an"){total_relic = Number(total_relic.slice(0, -2)+'e54')}
-    if(String(total_relic).slice(-2) == "ao"){total_relic = Number(total_relic.slice(0, -2)+'e57')}
-    if(String(total_relic).slice(-2) == "ap"){total_relic = Number(total_relic.slice(0, -2)+'e60')}
-    if(String(total_relic).slice(-2) == "aq"){total_relic = Number(total_relic.slice(0, -2)+'e63')}
-    if(String(total_relic).slice(-2) == "ar"){total_relic = Number(total_relic.slice(0, -2)+'e66')}
-    if(String(total_relic).slice(-2) == "as"){total_relic = Number(total_relic.slice(0, -2)+'e69')}
-    if(String(total_relic).slice(-2) == "at"){total_relic = Number(total_relic.slice(0, -2)+'e72')}
-    if(String(total_relic).slice(-2) == "au"){total_relic = Number(total_relic.slice(0, -2)+'e75')}
-    if(String(total_relic).slice(-2) == "av"){total_relic = Number(total_relic.slice(0, -2)+'e78')}
-    if(String(total_relic).slice(-2) == "aw"){total_relic = Number(total_relic.slice(0, -2)+'e81')}
-    if(String(total_relic).slice(-2) == "ax"){total_relic = Number(total_relic.slice(0, -2)+'e84')}
-    if(String(total_relic).slice(-2) == "ay"){total_relic = Number(total_relic.slice(0, -2)+'e87')}
-    if(String(total_relic).slice(-2) == "az"){total_relic = Number(total_relic.slice(0, -2)+'e90')}
-    if(String(total_relic).slice(-2) == "ba"){total_relic = Number(total_relic.slice(0, -2)+'e93')}
-    if(String(total_relic).slice(-2) == "bb"){total_relic = Number(total_relic.slice(0, -2)+'e96')}
-    if(String(total_relic).slice(-2) == "bc"){total_relic = Number(total_relic.slice(0, -2)+'e99')}
-    if(String(total_relic).slice(-2) == "bd"){total_relic = Number(total_relic.slice(0, -2)+'e102')}
-    if(String(total_relic).slice(-2) == "be"){total_relic = Number(total_relic.slice(0, -2)+'e105')}
-    if(String(total_relic).slice(-2) == "bf"){total_relic = Number(total_relic.slice(0, -2)+'e108')}
-    if(String(total_relic).slice(-2) == "bg"){total_relic = Number(total_relic.slice(0, -2)+'e111')}
-    if(String(total_relic).slice(-2) == "bh"){total_relic = Number(total_relic.slice(0, -2)+'e114')}
-    if(String(total_relic).slice(-2) == "bi"){total_relic = Number(total_relic.slice(0, -2)+'e117')}
-    if(String(total_relic).slice(-2) == "bj"){total_relic = Number(total_relic.slice(0, -2)+'e120')}
-    if(String(total_relic).slice(-2) == "bk"){total_relic = Number(total_relic.slice(0, -2)+'e123')}
-    if(String(total_relic).slice(-2) == "bl"){total_relic = Number(total_relic.slice(0, -2)+'e126')}
+    if(String(total_relic).slice(-2) == "aa"){relican = Number(total_relic.slice(0, -2)+'e15')}
+    if(String(total_relic).slice(-2) == "ab"){relican = Number(total_relic.slice(0, -2)+'e18')}
+    if(String(total_relic).slice(-2) == "ac"){relican = Number(total_relic.slice(0, -2)+'e21')}
+    if(String(total_relic).slice(-2) == "ad"){relican = Number(total_relic.slice(0, -2)+'e24')}
+    if(String(total_relic).slice(-2) == "ae"){relican = Number(total_relic.slice(0, -2)+'e27')}
+    if(String(total_relic).slice(-2) == "af"){relican = Number(total_relic.slice(0, -2)+'e30')}
+    if(String(total_relic).slice(-2) == "ag"){relican = Number(total_relic.slice(0, -2)+'e33')}
+    if(String(total_relic).slice(-2) == "ah"){relican = Number(total_relic.slice(0, -2)+'e36')}
+    if(String(total_relic).slice(-2) == "ai"){relican = Number(total_relic.slice(0, -2)+'e39')}
+    if(String(total_relic).slice(-2) == "aj"){relican = Number(total_relic.slice(0, -2)+'e42')}
+    if(String(total_relic).slice(-2) == "ak"){relican = Number(total_relic.slice(0, -2)+'e45')}
+    if(String(total_relic).slice(-2) == "al"){relican = Number(total_relic.slice(0, -2)+'e48')}
+    if(String(total_relic).slice(-2) == "am"){relican = Number(total_relic.slice(0, -2)+'e51')}
+    if(String(total_relic).slice(-2) == "an"){relican = Number(total_relic.slice(0, -2)+'e54')}
+    if(String(total_relic).slice(-2) == "ao"){relican = Number(total_relic.slice(0, -2)+'e57')}
+    if(String(total_relic).slice(-2) == "ap"){relican = Number(total_relic.slice(0, -2)+'e60')}
+    if(String(total_relic).slice(-2) == "aq"){relican = Number(total_relic.slice(0, -2)+'e63')}
+    if(String(total_relic).slice(-2) == "ar"){relican = Number(total_relic.slice(0, -2)+'e66')}
+    if(String(total_relic).slice(-2) == "as"){relican = Number(total_relic.slice(0, -2)+'e69')}
+    if(String(total_relic).slice(-2) == "at"){relican = Number(total_relic.slice(0, -2)+'e72')}
+    if(String(total_relic).slice(-2) == "au"){relican = Number(total_relic.slice(0, -2)+'e75')}
+    if(String(total_relic).slice(-2) == "av"){relican = Number(total_relic.slice(0, -2)+'e78')}
+    if(String(total_relic).slice(-2) == "aw"){relican = Number(total_relic.slice(0, -2)+'e81')}
+    if(String(total_relic).slice(-2) == "ax"){relican = Number(total_relic.slice(0, -2)+'e84')}
+    if(String(total_relic).slice(-2) == "ay"){relican = Number(total_relic.slice(0, -2)+'e87')}
+    if(String(total_relic).slice(-2) == "az"){relican = Number(total_relic.slice(0, -2)+'e90')}
+    if(String(total_relic).slice(-2) == "ba"){relican = Number(total_relic.slice(0, -2)+'e93')}
+    if(String(total_relic).slice(-2) == "bb"){relican = Number(total_relic.slice(0, -2)+'e96')}
+    if(String(total_relic).slice(-2) == "bc"){relican = Number(total_relic.slice(0, -2)+'e99')}
+    if(String(total_relic).slice(-2) == "bd"){relican = Number(total_relic.slice(0, -2)+'e102')}
+    if(String(total_relic).slice(-2) == "be"){relican = Number(total_relic.slice(0, -2)+'e105')}
+    if(String(total_relic).slice(-2) == "bf"){relican = Number(total_relic.slice(0, -2)+'e108')}
+    if(String(total_relic).slice(-2) == "bg"){relican = Number(total_relic.slice(0, -2)+'e111')}
+    if(String(total_relic).slice(-2) == "bh"){relican = Number(total_relic.slice(0, -2)+'e114')}
+    if(String(total_relic).slice(-2) == "bi"){relican = Number(total_relic.slice(0, -2)+'e117')}
+    if(String(total_relic).slice(-2) == "bj"){relican = Number(total_relic.slice(0, -2)+'e120')}
+    if(String(total_relic).slice(-2) == "bk"){relican = Number(total_relic.slice(0, -2)+'e123')}
+    if(String(total_relic).slice(-2) == "bl"){relican = Number(total_relic.slice(0, -2)+'e126')}
     
     
   //}
@@ -772,16 +773,17 @@ window.onload = function(){
   function search(string){
 
     if (string.slice(-1)=='K'){return henkanK(string.slice(0, -1));}
-    else if (string.slice(-1)=='M'){ return henkanM(string.slice(0, -1));}
-    else if (string.slice(-1)=='B'){ return henkanB(string.slice(0, -1));}
-    else if (string.slice(-1)=='T'){ return henkanT(string.slice(0, -1));}
-    
-    return string;
+    if (string.slice(-1)=='M'){ return henkanM(string.slice(0, -1));}
+    if (string.slice(-1)=='B'){ return henkanB(string.slice(0, -1));}
+    if (string.slice(-1)=='T'){ return henkanT(string.slice(0, -1));}
+    return Number(string);
   }
-   var testa = total_relic.slice(-1);
-   var relican = search(total_relic); 
-   var relican2 = search(total_relic); 
+   
+   if (relican == 0) relican = search(total_relic); 
+   
   //} 
+  
+  
   
   // 入力BOSのレター⇒e変換
   // {
@@ -827,11 +829,11 @@ window.onload = function(){
   
   // 入力BOSのKMBT変換
   // {
-    var bos_percent = search(bos_percent);
+     if (typeof(bos_percent) == typeof(build)){bos_percent = search(bos_percent)}
   //}
 
   if (typeof(relican) == typeof(build)){relican = Number(total_relic)}
-  if (typeof(bos_percent) == typeof(build)){bos_percent = Number(bos_percent)}
+  
   
   
   
@@ -1254,7 +1256,7 @@ window.onload = function(){
   // 結果表示エリア
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
-    header.innerText = '結果';
+    header.innerText = '結果'+typeof(rt1)+relican;
     resultDivided.appendChild(header);
     
     for (var i=0; i<r.length; i++){
