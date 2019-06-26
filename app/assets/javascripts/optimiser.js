@@ -1256,7 +1256,7 @@ window.onload = function(){
   // 結果表示エリア
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
-    header.innerText = '結果'+typeof(rt1)+relican;
+    header.innerText = '結果';
     resultDivided.appendChild(header);
     
     for (var i=0; i<r.length; i++){
