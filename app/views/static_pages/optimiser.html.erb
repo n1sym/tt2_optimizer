@@ -105,11 +105,13 @@
    </div>
    
    <br><br>
-   
+   <label>
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %> letter表記(aa,ab,ac,...)で結果を表示する
-   
+   </label>
    <br><br>
+   <label>
    <%= f.check_box :AD , id: "AD", checked: ischeck(cookies[:AD]) %> AD(アーティファクトダメージ)を考慮する
+   </label>
    <br><br>
    <%= f.submit "保存 + 計算",  class: "btn btn-success" %>
    
@@ -126,9 +128,9 @@
 	</div>
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
-		<p>■ v1.8 (2019/07/14) </p><p>工事中。全体的なリファクタリングを行っています。
+		<p>■ v1.8 (2019/07/14) </p><p>全体的なリファクタリングを行いました。<br>
 		
-		バグ報告・要望はこちらまで ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
+		バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
 		<hr>
 		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
 		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p>
