@@ -98,7 +98,8 @@
    <% (0..57).each do |i| %>
    <br>
     <label>
-    <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:af]["#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
+     
+    <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:"af#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
     </label>
    <% end %> 
    </div>

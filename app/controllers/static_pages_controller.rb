@@ -29,7 +29,7 @@ class StaticPagesController < ApplicationController
     @ad = cookies.permanent[:AD] = params[:data][:AD]
     @af = []
     (0..57).each do |i|
-      #cookies.permanent[:"af#{i}"] = params[:data][:"af#{i}"]
+      cookies.permanent[:"af#{i}"] = params[:data][:"af#{i}"]
       @af << params[:data][:"af#{i}"]
     end
     cookies.permanent[:af] = @af
