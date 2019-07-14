@@ -1,2 +1,11 @@
-
 $("#follow_form").html("保存しました！");
+$("#tsts_form").html('<%= @bos_percent %>');
+
+<% (0..57).each do |i| %>
+af = "#af" + <%= i %>;
+output = "#output" + <%= i %>;
+$(af).html('<%= @round_lvl[i] %>');
+$(output).html('<%= @afname[i] %>');
+<% end %> 
+
+$('.nav-tabs a[href="#sampleContentC"]').tab('show');

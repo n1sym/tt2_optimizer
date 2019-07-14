@@ -18,19 +18,23 @@ class StaticPagesController < ApplicationController
   end
 
   def optimise
-    cookies.permanent[:relic] = params[:data][:relic]
-    cookies.permanent[:bos] = params[:data][:bos]
-    cookies.permanent[:afc] = params[:data][:"afc"]
-    cookies.permanent[:build] = params[:data][:build]
-    cookies.permanent[:gold] = params[:data][:gold]
-    cookies.permanent[:hero1] = params[:data][:hero1]
-    cookies.permanent[:hero2] = params[:data][:hero2]
-    cookies.permanent[:letter] = params[:data][:letter]
-    cookies.permanent[:AD] = params[:data][:AD]
-    
+    @total_relic = cookies.permanent[:relic] = params[:data][:relic]
+    @bos_percent = cookies.permanent[:bos] = params[:data][:bos]
+    @afcost = cookies.permanent[:afc] = params[:data][:"afc"]
+    @build = cookies.permanent[:build] = params[:data][:build]
+    @gold = cookies.permanent[:gold] = params[:data][:gold]
+    @hero1 = cookies.permanent[:hero1] = params[:data][:hero1]
+    @hero2 = cookies.permanent[:hero2] = params[:data][:hero2]
+    @letter = cookies.permanent[:letter] = params[:data][:letter]
+    @ad = cookies.permanent[:AD] = params[:data][:AD]
+    @af = []
     (0..57).each do |i|
-    cookies.permanent[:"af#{i}"] = params[:data][:"af#{i}"]
+      #cookies.permanent[:"af#{i}"] = params[:data][:"af#{i}"]
+      @af << params[:data][:"af#{i}"]
     end
+    cookies.permanent[:af] = @af
+    
+    keisan
     
     respond_to do |format|
       format.html { redirect_to root_path }

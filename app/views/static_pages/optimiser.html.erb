@@ -31,67 +31,103 @@
    
    <br>
    
-   <%= f.label :ビルド： %>
-   <%= f.text_field :build, class: 'form-control', id: "build", placeholder:"SC PET CS HS いずれかを入力(大文字)", value: cookies[:build] %>
-    
+   
+   <%= f.label :ビルド： %><br>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "SC", checked: ischeck2(cookies[:build],"SC")) %>  SC <%= image_tag("sc.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "PET", checked: ischeck2(cookies[:build],"PET")) %>  PET  <%= image_tag("pet.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "CS", checked: ischeck2(cookies[:build],"CS")) %>  CS  <%= image_tag("cs.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "HS", checked: ischeck2(cookies[:build],"HS")) %>  HS  <%= image_tag("hs.png", width:"20px") %>
+   </label>
+   
+   <br>
 
    <br>
-   <%= f.label :ゴールド： %>
-   <%= f.text_field :gold, class: 'form-control', id: "gold", placeholder:"フェアリー pHoM チェスターソン いずれかを入力", value: cookies[:gold] %>
+   <%= f.label :ゴールド： %><br>
+   <label class="radio-inline">
+   <%= f.radio_button(:gold, "フェアリー", checked: ischeck2(cookies[:gold],"フェアリー")) %>  フェアリー <%= image_tag("fairy.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:gold, "pHoM", checked: ischeck2(cookies[:gold],"pHoM")) %>  pHoM  <%= image_tag("phom.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:gold, "チェスターソン", checked: ischeck2(cookies[:gold],"チェスターソン")) %>  チェスターソン  <%= image_tag("chest.png", width:"20px") %>
+   </label>
+   
+   
+   <br>
 
    
    <br>
-   <%= f.label :ヒーローの属性①： %>
-   <%= f.text_field :hero1, class: 'form-control', id: "hero1", placeholder:"地面 飛行 いずれかを入力", value: cookies[:hero1] %>
+   <%= f.label :ヒーローの属性①： %><br>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero1, "地面", checked: ischeck2(cookies[:hero1],"地面")) %>  地面 <%= image_tag("ground.png", width:"25px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero1, "飛行", checked: ischeck2(cookies[:hero1],"飛行")) %>  飛行  <%= image_tag("fly.png", width:"25px") %>
+    </label>
+   
+   <br>
 
    
    <br>
-   <%= f.label :ヒーローの属性②： %>
-   <%= f.text_field :hero2, class: 'form-control', id: "hero2", placeholder:"近接 遠隔 魔術 いずれかを入力", value: cookies[:hero2] %>
+   <%= f.label :ヒーローの属性②： %><br>
+  
+   <label class="radio-inline">
+   <%= f.radio_button(:hero2, "近接", checked: ischeck2(cookies[:hero2],"近接")) %>  近接  <%= image_tag("ki.png", width:"25px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero2, "遠隔", checked: ischeck2(cookies[:hero2],"遠隔")) %>  遠隔  <%= image_tag("en.png", width:"25px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero2, "魔術", checked: ischeck2(cookies[:hero2],"魔術")) %>  魔術  <%= image_tag("ma.png", width:"25px") %>
+   </label>
 
    
-   <br>
+   <br><br>
    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">未所持AF選択 ▼</button>
    <div id="demo" class="collapse">
     <br>
-    持っていないAFにチェックをいれてください<br>
+    持っていないAFにチェックをいれてください<br>画像クリックでチェックできます。<br>
    <% (0..57).each do |i| %>
    <br>
-    <%= f.label :"af#{i}" do %>
-    <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:"af#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
-    <% end %> 
+    <label>
+    <%= f.check_box :"af#{i}" , id: "afhave#{i}", checked: ischeck(cookies[:af]["#{i}"]) %> <%= image_tag("#{image_name(i)}.png", width:"40px") %>
+    </label>
    <% end %> 
    </div>
    
    <br><br>
+   
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %> letter表記(aa,ab,ac,...)で結果を表示する
+   
    <br><br>
    <%= f.check_box :AD , id: "AD", checked: ischeck(cookies[:AD]) %> AD(アーティファクトダメージ)を考慮する
    <br><br>
-   <%= f.submit "保存",  class: "btn btn-success" %>
-   <input type="button" id= "optimise", class="btn btn-primary" value="計算">
+   <%= f.submit "保存 + 計算",  class: "btn btn-success" %>
+   
    
   <% end %>
   
  <br>
-		<span id="follow_form"> </span>
+		<span id="follow_form"> </span><br>
+		<span id="#tsts_form"> </span>
 		<hr>
 		結果が表示されないときは一度ページを更新してもう1度計算ボタンを押してください。
-　<script>
-      $(function() {
-      
-      // ボタンクリックでタブを切り替え
-      $('#optimise').click(function(e) {
-      $('.nav-tabs a[href="#sampleContentC"]').tab('show');
-      
-      });    
-      });
-      </script>
+　
 
 	</div>
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
-		<p>■ v1.7 (2019/06/26) </p><p>letter表記での入力が実行されないバグを修正しました。ページをリロードすればアップデートされると思います。</p>
+		<p>■ v1.8 (2019/07/14) </p><p>全体的なリファクタリングを行いました。
+		<br>所持AFのcookieがリセットされている可能性があります。お手数ですが再度ご設定ください。</p>
+		バグ報告・要望はこちらまで ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
 		<hr>
 		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
 		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p>
@@ -111,7 +147,7 @@
 		
 		
 		
-		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://twitter.com/mr_nish_">@mr_nish_</a>までお願いします。</p>
+		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a>までお願いします。</p>
 		
 	</div>
 
@@ -190,34 +226,8 @@
 		
 	</div>
 	<div class="tab-pane" id="sampleContentE">
-	 <br>
-	 <p>■ v1.6 (2019/06/25) </p><p>KMBT変換が実行されないバグを修正しました。</p><br>
-	 <p>■v1.5 (2019/06/19)</p><p>
-	 フォームの内容を保存できるようにしました。
-		使っているブラウザに保存する形です。いつも使っているブラウザで保存してください。(何か不具合ありましたら<%= link_to "作者", "https://twitter.com/mr_nish_" %>にまでお願いします)</p>
-	 </p>
-	 <br>
-	 <p>■ v1.4 (2019/06/09 0:00)</p>
-	 <p>ADありで算出した際に未所持AFにもレリックが振られる問題を解決
-	    </p>
-	 <br>
-	 <p>■ v1.3 (2019/06/03 16:00)</p>
-	 <p>入力フォームを調整<br>
-	    内部計算式を一部修正（チェスター関連）
-	    </p>
-	 <br>
-	 <p>■ v1.2 (2019/05/22 21:20)</p>
-	 <p>AF取得コストを算出過程に追加<br>
-	    AD(アーティファクトダメージ)に対応<br>
-	    影に振ったレリックを入力することで自動で影率を算出できるように変更<br>
-	    結果欄に影率を表示
-	    </p>
-	 <br>
-	 <p>■ v1.1 (2019/05/21 22:10)</p>
-	 <p>レター表記(aa,ab,ac,...)にも対応</p><br>
-	 <p>■ v1.0 (2019/05/21 19:30)</p><p>K,M,B,T表記に対応<br>
-	 ⇒ e15以下の数値が科学的記数法に対応していない問題を解決 <br>
-	 説明欄を加筆</p><br>
+	 <%= render 'layouts/log' %>
+	 
 	 
 	 </div>
 
