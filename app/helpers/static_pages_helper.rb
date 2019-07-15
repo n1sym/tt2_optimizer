@@ -147,7 +147,7 @@ module StaticPagesHelper
         if e_round(@est_lvl[i]).include?("e")
           sisuu = (e_round(@est_lvl[i]).slice!(/\d*$/)).to_i
           if sisuu > 14
-            cof = e_round(@est_lvl[i]).slice(0) if sisuu % 3 == 0
+            cof = e_round(@est_lvl[i]).slice(0,3) if sisuu % 3 == 0
             cof = e_round(@est_lvl[i]).delete(".").slice(0,2) if sisuu % 3 == 1
             cof = e_round(@est_lvl[i]).delete(".").slice(0,3) if sisuu % 3 == 2
             @round_lvl[i] = cof + @letter_data[sisuu]
@@ -160,16 +160,16 @@ module StaticPagesHelper
   
   def search2(s)
     return s if s.to_f > 1e17
-    return s.slice(0,1)+'K' if s.include?("e3")
+    return s.slice(0,3)+'K' if s.include?("e3")
     return s.slice(0,3).delete('.')+'K' if s.include?("e4")
     return s.slice(0,4).delete('.')+'K' if s.include?("e5")
-    return s.slice(0,1)+'M' if s.include?("e6")
+    return s.slice(0,3)+'M' if s.include?("e6")
     return s.slice(0,3).delete('.')+'M' if s.include?("e7")
     return s.slice(0,4).delete('.')+'M' if s.include?("e8")
-    return s.slice(0,1)+'B' if s.include?("e9")
+    return s.slice(0,3)+'B' if s.include?("e9")
     return s.slice(0,3).delete('.')+'B' if s.include?("e10")
     return s.slice(0,4).delete('.')+'B' if s.include?("e11")
-    return s.slice(0,1)+'T' if s.include?("e12")
+    return s.slice(0,3)+'T' if s.include?("e12")
     return s.slice(0,3).delete('.')+'T' if s.include?("e13")
     return s.slice(0,4).delete('.')+'T' if s.include?("e14")
     
