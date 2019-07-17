@@ -62,7 +62,7 @@
    </label>
    <br><br>
    <%= f.label :"所持アーティファクト数（サルべージは含まず）" %>
-   <%= f.text_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>
+   <%= f.number_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>
    <br>
    <label class="form-inline">
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %>　レター表記(aa,ab,ac,...)を用いる
@@ -75,7 +75,7 @@
   <% (0..57).each do |i| %>
   
     <tr><td><%= image_tag("#{image_name(i)}.png", width:"32px", height:"32px") %> </td>
-    <td><%= f.text_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %></td>
+    <td><%= f.number_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %></td>
     <td><%= image_name(i) %></td></tr>
   
   
