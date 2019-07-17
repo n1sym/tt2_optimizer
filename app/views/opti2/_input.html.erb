@@ -75,7 +75,7 @@
   <% (0..57).each do |i| %>
   <p>
   <label class="form-inline">
-    <%= image_tag("#{image_name(i)}.png", width:"32px") %> 
+    <%= image_tag("#{image_name(i)}.png", width:"32px", height:"32px") %> 
     <%= f.text_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %>
     <%= image_name(i) %>
   </label>
