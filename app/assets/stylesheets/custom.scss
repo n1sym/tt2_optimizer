@@ -134,3 +134,18 @@ td {
   }
 }
 
+
+.form-inline{
+  .form-control{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80px;
+  }
+  display: flex;
+  font-weight:normal;
+}
+
+.question{
+  padding: 5px;
+  background: #f0f8ff;
+}

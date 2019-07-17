@@ -24,10 +24,10 @@
    <%= f.label :累計レリック %>
    <%= f.text_field :relic, class: 'form-control', id: "relic",  placeholder: "例: 7.18e72 または 7.18at ", value: cookies[:relic] %>
    <br>
-   <%= f.label :"影率(%) または 影に振ったレリック数" %>
+   <%= f.label :"影率(%) または 影に振ったレリック数 (or 影のレベル)" %>
    <%= f.text_field :bos, class: 'form-control', id: "bos", placeholder: "例: 0.50（50%の場合） ", value: cookies[:bos] %>
    <br>
-   <%= f.label :"所持アーティファクト数（サルべージは含まず）" %>
+   <%= f.label :"所持アーティファクト数 + エンチャント数（サルべージは含まず）" %>
    <%= f.text_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>
    
    <br>
@@ -109,9 +109,14 @@
    <label>
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %> letter表記(aa,ab,ac,...)で結果を表示する
    </label>
+   
    <br><br>
    <label>
    <%= f.check_box :AD , id: "AD", checked: ischeck(cookies[:AD]) %> AD(アーティファクトダメージ)を考慮する
+   </label>
+   <br><br>
+   <label>
+   <%= f.check_box :effcheck , id: "effcheck", checked: ischeck(cookies[:effcheck]) %> 影の書をレベルで入力する
    </label>
    <br><br>
    <%= f.submit "保存 + 計算",  class: "btn btn-success" %>
@@ -130,7 +135,7 @@
 	
 	<div class="tab-pane active" id="sampleContentA">
 		<br>
-		<p>■ v1.8 (2019/07/15) </p><p>小数点以下表示について修正。返信タブを作成。</p>
+		<p>■ v2.0 (2019/07/17) </p><p>v3.2.1に対応。フォームの返信を更新しました。</p>
 		
 		<p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
 		   </p>

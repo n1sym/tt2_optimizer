@@ -108,7 +108,7 @@ module StaticPagesHelper
     (0..@r.size()-1).each do |i|
       cost_percent[i] = costweight[i]/costweight_sum;
     end
-    @relican -= @af_cost[@afcost.to_i-1]
+    @relican -= @af_cost[(@afcost.to_i)-1]
     ideal_relic = []
     ideal_relic[0] = @relican * @bos_percent
     relic_other_bos = @relican - ideal_relic[0]
@@ -189,7 +189,10 @@ module StaticPagesHelper
     ad = 1 if @ad == "1"
       @ad_stuff = []
       (0..@r.size()-1).each do |i|
-        @ad_stuff[i] = (((@damage_bonus[i] ** 1.24) * @cost_coef[i] / @cost_expo[i]) ** @texpo[i])*@c[i]*ad
+        @ad_stuff[i] = (((@damage_bonus[i] ** 1.24) * @cost_coef[i] / @cost_expo[i]) **
+        @texpo[i])*
+        @c[i]*
+        ad
       end
     
   end
@@ -738,7 +741,10 @@ module StaticPagesHelper
      8.05E+44,
      1.26E+47,
      1.96E+49,
-     3.09E+51
+     3.09E+51,
+     4.89E+53,
+     7.77E+55,
+     1.24E+58
    ]
    
    @damage_bonus = [
@@ -1012,6 +1018,10 @@ module StaticPagesHelper
     @r[57] = buildv[0] #EoE
   end
   
+  def bos_eff_to_relic # 数字でリターン
+    @bos_percent = 0.2 * (@bos_percent) ** 3.5
+  end
+  
   def input_proc
     @relican = 0
     
@@ -1024,6 +1034,8 @@ module StaticPagesHelper
     bos_letter_e
     
     @bos_percent = search(@bos_percent) if @bos_percent.class == String
+    
+    bos_eff_to_relic if @effcheck == "1"
   end  
   
   def relic_letter_e

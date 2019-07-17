@@ -1,0 +1,88 @@
+<%= form_for(:data2, url: optimise2_path, remote: true) do |f| %>
+
+
+<br>
+
+
+   <%= f.label :ビルド： %><br>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "SC", checked: ischeck2(cookies[:build],"SC")) %>  SC <%= image_tag("sc.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "PET", checked: ischeck2(cookies[:build],"PET")) %>  PET  <%= image_tag("pet.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "CS", checked: ischeck2(cookies[:build],"CS")) %>  CS  <%= image_tag("cs.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:build, "HS", checked: ischeck2(cookies[:build],"HS")) %>  HS  <%= image_tag("hs.png", width:"20px") %>
+   </label>
+   
+   <br>
+
+   <br>
+   <%= f.label :ゴールド： %><br>
+   <label class="radio-inline">
+   <%= f.radio_button(:gold, "フェアリー", checked: ischeck2(cookies[:gold],"フェアリー")) %>  フェアリー <%= image_tag("fairy.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:gold, "pHoM", checked: ischeck2(cookies[:gold],"pHoM")) %>  pHoM  <%= image_tag("phom.png", width:"20px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:gold, "チェスターソン", checked: ischeck2(cookies[:gold],"チェスターソン")) %>  チェスター  <%= image_tag("chest.png", width:"20px") %>
+   </label>
+   
+   
+   <br>
+
+   
+   <br>
+   <%= f.label :ヒーローの属性①： %><br>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero1, "地面", checked: ischeck2(cookies[:hero1],"地面")) %>  地面 <%= image_tag("ground.png", width:"25px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero1, "飛行", checked: ischeck2(cookies[:hero1],"飛行")) %>  飛行  <%= image_tag("fly.png", width:"25px") %>
+    </label>
+   
+   <br>
+
+   
+   <br>
+   <%= f.label :ヒーローの属性②： %><br>
+  
+   <label class="radio-inline">
+   <%= f.radio_button(:hero2, "近接", checked: ischeck2(cookies[:hero2],"近接")) %>  近接  <%= image_tag("ki.png", width:"25px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero2, "遠隔", checked: ischeck2(cookies[:hero2],"遠隔")) %>  遠隔  <%= image_tag("en.png", width:"25px") %>
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:hero2, "魔術", checked: ischeck2(cookies[:hero2],"魔術")) %>  魔術  <%= image_tag("ma.png", width:"25px") %>
+   </label>
+   <br><br>
+   <%= f.label :"所持アーティファクト数（サルべージは含まず）" %>
+   <%= f.text_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>
+   <br>
+   <label class="form-inline">
+   <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %>　レター表記(aa,ab,ac,...)を用いる
+   </label>
+   
+   
+    <hr>
+    
+  
+  <% (0..57).each do |i| %>
+  <p>
+  <label class="form-inline">
+    <%= image_tag("#{image_name(i)}.png", width:"32px") %> 
+    <%= f.text_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %>
+    <%= image_name(i) %>
+  </label>
+  </p>
+  <% end %>
+  
+  
+
+<%= f.submit "保存",  class: "btn btn-success" %>
+<% end %>

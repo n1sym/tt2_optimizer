@@ -16,6 +16,17 @@ class StaticPagesController < ApplicationController
   
   def optimiser
   end
+  
+  def optimiser2
+  end
+  
+  def optimise2
+    
+    (0..57).each do |i|
+      cookies.permanent[:"afnum#{i}"] = params[:data2][:"afnum#{i}"]
+    end
+    
+  end
 
   def optimise
     @total_relic = cookies.permanent[:relic] = params[:data][:relic]
@@ -27,12 +38,13 @@ class StaticPagesController < ApplicationController
     @hero2 = cookies.permanent[:hero2] = params[:data][:hero2]
     @letter = cookies.permanent[:letter] = params[:data][:letter]
     @ad = cookies.permanent[:AD] = params[:data][:AD]
+    @effcheck = cookies.permanent[:effcheck] = params[:data][:effcheck]
     @af = []
     (0..57).each do |i|
       cookies.permanent[:"af#{i}"] = params[:data][:"af#{i}"]
       @af << params[:data][:"af#{i}"]
     end
-    cookies.permanent[:af] = @af
+   
     
     keisan
     
