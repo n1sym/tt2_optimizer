@@ -22,10 +22,10 @@
 	 
 		<%= form_for(:data, url: optimise_path, remote: true) do |f| %>
    <%= f.label :累計レリック %>
-   <%= f.number_field :relic, class: 'form-control', id: "relic",  placeholder: "例: 7.18e72 または 7.18at ", value: cookies[:relic] %>
+   <%= f.text_field :relic, class: 'form-control', id: "relic",  placeholder: "例: 7.18e72 または 7.18at ", value: cookies[:relic] %>
    <br>
    <%= f.label :"影率(%) または 影に振ったレリック数 (or 影のレベル)" %>
-   <%= f.number_field :bos, class: 'form-control', id: "bos", placeholder: "例: 0.50（50%の場合） ", value: cookies[:bos] %>
+   <%= f.text_field :bos, class: 'form-control', id: "bos", placeholder: "例: 0.50（50%の場合） ", value: cookies[:bos] %>
    <br>
    <%= f.label :"所持アーティファクト数 + エンチャント数（サルべージは含まず）" %>
    <%= f.number_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>

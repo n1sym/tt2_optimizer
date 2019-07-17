@@ -75,7 +75,7 @@
   <% (0..57).each do |i| %>
   
     <tr><td><%= image_tag("#{image_name(i)}.png", width:"32px", height:"32px") %> </td>
-    <td><%= f.number_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %></td>
+    <td><%= f.text_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %></td>
     <td><%= image_name(i) %></td></tr>
   
   
