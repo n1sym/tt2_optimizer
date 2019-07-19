@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get  '/optimiser2', to: 'static_pages#optimiser2'
   post '/optimise',   to: 'static_pages#optimise'
   post '/optimise2',   to: 'static_pages#optimise2'
+  post '/optimise3',   to: 'static_pages#optimise3'
+  post '/optimise4',   to: 'static_pages#optimise4'
 
 end

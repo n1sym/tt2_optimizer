@@ -1,0 +1,30 @@
+<%= form_for(:data3, url: optimise3_path, remote: true) do |f| %>
+
+  <br>
+
+  <%= f.label :所持レリック %>
+  <%= f.text_field :nowrelic, class: 'form-control', id: "nowrelic",  placeholder: "例: 7.18e72 または 7.18at ", value: cookies[:nowrelic] %>
+  <br>
+   
+  
+   <label class="radio-inline">
+   <%= f.radio_button(:perc, "25", checked: ischeck2(cookies[:perc],"25")) %>  25%で振る
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:perc, "5", checked: ischeck2(cookies[:perc],"5")) %>  5%で振る 
+   </label>
+   <label class="radio-inline">
+   <%= f.radio_button(:perc, "1", checked: ischeck2(cookies[:perc],"1")) %>  1%で振る 
+   </label>
+   <br><br>
+  <%= f.submit "計算",  class: "btn btn-info" %>
+<% end %>
+
+<hr>
+<br>
+<span id="result2"> </span><br>
+
+<br>
+<%= form_for(:data4, url: optimise4_path, remote: true) do |f| %>
+  <%= f.submit "適用",  class: "btn btn-primary" %>
+<% end %>

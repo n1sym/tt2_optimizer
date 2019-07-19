@@ -61,15 +61,13 @@
    <%= f.radio_button(:hero2, "魔術", checked: ischeck2(cookies[:hero2],"魔術")) %>  魔術  <%= image_tag("ma.png", width:"25px") %>
    </label>
    <br><br>
-   <%= f.label :"所持アーティファクト数（サルべージは含まず）" %>
-   <%= f.number_field :"afc", class: 'form-control', id: "afc", value: cookies[:afc] %>
-   <br>
    <label class="form-inline">
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %>　レター表記(aa,ab,ac,...)を用いる
    </label>
-   
-   
+   <br>
+   <%= f.submit "保存",  class: "btn btn-success" %>
     <hr>
+     <%= f.label :レベル入力（未所持の場合は０を入力） %><br>
   <table class="form-inline">  	
   <tr><td></td><td width="100">AFレベル</td><td>アーティファクト名</td></tr>
   <% (0..57).each do |i| %>
@@ -85,3 +83,6 @@
 
 <%= f.submit "保存",  class: "btn btn-success" %>
 <% end %>
+
+<span id="#follow_form2"> </span><br>
+

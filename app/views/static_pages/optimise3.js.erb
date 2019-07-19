@@ -1,0 +1,9 @@
+$("#result2").html(
+'<% (0..4).each do |i| %>' +
+'<%= image_tag("#{image_name(@result[i][0])}.png", width:"20px") %> ' +
+'<%= image_name(@result[i][0]) %>'+
+' | '+
+'<%= image_tag("relic.png", width:"20px") %>' +
+'<%= output_proc2(@result[i][1]) %>' +
+'<br>' + 
+' <% end %>');

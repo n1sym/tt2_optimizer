@@ -206,6 +206,107 @@ module StaticPagesHelper
   end
   
   def data
+    @parrot_coef = [
+        0.05,
+        0.02,
+        0.01,
+        0.25,
+        0.25,
+        0.25,
+        0.04,
+        0.6,
+        0.3,
+        0.3,
+        0.2,
+        0.04,
+        0.02,
+        0.01,
+        0.05,
+        0.1,
+        0.1,
+        0.2,
+        0.1,
+        0.04,
+        0.15,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.1,
+        0.1,
+        0.1,
+        0.005,
+        0.02,
+        0.03,
+        0.5,
+        0.00025,
+        0.24,
+        0.12,
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.01,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1]  
+    
+    @letter_data_uni = [
+    'aa',
+    'ab',
+    'ac',
+    'ad',
+    'ae',
+    'af',
+    'ag',
+    'ah',
+    'ai',
+    'aj',
+    'ak',
+    'al',
+    'am',
+    'an',
+    'ao',
+    'ap',
+    'aq',
+    'ar',
+    'as',
+    'at',
+    'au',
+    'av',
+    'aw',
+    'ax',
+    'ay',
+    'az',
+    'ba',
+    'bb',
+    'bc',
+    'bd',
+    'be',
+    'bf',
+    'bg',
+    'bh',
+    'bi',
+    'bj',
+    'bk',
+    'bl',
+    'bm' ]
+    
    @letter_data = [0,
     0,
     0,
@@ -1109,15 +1210,15 @@ module StaticPagesHelper
     return @bos_percent = (@bos_percent.slice(/\d+/)+'e93').to_f if @bos_percent.include?("ba")
     return @bos_percent = (@bos_percent.slice(/\d+/)+'e96').to_f if @bos_percent.include?("bb")
     return @bos_percent = (@bos_percent.slice(/\d+/)+'e99').to_f if @bos_percent.include?("bc")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e102').to_f if@bos_percent.include?("bd")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e105').to_f if@bos_percent.include?("be")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e108').to_f if@bos_percent.include?("bf")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e111').to_f if@bos_percent.include?("bg")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e114').to_f if@bos_percent.include?("bh")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e117').to_f if@bos_percent.include?("bi")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e120').to_f if@bos_percent.include?("bj")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e123').to_f if@bos_percent.include?("bk")
-    return @bos_percent = (@bos_percent.slice(/\d+/)+'e126').to_f if@bos_percent.include?("bl")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e102').to_f if @bos_percent.include?("bd")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e105').to_f if @bos_percent.include?("be")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e108').to_f if @bos_percent.include?("bf")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e111').to_f if @bos_percent.include?("bg")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e114').to_f if @bos_percent.include?("bh")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e117').to_f if @bos_percent.include?("bi")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e120').to_f if @bos_percent.include?("bj")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e123').to_f if @bos_percent.include?("bk")
+    return @bos_percent = (@bos_percent.slice(/\d+/)+'e126').to_f if @bos_percent.include?("bl")
   end 
   
   def henkanK(s)
@@ -1144,6 +1245,125 @@ module StaticPagesHelper
     return s.to_f
   end
   
+  
+  
+  def keisan2
+      
+      
+    #import
+    data
+    reduction
+    
+    n = @aflvl.size()
+    
+    # letter => e (s => i)
+    if @letter == "1"
+        (0..n-1).each do |i|
+            @aflvl[i] = aflvl_le_to_e(@aflvl[i])
+        end
+    end
+    
+    # KMBT, normal => num (s => i)
+    
+        (0..n-1).each do |i|
+            @aflvl[i] = search(@aflvl[i]) if @aflvl[i].class == String
+        end
+    
+    
+    @zero_or_one = []
+    (0..n-1).each do |i|
+        if @aflvl[i] == 0
+            @zero_or_one[i] = 0
+            @aflvl[i] = 0.01
+        elsif
+            @zero_or_one[i] = 1.0
+        end
+    end
+    
+    @nowrelic = aflvl_le_to_e(@nowrelic)
+    @nowrelic = search(@nowrelic) if @nowrelic.class == String
+    
+    # 処理
+    
+    if @perc == "25"
+        @result = Array.new(5) { Array.new(3,0) } # id, relic, aflvl
+        (0..4).each do |i|
+            proc2
+            @result[i][0] = @ans
+            tmp_now = @nowrelic * 0.25
+            @result[i][1] = e_round(@nowrelic * 0.25)
+            @nowrelic -= @nowrelic * 0.25
+            tmp_relic = @tcoef[@ans] * ((@aflvl[@ans]) ** @texpo[@ans]) 
+            tmp_relic += tmp_now
+            @aflvl[@ans] = (tmp_relic.to_f / @tcoef[i]) ** (1.0 / @texpo[i])
+            @result[i][2] = e_round(@aflvl[@ans])
+        end
+    end
+    
+  end
+  
+  def proc2
+    n = @aflvl.size()
+    eff = []
+    eff[0] = 1 + @parrot_coef[0] * (@aflvl[0].to_f ** @growthExpo[0].to_f)
+    (1..n-1).each do |i|
+        eff[i] = 10 * (1 + @parrot_coef[i] * (@aflvl[i].to_f ** @growthExpo[i].to_f))
+    end
+    cumcost = []
+    (0..n-1).each do |i|
+        cumcost[i] = (@cost_coef[i].to_f / (1 + @cost_expo[i].to_f)) * (@aflvl[i].to_f ** (1 + @cost_expo[i].to_f))
+    end
+    
+    sum_ad = 0
+    (0..n-1).each do |i|
+        sum_ad += (@aflvl[i].to_f * @damage_bonus[i].to_f)
+    end
+    
+    ad = []
+    (0..n-1).each do |i|
+        ad[i] = (sum_ad + @aflvl[i].to_f * eff[14] * @damage_bonus[i].to_f) / sum_ad
+    end
+    
+    af_name_eff = {}
+    last_eff = []
+    (0..n-1).each do |i|
+        last_eff[i] = @zero_or_one[i] * (Math::log(ad[i] * (eff[i] ** @r[i]))) / cumcost[i]
+        af_name_eff["#{i}"] = last_eff[i]
+    end
+    
+    #ans = af_name_eff.sort_by(&:last)
+    ans = af_name_eff.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
+    @ans = (ans[0][0]).to_i
+    
+    
+  end
+  
+  def aflvl_le_to_e(s) # return i
+    (0..@letter_data_uni.size()-1).each do |i|
+      return (s.slice(/\d+/)+"e#{15 + 3*i}").to_f if s.include?(@letter_data_uni[i])
+    end
+    return s
+  end
+  
+  def output_proc2(s)
+    # round_lvl の e => KMBT変換
+    
+    s = search2(s)
+    
+    return s if @letter != "1"
+    
+    if @letter == "1"
+        if e_round(s).include?("e")
+          sisuu = (e_round(s).slice!(/\d*$/)).to_i
+          if sisuu > 14
+            cof = e_round(s).slice(0,4) if sisuu % 3 == 0
+            cof = e_round(s).delete(".").slice(0,2) + "." + s.to_s.slice(3,2) if sisuu % 3 == 1
+            cof = e_round(s).delete(".").slice(0,3) + "." + s.to_s.slice(4,2) if sisuu % 3 == 2
+            s = cof + @letter_data[sisuu]
+          end
+        end
+    end
+  end
   
   
 end
