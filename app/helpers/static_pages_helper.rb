@@ -158,23 +158,7 @@ module StaticPagesHelper
     end
   end
   
-  def search2(s)
-    return s if s.to_f > 1e17
-    return s.slice(0,3)+'K' if s.include?("e3")
-    return s.slice(0,3).delete('.')+'K' if s.include?("e4")
-    return s.slice(0,4).delete('.')+'K' if s.include?("e5")
-    return s.slice(0,3)+'M' if s.include?("e6")
-    return s.slice(0,3).delete('.')+'M' if s.include?("e7")
-    return s.slice(0,4).delete('.')+'M' if s.include?("e8")
-    return s.slice(0,3)+'B' if s.include?("e9")
-    return s.slice(0,3).delete('.')+'B' if s.include?("e10")
-    return s.slice(0,4).delete('.')+'B' if s.include?("e11")
-    return s.slice(0,3)+'T' if s.include?("e12")
-    return s.slice(0,3).delete('.')+'T' if s.include?("e13")
-    return s.slice(0,4).delete('.')+'T' if s.include?("e14")
-    
-    return s
-  end
+  
   
   def e_round(x)
     return "0" if x == 0
@@ -1222,19 +1206,19 @@ module StaticPagesHelper
   end 
   
   def henkanK(s)
-    return (s.to_i)*1000
+    return (s.to_f)*1e3
   end
   
   def henkanM(s)
-    return (s.to_i)*1000000
+    return (s.to_f)*1e6
   end
   
   def henkanB(s)
-    return (s.to_i)*1000000000
+    return (s.to_f)*1e9
   end
   
   def henkanT(s)
-    return (s.to_i)*1000000000000
+    return (s.to_f)*1e12
   end
   
   def search(s)
@@ -1245,11 +1229,73 @@ module StaticPagesHelper
     return s.to_f
   end
   
+  def search2(s) # eで判断　(s to s) e => KMBT 
+    return e_round(s.to_f) if s.to_f > 1e17
+    return s.slice(0,3)+'K' if s.include?("e3")
+    return s.slice(0,3).delete('.')+'K' if s.include?("e4")
+    return s.slice(0,4).delete('.')+'K' if s.include?("e5")
+    return s.slice(0,3)+'M' if s.include?("e6")
+    return s.slice(0,3).delete('.')+'M' if s.include?("e7")
+    return s.slice(0,4).delete('.')+'M' if s.include?("e8")
+    return s.slice(0,3)+'B' if s.include?("e9")
+    return s.slice(0,3).delete('.')+'B' if s.include?("e10")
+    return s.slice(0,4).delete('.')+'B' if s.include?("e11")
+    return s.slice(0,3)+'T' if s.include?("e12")
+    return s.slice(0,3).delete('.')+'T' if s.include?("e13")
+    return s.slice(0,4).delete('.')+'T' if s.include?("e14")
+    
+    return s 
+  end
   
+  def search3(s) # 数値で判断 (i to s) int => KMBT
+    return e_round(s) if s >= 1e15
+    x = s
+    s = s.to_s.delete(".")
+    
+    return s if x < 1000
+    return s.slice(0,1)+ "." + s.slice(1,2) +'K' if x < 10000
+    return s.slice(0,2)+ "." + s.slice(2,2) +'K' if x < 100000
+    return s.slice(0,3)+ "." + s.slice(3,2) +'K' if x < 1000000
+    return s.slice(0,1)+ "." + s.slice(1,2) +'M' if x < 10000000
+    return s.slice(0,2)+ "." + s.slice(2,2) +'M' if x < 100000000
+    return s.slice(0,3)+ "." + s.slice(3,2) +'M' if x < 1000000000
+    return s.slice(0,1)+ "." + s.slice(1,2) +'B' if x < 10000000000
+    return s.slice(0,2)+ "." + s.slice(2,2) +'B' if x < 100000000000
+    return s.slice(0,3)+ "." + s.slice(3,2) +'B' if x < 1000000000000
+    return s.slice(0,1)+ "." + s.slice(1,2) +'T' if x < 10000000000000
+    return s.slice(0,2)+ "." + s.slice(2,2) +'T' if x < 100000000000000
+    return s.slice(0,3)+ "." + s.slice(3,2) +'T' if x < 1000000000000000
+    
+    return s 
+  end
+  
+  def henhenkan(s) # e -> letter
+    
+    if s.include?("e")
+        sisuu = (s.slice(/\d*$/)).to_i
+        if sisuu > 14
+            cof = s.slice(0,3) if sisuu % 3 == 0
+            cof = s.delete(".").slice(0,2) if sisuu % 3 == 1
+            cof = s.delete(".").slice(0,3) if sisuu % 3 == 2
+            s = cof + @letter_data[sisuu]
+        end
+    end
+    return s
+  end
+  
+  def henhenkan2(s) #letter -> e
+    (0..@letter_data_uni.size()-1).each do |i|
+        return hozyo(s,i) if s.include?(@letter_data_uni[i])
+    end
+    s
+  end
+  
+  def hozyo(s,x)
+      kari = s.to_f.to_s
+      kari + "e#{15 + 3*x}"
+  end
   
   def keisan2
-      
-      
     #import
     data
     reduction
@@ -1269,7 +1315,7 @@ module StaticPagesHelper
             @aflvl[i] = search(@aflvl[i]) if @aflvl[i].class == String
         end
     
-    
+    nowafc = 0
     @zero_or_one = []
     (0..n-1).each do |i|
         if @aflvl[i] == 0
@@ -1277,42 +1323,85 @@ module StaticPagesHelper
             @aflvl[i] = 0.01
         elsif
             @zero_or_one[i] = 1.0
+            nowafc += 1
         end
     end
     
     @nowrelic = aflvl_le_to_e(@nowrelic)
     @nowrelic = search(@nowrelic) if @nowrelic.class == String
     
+    nowafrelic = @af_cost[@afcost.to_i]
+    
+    
     # 処理
     
     if @perc == "25"
-        @result = Array.new(5) { Array.new(3,0) } # id, relic, aflvl
+        $result = Array.new(5) { Array.new(3,0) } # id, relic, aflvl
         (0..4).each do |i|
             proc2
-            @result[i][0] = @ans
+            $result[i][0] = @ans
             tmp_now = @nowrelic * 0.25
-            @result[i][1] = e_round(@nowrelic * 0.25)
+            $result[i][1] = @aflvl[@ans]
             @nowrelic -= @nowrelic * 0.25
             tmp_relic = @tcoef[@ans] * ((@aflvl[@ans]) ** @texpo[@ans]) 
-            tmp_relic += tmp_now
-            @aflvl[@ans] = (tmp_relic.to_f / @tcoef[i]) ** (1.0 / @texpo[i])
-            @result[i][2] = e_round(@aflvl[@ans])
+            
+            tmp_relic = tmp_relic + tmp_now
+            
+            @aflvl[@ans] = (tmp_relic.to_f / @tcoef[@ans]) ** (1.0 / @texpo[@ans])
+            $result[i][2] = @aflvl[@ans]
         end
+        @nowbos = @boscost / (@nowallcost + nowafrelic)
+    elsif @perc == "5"
+        $result = Array.new(10) { Array.new(3,0) } # id, relic, aflvl
+        (0..9).each do |i|
+            proc2
+            $result[i][0] = @ans
+            tmp_now = @nowrelic * 0.05
+            $result[i][1] = @aflvl[@ans]
+            @nowrelic -= @nowrelic * 0.05
+            tmp_relic = @tcoef[@ans] * ((@aflvl[@ans]) ** @texpo[@ans]) 
+            
+            tmp_relic = tmp_relic + tmp_now
+            
+            @aflvl[@ans] = (tmp_relic.to_f / @tcoef[@ans]) ** (1.0 / @texpo[@ans])
+            $result[i][2] = @aflvl[@ans]
+        end
+        @nowbos = @boscost / (@nowallcost + nowafrelic)
+    elsif @perc == "1"
+        $result = Array.new(20) { Array.new(3,0) } # id, relic, aflvl
+        (0..19).each do |i|
+            proc2
+            $result[i][0] = @ans
+            tmp_now = @nowrelic * 0.01
+            $result[i][1] = @aflvl[@ans]
+            @nowrelic -= @nowrelic * 0.01
+            tmp_relic = @tcoef[@ans] * ((@aflvl[@ans]) ** @texpo[@ans]) 
+            
+            tmp_relic = tmp_relic + tmp_now
+            
+            @aflvl[@ans] = (tmp_relic.to_f / @tcoef[@ans]) ** (1.0 / @texpo[@ans])
+            $result[i][2] = @aflvl[@ans]
+        end
+        @nowbos = @boscost / (@nowallcost + nowafrelic)
     end
     
   end
   
   def proc2
     n = @aflvl.size()
-    eff = []
-    eff[0] = 1 + @parrot_coef[0] * (@aflvl[0].to_f ** @growthExpo[0].to_f)
+    @eff = []
+    @eff[0] = 1 + @parrot_coef[0] * (@aflvl[0].to_f ** @growthExpo[0].to_f)
     (1..n-1).each do |i|
-        eff[i] = 10 * (1 + @parrot_coef[i] * (@aflvl[i].to_f ** @growthExpo[i].to_f))
+        @eff[i] = 10 * (1 + @parrot_coef[i] * (@aflvl[i].to_f ** @growthExpo[i].to_f))
     end
     cumcost = []
+    @nowallcost = 0
     (0..n-1).each do |i|
         cumcost[i] = (@cost_coef[i].to_f / (1 + @cost_expo[i].to_f)) * (@aflvl[i].to_f ** (1 + @cost_expo[i].to_f))
+    @nowallcost += cumcost[i]
     end
+    
+    @boscost = cumcost[0] 
     
     sum_ad = 0
     (0..n-1).each do |i|
@@ -1321,13 +1410,13 @@ module StaticPagesHelper
     
     ad = []
     (0..n-1).each do |i|
-        ad[i] = (sum_ad + @aflvl[i].to_f * eff[14] * @damage_bonus[i].to_f) / sum_ad
+        ad[i] = (sum_ad + @aflvl[i].to_f * @eff[14] * @damage_bonus[i].to_f) / sum_ad
     end
     
     af_name_eff = {}
     last_eff = []
     (0..n-1).each do |i|
-        last_eff[i] = @zero_or_one[i] * (Math::log(ad[i] * (eff[i] ** @r[i]))) / cumcost[i]
+        last_eff[i] = @zero_or_one[i] * (Math::log(ad[i] * (@eff[i] ** @r[i]))) / cumcost[i]
         af_name_eff["#{i}"] = last_eff[i]
     end
     
@@ -1345,25 +1434,54 @@ module StaticPagesHelper
     return s
   end
   
-  def output_proc2(s)
+  def output_proc2(s) # i to s 
+    
     # round_lvl の e => KMBT変換
-    
-    s = search2(s)
-    
+    s = search3(s) if @letter != "1" # 1 to s
     return s if @letter != "1"
-    
+
     if @letter == "1"
-        if e_round(s).include?("e")
-          sisuu = (e_round(s).slice!(/\d*$/)).to_i
+        
+        s = s.to_s
+        
+        # e -> letter
+        
+        if s.include?("e")
+          sisuu = s.slice(/\d*$/).to_i
           if sisuu > 14
-            cof = e_round(s).slice(0,4) if sisuu % 3 == 0
-            cof = e_round(s).delete(".").slice(0,2) + "." + s.to_s.slice(3,2) if sisuu % 3 == 1
-            cof = e_round(s).delete(".").slice(0,3) + "." + s.to_s.slice(4,2) if sisuu % 3 == 2
-            s = cof + @letter_data[sisuu]
+            if sisuu % 3 == 0
+              if s.delete(".").slice(/\d*/).size() == 2
+                cof = s.slice(0,3)
+              else
+                cof = s.slice(0,4)
+              end
+            elsif sisuu % 3 == 1
+                if s.delete(".").slice(/\d*/).size() == 2
+                    cof = s.delete(".").slice(0,2) + "." + "00"
+                elsif s.delete(".").slice(/\d*/).size() == 3
+                    cof = s.delete(".").slice(0,2) + "." + s.slice(3,1) + "0"
+                else
+                    cof = s.delete(".").slice(0,2) + "." + s.slice(3,2)
+                end
+            else
+                if s.delete(".").slice(/\d*/).size() == 2
+                    cof = s.delete(".").slice(0,2) + "0." + "00"
+                elsif s.delete(".").slice(/\d*/).size() == 3
+                    cof = s.delete(".").slice(0,3) + "." + "00"
+                elsif s.delete(".").slice(/\d*/).size() == 4
+                    cof = s.delete(".").slice(0,3) + "." + s.to_s.slice(4,1) + "0"
+                else
+                    cof = s.delete(".").slice(0,3) + "." + s.to_s.slice(4,2)
+                end
+            end
+            return s = cof + @letter_data[sisuu]
           end
         end
+        s = search3(s.to_f)
     end
   end
+  
+  
   
   
 end

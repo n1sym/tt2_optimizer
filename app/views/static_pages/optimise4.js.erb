@@ -1,0 +1,18 @@
+$("#result3").html('適用しました');
+
+<% if @perc == "25" %>
+  <% (0..4).each do |i| %>
+    af = "#afnum" + <%= $result[i][0] %>;
+    $(af).val('<%= output_proc2($result[i][2]) %>');
+  <% end %>
+<% elsif @perc == "5" %>
+  <% (0..9).each do |i| %>
+    af = "#afnum" + <%= $result[i][0] %>;
+    $(af).val('<%= output_proc2($result[i][2]) %>');
+  <% end %>
+<% else %>
+  <% (0..19).each do |i| %>
+    af = "#afnum" + <%= $result[i][0] %>;
+    $(af).val('<%= output_proc2($result[i][2]) %>');
+  <% end %>
+<% end %>

@@ -1,9 +1,67 @@
+<% if @perc == "25" %>
 $("#result2").html(
 '<% (0..4).each do |i| %>' +
-'<%= image_tag("#{image_name(@result[i][0])}.png", width:"20px") %> ' +
-'<%= image_name(@result[i][0]) %>'+
+'#' +
+'<%= i+1 %>' +
 ' | '+
 '<%= image_tag("relic.png", width:"20px") %>' +
-'<%= output_proc2(@result[i][1]) %>' +
+'<%= output_proc2($result[i][1]) %>' +
+' ⇒ ' +
+'<%= output_proc2($result[i][2]) %>' +
+' | '+
+'<%= image_tag("#{image_name($result[i][0])}.png", width:"20px") %> ' +
+'<%= image_name($result[i][0]) %>'+
 '<br>' + 
-' <% end %>');
+' <% end %>' +
+'<br>' + 
+'影率：' +
+'<%= (@nowbos * 100).round(1) %>' +
+'%' +
+'<%= @test%>'
+);
+<% elsif @perc == "5" %>
+$("#result2").html(
+'<% (0..9).each do |i| %>' +
+'#' +
+'<%= i+1 %>' +
+' | '+
+'<%= image_tag("relic.png", width:"20px") %>' +
+'<%= output_proc2($result[i][1]) %>' +
+' ⇒ ' +
+'<%= output_proc2($result[i][2]) %>' +
+' | '+
+'<%= image_tag("#{image_name($result[i][0])}.png", width:"20px") %> ' +
+'<%= image_name($result[i][0]) %>'+
+'<br>' + 
+' <% end %>' +
+'<br>' + 
+'影率：' +
+'<%= (@nowbos * 100).round(1) %>' +
+'%' +
+'<%= @test%>'
+);
+<% else %>
+$("#result2").html(
+'<% (0..19).each do |i| %>' +
+'#' +
+'<%= i+1 %>' +
+' | '+
+'<%= image_tag("relic.png", width:"20px") %>' +
+'<%= output_proc2($result[i][1]) %>' +
+' ⇒ ' +
+'<%= output_proc2($result[i][2]) %>' +
+' | '+
+'<%= image_tag("#{image_name($result[i][0])}.png", width:"20px") %> ' +
+'<%= image_name($result[i][0]) %>'+
+'<br>' + 
+' <% end %>' +
+'<br>' + 
+'影率：' +
+'<%= (@nowbos * 100).round(1) %>' +
+'%' +
+'<%= @test%>'
+);
+<% end %>
+
+
+$("#result3").html('');

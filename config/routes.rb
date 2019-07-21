@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post '/optimise2',   to: 'static_pages#optimise2'
   post '/optimise3',   to: 'static_pages#optimise3'
   post '/optimise4',   to: 'static_pages#optimise4'
+  post '/henkan',   to: 'static_pages#henkan'
 
 end
