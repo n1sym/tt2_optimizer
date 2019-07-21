@@ -1250,7 +1250,7 @@ module StaticPagesHelper
   def search3(s) # 数値で判断 (i to s) int => KMBT
     return e_round(s) if s >= 1e15
     x = s
-    s = s.to_s.delete(".")
+    s = s.to_i.to_s.delete(".")
     
     return s if x < 1000
     return s.slice(0,1)+ "." + s.slice(1,2) +'K' if x < 10000
