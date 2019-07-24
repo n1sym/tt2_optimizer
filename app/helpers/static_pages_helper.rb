@@ -1325,6 +1325,7 @@ module StaticPagesHelper
             @zero_or_one[i] = 1.0
             nowafc += 1
         end
+        @zero_or_one[i] = 0 if @r[i] == 0
     end
     
     @nowrelic = aflvl_le_to_e(@nowrelic)
