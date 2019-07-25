@@ -1484,8 +1484,4 @@ module StaticPagesHelper
         s = search3(s.to_f)
     end
   end
-  
-  
-  
-  
 end
