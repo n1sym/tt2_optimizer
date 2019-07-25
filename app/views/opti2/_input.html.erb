@@ -65,14 +65,17 @@
    <%= f.check_box :letter , id: "letter", checked: ischeck(cookies[:letter]) %>　レター表記(aa,ab,ac,...)を用いる
    </label>
    <br>
-   <%= f.submit "保存",  class: "btn btn-success" %>
+   <%= f.submit "保存",  class: "btn btn-success" %>　<span id="follow_form3"></span><br>
     <hr>
     
-     <%= f.label :レベル入力（未所持の場合は０を入力） %><br><br>
+     <%= f.label :レベル入力（未所持の場合は空欄でOK） %><br><br>
 
   <table class="form-inline">  	
   <tr><td></td><td width="100">AFレベル</td><td>アーティファクト名</td></tr>
-  <% (0..57).each do |i| %>
+    <tr><td><%= image_tag("#{image_name(0)}.png", width:"32px", height:"32px") %> </td>
+    <td><%= f.text_field :"afnum#{0}", id: "afnum#{0}", class: 'form-control', value: cookies[:"afnum#{0}"] %></td>
+    <td><%= image_name(0) %> </td></tr>
+  <% (1..57).each do |i| %>
   
     <tr><td><%= image_tag("#{image_name(i)}.png", width:"32px", height:"32px") %> </td>
     <td><%= f.text_field :"afnum#{i}", id: "afnum#{i}", class: 'form-control', value: cookies[:"afnum#{i}"] %></td>
@@ -85,6 +88,6 @@
 
 <%= f.submit "保存",  class: "btn btn-success" %>
 <% end %>
-
-<span id="#follow_form2"> </span><br>
+<br>
+<span id="follow_form4"></span><br>
 

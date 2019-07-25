@@ -1298,7 +1298,9 @@ module StaticPagesHelper
   def keisan2
     #import
     data
+    
     reduction
+    @r[34] = 1 # Du Sword 
     
     n = @aflvl.size()
     
@@ -1416,6 +1418,7 @@ module StaticPagesHelper
     
     af_name_eff = {}
     last_eff = []
+    
     (0..n-1).each do |i|
         last_eff[i] = @zero_or_one[i] * (Math::log(ad[i] * (@eff[i] ** @r[i]))) / cumcost[i]
         af_name_eff["#{i}"] = last_eff[i]
