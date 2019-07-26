@@ -124,6 +124,7 @@ module StaticPagesHelper
     
     #文字列で返す
     @round_lvl = []
+     $round_lvl = []
     (0..@r.size()-1).each do |i|
       @round_lvl[i] = e_round(@est_lvl[i])
     end
@@ -132,8 +133,9 @@ module StaticPagesHelper
     #出力処理
     @afname[0] = "Book of Shadows (" + ((@bos_percent*100).round(1)).to_s + "%)"
     output_proc
-    
-    
+    (0..@r.size()-1).each do |i|
+      $round_lvl[i] = @round_lvl[i]
+    end
   end
   
   def output_proc
@@ -1316,7 +1318,6 @@ module StaticPagesHelper
         (0..n-1).each do |i|
             @aflvl[i] = search(@aflvl[i]) if @aflvl[i].class == String
         end
-    
     nowafc = 0
     @zero_or_one = []
     (0..n-1).each do |i|
@@ -1333,7 +1334,7 @@ module StaticPagesHelper
     @nowrelic = aflvl_le_to_e(@nowrelic)
     @nowrelic = search(@nowrelic) if @nowrelic.class == String
     
-    nowafrelic = @af_cost[@afcost.to_i]
+    nowafrelic = @af_cost[nowafc-1]
     
     
     # 処理

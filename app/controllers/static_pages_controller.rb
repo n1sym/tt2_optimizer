@@ -55,7 +55,6 @@ class StaticPagesController < ApplicationController
     @hero2 = cookies[:hero2]
     @perc = cookies.permanent[:perc] = params[:data3][:perc]
     @letter = cookies[:letter]
-    @afcost = cookies[:afc]
     @nowrelic = cookies.permanent[:nowrelic] = params[:data3][:nowrelic]
     @aflvl = []
     (0..57).each do |i|
@@ -77,7 +76,6 @@ class StaticPagesController < ApplicationController
     @hero1 = cookies.permanent[:hero1] = params[:data2][:hero1]
     @hero2 = cookies.permanent[:hero2] = params[:data2][:hero2]
     @letter = cookies.permanent[:letter] = params[:data2][:letter]
-    @afcost = cookies.permanent[:afc] = params[:data2][:"afc"]
     @aflvl = []
     (0..57).each do |i|
       @aflvl[i] = cookies.permanent[:"afnum#{i}"] = params[:data2][:"afnum#{i}"]
@@ -90,6 +88,16 @@ class StaticPagesController < ApplicationController
      
   end
 
+  def export
+    (0..57).each do |i|
+      cookies.permanent[:"afnum#{i}"] = $round_lvl[i]
+    end
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
+  end
+  
   def optimise
     @total_relic = cookies.permanent[:relic] = params[:data][:relic]
     @bos_percent = cookies.permanent[:bos] = params[:data][:bos]

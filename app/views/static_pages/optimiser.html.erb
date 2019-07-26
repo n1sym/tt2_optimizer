@@ -233,7 +233,12 @@
     
 
 </table>
-
+<br>
+このページに表示されているAFレベルをオプティ2の入力欄に上書きできます。
+<br><br>
+<%= form_for(:data_export, url: export_path, remote: true) do |f| %>
+  <%= f.submit "適用",  class: "btn btn-primary", data: { confirm: "OK?"} %>
+<% end %>
 
 		
 	</div>
