@@ -831,7 +831,8 @@ module StaticPagesHelper
      3.09E+51,
      4.89E+53,
      7.77E+55,
-     1.24E+58
+     1.24E+58,
+     1.97E+60
    ]
    
    @damage_bonus = [
