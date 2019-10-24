@@ -15,25 +15,19 @@
 <span id="kakunin_form"> </span><br>
 
 <textarea id="tete"></textarea>
-<button class="copy_code">クリップボードにコピー</button>
+<button class="copy_code"　onclick="">クリップボードにコピー</button>
 
 <script>
-$('.copy_code').onclick(function() {
+$('.copy_code').on('click', function () {
         var clipboard = $('<textarea></textarea>');
         clipboard.addClass('clipboard');
-        clipboard.html( "abc\naa" );
+        clipboard.html( $(this).prev('textarea').html() );
         $(this).append(clipboard);
         clipboard.select();
         document.execCommand('copy');
         clipboard.remove();
     });
 </script>
-
-  <a class="btn btn-sm btn-clipboard" data-clipboard-target="#text">
-   <i class="fa fa-clipboard" aria-hidden="true"></i>
-  </a>
-  
-
 
 <br>
 <br>
