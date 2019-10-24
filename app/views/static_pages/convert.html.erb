@@ -18,16 +18,22 @@
 <button class="copy_code">クリップボードにコピー</button>
 
 <script>
-$('.copy_code').click(function() {
+$('.copy_code').onclick(function() {
         var clipboard = $('<textarea></textarea>');
         clipboard.addClass('clipboard');
-        clipboard.html( $(this).prev('textarea').html() );
+        clipboard.html( "abc\naa" );
         $(this).append(clipboard);
         clipboard.select();
         document.execCommand('copy');
         clipboard.remove();
     });
 </script>
+
+  <a class="btn btn-sm btn-clipboard" data-clipboard-target="#text">
+   <i class="fa fa-clipboard" aria-hidden="true"></i>
+  </a>
+  
+
 
 <br>
 <br>
