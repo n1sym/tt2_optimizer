@@ -15,10 +15,10 @@
 <span id="kakunin_form"> </span><br>
 
 <textarea id="tete"></textarea>
-<button class="copy_code"　onclick="">クリップボードにコピー</button>
+<button class="copy_code">クリップボードにコピー</button>
 
 <script>
-$('.copy_code').on('click', function () {
+$('.copy_code').on("click", function () {
         var clipboard = $('<textarea></textarea>');
         clipboard.addClass('clipboard');
         clipboard.html( $(this).prev('textarea').html() );
@@ -30,7 +30,9 @@ $('.copy_code').on('click', function () {
 </script>
 
 <br>
+
 <br>
+<p>スマホからはコピーボタンが動かない模様です。調査中。</p>
 <hr>
 <p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
 		   </p>
