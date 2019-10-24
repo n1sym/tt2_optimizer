@@ -13,6 +13,8 @@ section {
 
 textarea {
   resize: vertical;
+  width: 100%;             /* 横幅いっぱいにする */
+  box-sizing: border-box;  /* ※これがないと横にはみ出る */
 }
 
 .center {

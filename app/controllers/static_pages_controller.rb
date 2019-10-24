@@ -14,6 +14,47 @@ class StaticPagesController < ApplicationController
   def link
   end
   
+  def convert
+  end
+  
+  def converter
+    @input = params[:data4][:log]
+    @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",")
+    @input3 = @input2.split(",")
+    @arr = Array.new(1000){ Array.new(30) }
+    (0..999).each do |i|
+      (0..29).each do |j|
+        k = j + 30*i
+        @arr[i][j] = @input3[k]
+      end
+    end  
+    @count = 0
+    (0..20).each do |i|
+      if @arr[i][0] == "" then
+        break
+      end
+      @count += 1
+    end
+    @name = Array.new(50){ Array.new(5) }
+    (0..49).each do |i|
+      k = 1 + @count*i
+      @name[i][0] = i+1
+      @name[i][1] = @arr[k][0]
+      @name[i][2] = @arr[k][1]
+      @name[i][3] = @arr[k][4]
+      @name[i][4] = @arr[k][5]
+    end
+    @tmp = @name
+    (0..49).reverse_each do |i|
+      @name.delete_at(i) if @tmp[i][1] == nil
+    end  
+    
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
+  end
+  
   def optimiser
   end
   

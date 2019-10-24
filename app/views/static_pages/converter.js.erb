@@ -1,0 +1,25 @@
+$("#fkakunin_form").html('hello');
+$("#tete").html(
+'Rank' +
+','+
+'Name' +
+','+
+'ID' +
+','+
+'Attacks' +
+','+
+'Damage' +
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<%= @name[i][2] %>' +
+','+
+'<%= @name[i][3] %>' +
+','+
+'<%= @name[i][4] %>' +
+'\n'+
+'<% end %>'
+);

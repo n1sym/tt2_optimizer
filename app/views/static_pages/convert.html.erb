@@ -1,0 +1,30 @@
+<% provide(:title, "LogConverter") %>
+<h1>レイドログ変換くん</h1>
+
+<%= form_for(:data4, url: converter_path, remote: true) do |f| %>
+
+  <br>
+
+  <%= f.label :ログをここにペースト %>
+  <%= f.text_area :log, class: 'form-control', id: "log" %>
+  <br>
+   
+  <%= f.submit "変換",  class: "btn btn-info" %>
+<% end %>
+
+<span id="kakunin_form"> </span><br>
+
+<textarea id="tete"></textarea>
+<button class="copy_code">クリップボードにコピー</button>
+
+<script>
+$('.copy_code').click(function() {
+        var clipboard = $('<textarea></textarea>');
+        clipboard.addClass('clipboard');
+        clipboard.html( $(this).prev('textarea').html() );
+        $(this).append(clipboard);
+        clipboard.select();
+        document.execCommand('copy');
+        clipboard.remove();
+    });
+</script>
