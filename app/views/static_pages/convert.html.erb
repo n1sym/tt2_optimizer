@@ -18,7 +18,7 @@
 <button class="copy_code">クリップボードにコピー</button>
 
 <script>
-$('.copy_code').on('touchstart click', function () {
+$('.copy_code').on('touchend', function () {
         var clipboard = $('<textarea></textarea>');
         clipboard.addClass('clipboard');
         clipboard.html( $(this).prev('textarea').html() );
