@@ -17,7 +17,17 @@
 <textarea id="tete"></textarea>
 <button class="copy_code">クリップボードにコピー</button>
 
-
+<script>
+$('.copy_code').on('touchstart click', function () {
+        var clipboard = $('<textarea></textarea>');
+        clipboard.addClass('clipboard');
+        clipboard.html( $(this).prev('textarea').html() );
+        $(this).append(clipboard);
+        clipboard.select();
+        document.execCommand('copy');
+        clipboard.remove();
+    });
+</script>
 
 <br>
 
