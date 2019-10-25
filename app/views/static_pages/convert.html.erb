@@ -9,15 +9,17 @@
   <%= f.text_area :log, class: 'form-control', id: "log" %>
   <br>
    
-  <%= f.submit "変換",  class: "btn btn-info" %>
+  <%= f.submit "変換",  class: "btn btn-info"%>
+  
 <% end %>
 
 <span id="kakunin_form"> </span><br>
 
 <textarea id="tete"></textarea>
-<button class="copy_code">クリップボードにコピー</button>
+<button class="copy_code", href="javascript:void(0);">クリップボードにコピー</button>
 
 <script>
+
 $('.copy_code').on('touchstart click', function () {
         var clipboard = $('<textarea></textarea>');
         clipboard.addClass('clipboard');

@@ -17,6 +17,9 @@ class StaticPagesController < ApplicationController
   def convert
   end
   
+  def converter2
+  end
+  
   def converter
     @input = params[:data4][:log]
     @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",")

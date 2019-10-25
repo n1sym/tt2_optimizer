@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/optimise3',   to: 'static_pages#optimise3'
   post '/optimise4',   to: 'static_pages#optimise4'
   post '/converter',   to: 'static_pages#converter'
+  post '/converter2',   to: 'static_pages#converter2'
   post '/export',   to: 'static_pages#export'
 
 
