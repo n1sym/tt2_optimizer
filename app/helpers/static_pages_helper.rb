@@ -220,7 +220,7 @@ module StaticPagesHelper
       if @arr[i][3] == nil then
         break
       end
-      if (@arr[i][3]).include?("Mohaka") || (@arr[i][3]).include?("モハカ")
+      if (@arr[i][3]).include?("Mohaca") || (@arr[i][3]).include?("モハカ")
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
