@@ -1,10 +1,65 @@
 <% provide(:title, "LogConverter") %>
 <h1>レイドログ変換くん</h1>
 <hr>
+<p>新レイドログを旧式に変化するツールです。</p>
+<p>New! - 禁止部位を攻撃している人を抽出する機能を実装しました（β版）</p>
+<hr>
+
+
+
+<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">禁止部位を設定 ▼</button>
+   <div id="demo" class="collapse">
+    <br>
+<%= form_for(:data5, url: converter2_path, remote: true) do |f| %>
+    <label>
+    <%= f.check_box :"buicheck" , id: "afhave", checked: ischeck(cookies[:"buicheck"]) %> 禁止部位をチェックする
+    </label>
+<br><br>
+    <%= image_tag("bangou.png", width:"240px") %><br><br>
+   <%= f.label :"Terro" %>
+   <% (1..8).each do |i| %> 
+   <label class="radio-inline">
+   <%= f.check_box :"tero#{i}" , id: "tero#{i}", checked: ischeck(cookies[:"tero#{i}"]) %> <%= i %>
+   </label>
+   <% end %><br><br>
+   <%= f.label :"Sterl" %>
+   <% (1..8).each do |i| %> 
+   <label class="radio-inline">
+   <%= f.check_box :"sterl#{i}" , id: "sterl#{i}", checked: ischeck(cookies[:"sterl#{i}"]) %> <%= i %>
+   </label>
+   <% end %><br><br>
+   <%= f.label :"Mohaka" %>
+   <% (1..8).each do |i| %> 
+   <label class="radio-inline">
+   <%= f.check_box :"mohaka#{i}" , id: "mohaka#{i}", checked: ischeck(cookies[:"mohaka#{i}"]) %> <%= i %>
+   </label>
+   <% end %><br><br>
+   <%= f.label :"Lojak" %>
+   <% (1..8).each do |i| %> 
+   <label class="radio-inline">
+   <%= f.check_box :"lojak#{i}" , id: "lojak#{i}", checked: ischeck(cookies[:"lojak#{i}"]) %> <%= i %>
+   </label>
+   <% end %><br><br>
+   <%= f.label :"Takedar" %>
+   <% (1..8).each do |i| %> 
+   <label class="radio-inline">
+   <%= f.check_box :"take#{i}" , id: "take#{i}", checked: ischeck(cookies[:"take#{i}"]) %> <%= i %>
+   </label>
+   <% end %><br><br>
+   <%= f.label :"Jukk" %>
+   <% (1..8).each do |i| %> 
+   <label class="radio-inline">
+   <%= f.check_box :"jukk#{i}" , id: "jukk#{i}", checked: ischeck(cookies[:"jukk#{i}"]) %> <%= i %>
+   </label>
+   <% end %><br><br>
+
+  <%= f.submit "設定を保存",  class: "btn btn-success"%> <span id="hozon"></span>
+   </div>
+
+  
+<% end %>
+<br><br>
 <%= form_for(:data4, url: converter_path, remote: true) do |f| %>
-
-  <br>
-
   <%= f.label :ログをここにペースト %>
   <%= f.text_area :log, class: 'form-control', id: "log" %>
   <br>
@@ -19,7 +74,15 @@
 
 <!-- Trigger -->
 <button class="btn btn-default clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bar">
-    コピーする
+    クリップボードにコピー
+</button>
+<br><br>
+<p>禁止部位ログ</p>
+<textarea id="bar2"></textarea>
+
+<!-- Trigger -->
+<button class="btn btn-default clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bar2">
+    クリップボードにコピー
 </button>
 
 <script>

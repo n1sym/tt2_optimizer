@@ -72,6 +72,357 @@ module StaticPagesHelper
    afname[x].gsub(/ /, "_") 
   end
   
+  def buicheck
+    #name = ["Terro", "Sterl", "Mohaca", "Lojak", "Takedar", "Jukk"]
+    
+    #terro
+    part = []
+    if @tero[0] == "1"
+      part << 8
+      part << 16
+    end  
+    if @tero[1] == "1"
+      part << 10
+      part << 18
+    end  
+    if @tero[2] == "1"
+      part << 12
+      part << 20
+    end  
+    if @tero[3] == "1"
+      part << 13
+      part << 21
+    end
+    if @tero[4] == "1"
+      part << 11
+      part << 21
+    end
+    if @tero[5] == "1"
+      part << 9
+      part << 17
+    end
+    if @tero[6] == "1"
+      part << 6
+      part << 14
+    end
+    if @tero[7] == "1"
+      part << 7
+      part << 15  
+    end  
+    
+    (0..999).each do |i|
+      if @arr[i][3] == nil then
+        break
+      end
+      if (@arr[i][3]).include?("Terro") || (@arr[i][3]).include?("テロー")
+        (6..21).each do |j|
+          if part.include?(j)
+            if (@arr[i][j]) != "0"
+              @checker << @arr[i][0]
+              @checker << @arr[i][3]
+              @checker << @arr[0][j]
+              @checker << @arr[i][j]
+            end  
+          end  
+        end 
+      end  
+    end
+    
+    #sterl
+    part = []
+    if @sterl[0] == "1"
+      part << 8
+      part << 16
+    end  
+    if @sterl[1] == "1"
+      part << 10
+      part << 18
+    end  
+    if @sterl[2] == "1"
+      part << 12
+      part << 20
+    end  
+    if @sterl[3] == "1"
+      part << 13
+      part << 21
+    end
+    if @sterl[4] == "1"
+      part << 11
+      part << 21
+    end
+    if @sterl[5] == "1"
+      part << 9
+      part << 17
+    end
+    if @sterl[6] == "1"
+      part << 6
+      part << 14
+    end
+    if @sterl[7] == "1"
+      part << 7
+      part << 15  
+    end  
+    
+    (0..999).each do |i|
+      if @arr[i][3] == nil then
+        break
+      end
+      if (@arr[i][3]).include?("Sterl") || (@arr[i][3]).include?("スタール") 
+        (6..21).each do |j|
+          if part.include?(j)
+            if (@arr[i][j]) != "0"
+              @checker << @arr[i][0]
+              @checker << @arr[i][3]
+              @checker << @arr[0][j]
+              @checker << @arr[i][j]
+            end  
+          end  
+        end 
+      end  
+    end
+    
+    #mohaka
+    part = []
+    if @mohaka[0] == "1"
+      part << 8
+      part << 16
+    end  
+    if @mohaka[1] == "1"
+      part << 10
+      part << 18
+    end  
+    if @mohaka[2] == "1"
+      part << 12
+      part << 20
+    end  
+    if @mohaka[3] == "1"
+      part << 13
+      part << 21
+    end
+    if @mohaka[4] == "1"
+      part << 11
+      part << 21
+    end
+    if @mohaka[5] == "1"
+      part << 9
+      part << 17
+    end
+    if @mohaka[6] == "1"
+      part << 6
+      part << 14
+    end
+    if @mohaka[7] == "1"
+      part << 7
+      part << 15  
+    end  
+    
+    (0..999).each do |i|
+      if @arr[i][3] == nil then
+        break
+      end
+      if (@arr[i][3]).include?("Mohaka") || (@arr[i][3]).include?("モハカ")
+        (6..21).each do |j|
+          if part.include?(j)
+            if (@arr[i][j]) != "0"
+              @checker << @arr[i][0]
+              @checker << @arr[i][3]
+              @checker << @arr[0][j]
+              @checker << @arr[i][j]
+            end  
+          end  
+        end 
+      end  
+    end
+    
+    #jukk
+    part = []
+    if @jukk[0] == "1"
+      part << 8
+      part << 16
+    end  
+    if @jukk[1] == "1"
+      part << 10
+      part << 18
+    end  
+    if @jukk[2] == "1"
+      part << 12
+      part << 20
+    end  
+    if @jukk[3] == "1"
+      part << 13
+      part << 21
+    end
+    if @jukk[4] == "1"
+      part << 11
+      part << 21
+    end
+    if @jukk[5] == "1"
+      part << 9
+      part << 17
+    end
+    if @jukk[6] == "1"
+      part << 6
+      part << 14
+    end
+    if @jukk[7] == "1"
+      part << 7
+      part << 15  
+    end  
+    
+    (0..999).each do |i|
+      if @arr[i][3] == nil then
+        break
+      end
+      if (@arr[i][3]).include?("Jukk") || (@arr[i][3]).include?("ジャック")
+        (6..21).each do |j|
+          if part.include?(j)
+            if (@arr[i][j]) != "0"
+              @checker << @arr[i][0]
+              @checker << @arr[i][3]
+              @checker << @arr[0][j]
+              @checker << @arr[i][j]
+            end  
+          end  
+        end 
+      end  
+    end
+    
+    #lojak
+    part = []
+    if @lojak[0] == "1"
+      part << 8
+      part << 16
+    end  
+    if @lojak[1] == "1"
+      part << 10
+      part << 18
+    end  
+    if @lojak[2] == "1"
+      part << 12
+      part << 20
+    end  
+    if @lojak[3] == "1"
+      part << 13
+      part << 21
+    end
+    if @lojak[4] == "1"
+      part << 11
+      part << 21
+    end
+    if @lojak[5] == "1"
+      part << 9
+      part << 17
+    end
+    if @lojak[6] == "1"
+      part << 6
+      part << 14
+    end
+    if @lojak[7] == "1"
+      part << 7
+      part << 15  
+    end  
+    
+    (0..999).each do |i|
+      if @arr[i][3] == nil then
+        break
+      end
+      if (@arr[i][3]).include?("Lojak") || (@arr[i][3]).include?("ロジャク")
+        (6..21).each do |j|
+          if part.include?(j)
+            if (@arr[i][j]) != "0"
+              @checker << @arr[i][0]
+              @checker << @arr[i][3]
+              @checker << @arr[0][j]
+              @checker << @arr[i][j]
+            end  
+          end  
+        end 
+      end  
+    end
+    
+    #take
+    part = []
+    if @take[0] == "1"
+      part << 8
+      part << 16
+    end  
+    if @take[1] == "1"
+      part << 10
+      part << 18
+    end  
+    if @take[2] == "1"
+      part << 12
+      part << 20
+    end  
+    if @take[3] == "1"
+      part << 13
+      part << 21
+    end
+    if @take[4] == "1"
+      part << 11
+      part << 21
+    end
+    if @take[5] == "1"
+      part << 9
+      part << 17
+    end
+    if @take[6] == "1"
+      part << 6
+      part << 14
+    end
+    if @take[7] == "1"
+      part << 7
+      part << 15  
+    end  
+    
+    (0..999).each do |i|
+      if @arr[i][3] == nil then
+        break
+      end
+      if (@arr[i][3]).include?("Takedar") || (@arr[i][3]).include?("テーケダー")
+        (6..21).each do |j|
+          if part.include?(j)
+            if (@arr[i][j]) != "0"
+              @checker << @arr[i][0]
+              @checker << @arr[i][3]
+              @checker << @arr[0][j]
+              @checker << @arr[i][j]
+            end  
+          end  
+        end 
+      end  
+    end
+    
+  end
+  
+  def kaiseki
+    @avg = 0
+    @avg2 = 0
+    @sum = 0
+    @sum2 = 0
+    @attacks = 0
+    (0..(@name.size()-1)).each do |i|
+      if (@name[i][3]).to_i == 0 then
+        break
+      end
+      
+      if (@name[i][4]).include?("M")
+        dmg = (@name[i][4]).to_f * 1000000
+      elsif (@name[i][4]).include?("K")
+        dmg = (@name[i][4]).to_f * 1000
+      else
+        dmg = (@name[i][4]).to_f
+      end
+      avg = dmg / (@name[i][3]).to_i
+      @sum += dmg
+      @attacks += (@name[i][3]).to_i
+      @sum2 += avg
+    end  
+    @avg = @sum / @attacks
+    @avg = @avg.floor(1).to_f
+    @avg2 = @sum2 / @name.size().to_i
+    @avg2 = @avg2.floor(1).to_f
+  end
   
   # 計算
   

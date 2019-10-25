@@ -18,9 +18,64 @@ class StaticPagesController < ApplicationController
   end
   
   def converter2
+    cookies.permanent[:"buicheck"] = params[:data5][:"buicheck"]
+    (1..8).each do |i|
+      cookies.permanent[:"tero#{i}"] = params[:data5][:"tero#{i}"]
+
+    end
+    (1..8).each do |i|
+      cookies.permanent[:"sterl#{i}"] = params[:data5][:"sterl#{i}"]
+
+    end
+    (1..8).each do |i|
+      cookies.permanent[:"mohaka#{i}"] = params[:data5][:"mohaka#{i}"]
+
+    end
+    (1..8).each do |i|
+      cookies.permanent[:"lojak#{i}"] = params[:data5][:"lojak#{i}"]
+
+    end
+    (1..8).each do |i|
+      cookies.permanent[:"take#{i}"] = params[:data5][:"take#{i}"]
+
+    end
+    (1..8).each do |i|
+      cookies.permanent[:"jukk#{i}"] = params[:data5][:"jukk#{i}"]
+
+    end
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
   
   def converter
+    @buicheck = cookies[:"buicheck"]
+    @tero =[]
+    @sterl = []
+    @mohaka = []
+    @lojak = []
+    @take = []
+    @jukk = []
+    (1..8).each do |i|
+      @tero << cookies[:"tero#{i}"]
+    end
+    (1..8).each do |i|
+      @sterl << cookies[:"sterl#{i}"]
+    end
+    (1..8).each do |i|
+      @mohaka << cookies[:"mohaka#{i}"]
+    end
+    (1..8).each do |i|
+      @lojak << cookies[:"lojak#{i}"]
+    end
+    (1..8).each do |i|
+      @take << cookies[:"take#{i}"]
+    end
+    (1..8).each do |i|
+      @jukk << cookies[:"jukk#{i}"]
+    end
+    
     @input = params[:data4][:log]
     @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",")
     @input3 = @input2.split(",")
@@ -51,6 +106,13 @@ class StaticPagesController < ApplicationController
     (0..49).reverse_each do |i|
       @name.delete_at(i) if @tmp[i][1] == nil
     end  
+    
+    kaiseki
+    @checker = []
+    if @buicheck == "1"
+      buicheck
+    end  
+    
     
     respond_to do |format|
       format.html { redirect_to root_path }

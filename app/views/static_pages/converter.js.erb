@@ -21,7 +21,18 @@ $("#bar").html(
 ','+
 '<%= @name[i][4] %>' +
 '\n'+
-'<% end %>'
+'<% end %>'+
+'\n'+
+'average dmg = <%= @avg2 %>'
 );
 
-
+$("#bar2").html(
+'<% (0..(@checker.size()-1)).each do |i| %>'+
+'<%= @checker[i] %>' +
+'<% if i%4 == 3 %>'+
+'\n'+
+'<% else %>'+
+','+
+'<% end %>'+
+'<% end %>'
+);
