@@ -95,7 +95,7 @@ module StaticPagesHelper
     end
     if @tero[4] == "1"
       part << 11
-      part << 21
+      part << 19
     end
     if @tero[5] == "1"
       part << 9
@@ -148,7 +148,7 @@ module StaticPagesHelper
     end
     if @sterl[4] == "1"
       part << 11
-      part << 21
+      part << 19
     end
     if @sterl[5] == "1"
       part << 9
@@ -201,7 +201,7 @@ module StaticPagesHelper
     end
     if @mohaka[4] == "1"
       part << 11
-      part << 21
+      part << 19
     end
     if @mohaka[5] == "1"
       part << 9
@@ -254,7 +254,7 @@ module StaticPagesHelper
     end
     if @jukk[4] == "1"
       part << 11
-      part << 21
+      part << 19
     end
     if @jukk[5] == "1"
       part << 9
@@ -307,7 +307,7 @@ module StaticPagesHelper
     end
     if @lojak[4] == "1"
       part << 11
-      part << 21
+      part << 19
     end
     if @lojak[5] == "1"
       part << 9
@@ -360,7 +360,7 @@ module StaticPagesHelper
     end
     if @take[4] == "1"
       part << 11
-      part << 21
+      part << 19
     end
     if @take[5] == "1"
       part << 9
