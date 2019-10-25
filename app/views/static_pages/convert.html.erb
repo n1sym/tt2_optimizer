@@ -6,9 +6,8 @@
   <br>
 
   <%= f.label :ログをここにペースト %>
-  <%= f.text_area :log, class: 'form-control', id: "log" %>
+  <%= f.text_area :log, class: 'form-control', id: "log", value:"hey" %>
   <br>
-   
   <%= f.submit "変換",  class: "btn btn-info"%>
   
 <% end %>
@@ -17,6 +16,13 @@
 
 <textarea id="tete"></textarea>
 <button class="copy_code", href="javascript:void(0);">クリップボードにコピー</button>
+
+<textarea id="bar">Mussum ipsum cacilds...</textarea>
+
+<!-- Trigger -->
+<button class="btn btn-secondary clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bar">
+    Copy to clipboard
+</button>
 
 <script>
 
