@@ -1,12 +1,12 @@
 <% provide(:title, "LogConverter") %>
 <h1>レイドログ変換くん</h1>
-
+<hr>
 <%= form_for(:data4, url: converter_path, remote: true) do |f| %>
 
   <br>
 
   <%= f.label :ログをここにペースト %>
-  <%= f.text_area :log, class: 'form-control', id: "log", value:"hey" %>
+  <%= f.text_area :log, class: 'form-control', id: "log" %>
   <br>
   <%= f.submit "変換",  class: "btn btn-info"%>
   
@@ -14,14 +14,12 @@
 
 <span id="kakunin_form"> </span><br>
 
-<textarea id="tete"></textarea>
-<button class="copy_code">クリップボードにコピー</button>
 
-<textarea id="bar">test</textarea>
+<textarea id="bar"></textarea>
 
 <!-- Trigger -->
-<button class="btn btn-info clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bar">
-    Copy to clipboard
+<button class="btn btn-default clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bar">
+    コピーする
 </button>
 
 <script>
@@ -40,7 +38,7 @@ $('.copy_code').on('touchstart click', function () {
 <br>
 
 <br>
-<p>スマホからはコピーボタンが動かない模様です。調査中。</p>
+
 <hr>
 <p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
 		   </p>
