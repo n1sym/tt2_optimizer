@@ -19,6 +19,7 @@ class StaticPagesController < ApplicationController
   
   def converter2
     cookies.permanent[:"buicheck"] = params[:data5][:"buicheck"]
+    cookies.permanent[:"kagen"] = params[:data5][:"kagen"]
     (1..8).each do |i|
       cookies.permanent[:"tero#{i}"] = params[:data5][:"tero#{i}"]
 
@@ -51,6 +52,7 @@ class StaticPagesController < ApplicationController
   
   def converter
     @buicheck = cookies[:"buicheck"]
+    @kagen = cookies[:"kagen"]
     @tero =[]
     @sterl = []
     @mohaka = []
@@ -113,6 +115,27 @@ class StaticPagesController < ApplicationController
       buicheck
     end  
     
+    (0..((@checker.size()/4)-1)).each do |i|
+      k=4*i+3
+      dmg = 0
+      if (@checker[k]).include?("M")
+        dmg = (@checker[k]).to_f * 1000000
+      elsif (@checker[k]).include?("K")
+        dmg = (@checker[k]).to_f * 1000
+      else
+        dmg = (@checker[k]).to_f
+      end
+      
+      if dmg < (@kagen).to_f
+        @checker[k] = "-"
+        @checker[k-1] = "-"
+        @checker[k-2] = "-"
+        @checker[k-3] = "-"
+      end  
+    end  
+    (0..(@checker.size()-1)).reverse_each do |i|
+      @checker.delete_at(i) if @checker[i] == "-"
+    end  
     
     respond_to do |format|
       format.html { redirect_to root_path }

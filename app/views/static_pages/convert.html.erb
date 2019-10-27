@@ -14,6 +14,9 @@
     <label>
     <%= f.check_box :"buicheck" , id: "afhave", checked: ischeck(cookies[:"buicheck"]) %> 禁止部位をチェックする
     </label>
+    <br><br><label class="inline">
+    <%= f.label :検出する下限ダメージ %>
+   <%= f.number_field :kagen, class: 'form-control', id: "kagen",  placeholder: "20000", value: cookies[:kagen] %></label>
 <br><br>
     <%= image_tag("bangou.png", width:"240px") %><br><br>
    <%= f.label :"Terro" %>
