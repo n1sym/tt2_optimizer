@@ -111,15 +111,15 @@ module StaticPagesHelper
     end  
     
     (0..999).each do |i|
-      if @arr[i][3] == nil then
+      if @arr[i][4] == nil then
         break
       end
-      if (@arr[i][3]).include?("Terro") || (@arr[i][3]).include?("テロー")
+      if (@arr[i][4]).include?("Terro") || (@arr[i][4]).include?("テロー")
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
               @checker << @arr[i][0]
-              @checker << @arr[i][3]
+              @checker << @arr[i][4]
               @checker << @arr[0][j]
               @checker << @arr[i][j]
             end  
@@ -164,15 +164,15 @@ module StaticPagesHelper
     end  
     
     (0..999).each do |i|
-      if @arr[i][3] == nil then
+      if @arr[i][4] == nil then
         break
       end
-      if (@arr[i][3]).include?("Sterl") || (@arr[i][3]).include?("スタール") 
+      if (@arr[i][4]).include?("Sterl") || (@arr[i][4]).include?("スタール") 
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
               @checker << @arr[i][0]
-              @checker << @arr[i][3]
+              @checker << @arr[i][4]
               @checker << @arr[0][j]
               @checker << @arr[i][j]
             end  
@@ -217,15 +217,15 @@ module StaticPagesHelper
     end  
     
     (0..999).each do |i|
-      if @arr[i][3] == nil then
+      if @arr[i][4] == nil then
         break
       end
-      if (@arr[i][3]).include?("Mohaca") || (@arr[i][3]).include?("モハカ")
+      if (@arr[i][4]).include?("Mohaca") || (@arr[i][4]).include?("モハカ")
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
               @checker << @arr[i][0]
-              @checker << @arr[i][3]
+              @checker << @arr[i][4]
               @checker << @arr[0][j]
               @checker << @arr[i][j]
             end  
@@ -270,15 +270,15 @@ module StaticPagesHelper
     end  
     
     (0..999).each do |i|
-      if @arr[i][3] == nil then
+      if @arr[i][4] == nil then
         break
       end
-      if (@arr[i][3]).include?("Jukk") || (@arr[i][3]).include?("ジャック")
+      if (@arr[i][4]).include?("Jukk") || (@arr[i][4]).include?("ジャック")
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
               @checker << @arr[i][0]
-              @checker << @arr[i][3]
+              @checker << @arr[i][4]
               @checker << @arr[0][j]
               @checker << @arr[i][j]
             end  
@@ -323,15 +323,15 @@ module StaticPagesHelper
     end  
     
     (0..999).each do |i|
-      if @arr[i][3] == nil then
+      if @arr[i][4] == nil then
         break
       end
-      if (@arr[i][3]).include?("Lojak") || (@arr[i][3]).include?("ロジャク")
+      if (@arr[i][4]).include?("Lojak") || (@arr[i][4]).include?("ロジャク")
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
               @checker << @arr[i][0]
-              @checker << @arr[i][3]
+              @checker << @arr[i][4]
               @checker << @arr[0][j]
               @checker << @arr[i][j]
             end  
@@ -376,15 +376,15 @@ module StaticPagesHelper
     end  
     
     (0..999).each do |i|
-      if @arr[i][3] == nil then
+      if @arr[i][4] == nil then
         break
       end
-      if (@arr[i][3]).include?("Takedar") || (@arr[i][3]).include?("テーケダー")
+      if (@arr[i][4]).include?("Takedar") || (@arr[i][4]).include?("テーケダー")
         (6..21).each do |j|
           if part.include?(j)
             if (@arr[i][j]) != "0"
               @checker << @arr[i][0]
-              @checker << @arr[i][3]
+              @checker << @arr[i][4]
               @checker << @arr[0][j]
               @checker << @arr[i][j]
             end  
@@ -405,14 +405,7 @@ module StaticPagesHelper
       if (@name[i][3]).to_i == 0 then
         break
       end
-      
-      if (@name[i][4]).include?("M")
-        dmg = (@name[i][4]).to_f * 1000000
-      elsif (@name[i][4]).include?("K")
-        dmg = (@name[i][4]).to_f * 1000
-      else
-        dmg = (@name[i][4]).to_f
-      end
+      dmg = (@name[i][4]).to_f
       avg = dmg / (@name[i][3]).to_i
       @sum += dmg
       @attacks += (@name[i][3]).to_i

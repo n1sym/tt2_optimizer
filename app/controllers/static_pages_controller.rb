@@ -89,43 +89,41 @@ class StaticPagesController < ApplicationController
       end
     end  
     @count = 0
-    (0..20).each do |i|
-      if @arr[i][0] == "" then
+    name = @arr[1][0]
+    (1..20).each do |i|
+      if @arr[i][0] != @arr[1][0] then
         break
       end
       @count += 1
     end
+    
+
     @name = Array.new(50){ Array.new(5) }
     (0..49).each do |i|
-      k = 1 + @count*i
+      k = @count*(i+1)
       @name[i][0] = i+1
       @name[i][1] = @arr[k][0]
       @name[i][2] = @arr[k][1]
-      @name[i][3] = @arr[k][4]
+      @name[i][3] = @arr[k][2]
       @name[i][4] = @arr[k][5]
     end
     @tmp = @name
     (0..49).reverse_each do |i|
       @name.delete_at(i) if @tmp[i][1] == nil
     end  
-    
+
     kaiseki
     @checker = []
     if @buicheck == "1"
       buicheck
     end  
+    @invalid = 0
     
     (0..((@checker.size()/4)-1)).each do |i|
       k=4*i+3
       dmg = 0
-      if (@checker[k]).include?("M")
-        dmg = (@checker[k]).to_f * 1000000
-      elsif (@checker[k]).include?("K")
-        dmg = (@checker[k]).to_f * 1000
-      else
-        dmg = (@checker[k]).to_f
-      end
-      
+      dmg = (@checker[k]).to_f
+      @invalid += dmg
       if dmg < (@kagen).to_f
         @checker[k] = "-"
         @checker[k-1] = "-"
@@ -136,11 +134,12 @@ class StaticPagesController < ApplicationController
     (0..(@checker.size()-1)).reverse_each do |i|
       @checker.delete_at(i) if @checker[i] == "-"
     end  
-    
+
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js
     end
+  
   end
   
   def optimiser

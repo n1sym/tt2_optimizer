@@ -1,4 +1,5 @@
 
+
 $("#bar").html(
 'Rank' +
 ','+
@@ -14,8 +15,7 @@ $("#bar").html(
 '<%= @name[i][0] %>' +
 ','+
 '<%= @name[i][1] %>' +
-','+
-'<%= @name[i][2] %>' +
+
 ','+
 '<%= @name[i][3] %>' +
 ','+
@@ -23,7 +23,7 @@ $("#bar").html(
 '\n'+
 '<% end %>'+
 '\n'+
-'average dmg = <%= @avg2 %>'
+'average dmg = <%= @avg2.to_s(:delimited) %>'
 );
 
 $("#bar2").html(
@@ -34,5 +34,7 @@ $("#bar2").html(
 '<% else %>'+
 ','+
 '<% end %>'+
-'<% end %>'
+'<% end %>'+
+'\n'+
+'total invalid dmg = <%= @invalid.to_s(:delimited) %>'
 );
