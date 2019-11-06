@@ -89,7 +89,7 @@ class StaticPagesController < ApplicationController
       end
     end  
     @count = 0
-    name = @arr[1][0]
+
     (1..20).each do |i|
       if @arr[i][0] != @arr[1][0] then
         break

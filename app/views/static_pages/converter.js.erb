@@ -15,7 +15,8 @@ $("#bar").html(
 '<%= @name[i][0] %>' +
 ','+
 '<%= @name[i][1] %>' +
-
+','+
+'<%= @name[i][2] %>' +
 ','+
 '<%= @name[i][3] %>' +
 ','+
@@ -23,7 +24,7 @@ $("#bar").html(
 '\n'+
 '<% end %>'+
 '\n'+
-'average dmg = <%= @avg2.to_s(:delimited) %>'
+'average dmg = <%= @avg2 %>'
 );
 
 $("#bar2").html(
@@ -36,5 +37,5 @@ $("#bar2").html(
 '<% end %>'+
 '<% end %>'+
 '\n'+
-'total invalid dmg = <%= @invalid.to_s(:delimited) %>'
+'total invalid dmg = <%= @invalid %>'
 );
