@@ -100,12 +100,16 @@ class StaticPagesController < ApplicationController
 
     @name = Array.new(50){ Array.new(5) }
     (0..49).each do |i|
+      total = 0
       k = @count*(i+1)
       @name[i][0] = i+1
       @name[i][1] = @arr[k][0]
       @name[i][2] = @arr[k][1]
       @name[i][3] = @arr[k][2]
-      @name[i][4] = @arr[k][5]
+      (@count*(i)+1..k).each do |j|
+        total += (@arr[j][5]).to_i
+      end  
+      @name[i][4] = total
     end
     @tmp = @name
     (0..49).reverse_each do |i|
