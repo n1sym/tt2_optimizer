@@ -436,7 +436,7 @@ module StaticPagesHelper
               @percent[i+100][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
               @percent[i+100][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
              end
-             if (@arr[j][4]).include?("Mohaca") || (@arr[j][4]).include?("モハカ")
+             if (@arr[j][4]).include?("Mohaca") || (@arr[j][4]).include?("モハカー")
               @percent[i+200][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
               @percent[i+200][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
               @percent[i+200][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
