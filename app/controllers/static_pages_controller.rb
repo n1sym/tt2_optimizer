@@ -89,15 +89,17 @@ class StaticPagesController < ApplicationController
       end
     end  
     @count = 0
+    @titan = []
 
     (1..20).each do |i|
       if @arr[i][0] != @arr[1][0] then
         break
       end
       @count += 1
+      @titan << @arr[i][4]
     end
-    
-
+    @titan.uniq!
+    @percent = Array.new(1000,0){ Array.new(4,0) }
     @name = Array.new(50){ Array.new(5) }
     (0..49).each do |i|
       total = 0
@@ -115,7 +117,7 @@ class StaticPagesController < ApplicationController
     (0..49).reverse_each do |i|
       @name.delete_at(i) if @tmp[i][1] == nil
     end  
-
+    perce_check
     kaiseki
     @checker = []
     if @buicheck == "1"

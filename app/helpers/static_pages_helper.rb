@@ -417,6 +417,69 @@ module StaticPagesHelper
     @avg2 = @avg2.floor(1).to_f
   end
   
+  def perce_check
+    
+    (0..(@name.size()-1)).each do |i|
+      m = @count
+      (m*(i)+1..m*(i+1)).each do |j|
+        (6..21).each do |k|
+          if @arr[j][k] != "0"
+             if (@arr[j][4]).include?("Terro") || (@arr[j][4]).include?("テロー")
+              @percent[i][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
+              @percent[i][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
+              @percent[i][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
+              @percent[i][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
+             end
+             if (@arr[j][4]).include?("Sterl") || (@arr[j][4]).include?("スタール")
+              @percent[i+100][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
+              @percent[i+100][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
+              @percent[i+100][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
+              @percent[i+100][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
+             end
+             if (@arr[j][4]).include?("Mohaca") || (@arr[j][4]).include?("モハカ")
+              @percent[i+200][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
+              @percent[i+200][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
+              @percent[i+200][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
+              @percent[i+200][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
+             end
+             if (@arr[j][4]).include?("Lojak") || (@arr[j][4]).include?("ロジャク")
+              @percent[i+300][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
+              @percent[i+300][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
+              @percent[i+300][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
+              @percent[i+300][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
+             end
+             if (@arr[j][4]).include?("Takedar") || (@arr[j][4]).include?("テーケダー")
+              @percent[i+400][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
+              @percent[i+400][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
+              @percent[i+400][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
+              @percent[i+400][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
+             end
+             if (@arr[j][4]).include?("Jukk") || (@arr[j][4]).include?("ジャック")
+              @percent[i+500][0] += (@arr[j][k]).to_i if k==6 || k==14 #head
+              @percent[i+500][1] += (@arr[j][k]).to_i if k==7 || k==15 #torso
+              @percent[i+500][2] += (@arr[j][k]).to_i if k==8 || k==10 || k==18 || k==16 || k==11 || k==19 || k==9 || k==17 #arm
+              @percent[i+500][3] += (@arr[j][k]).to_i if (k==12 || k==20 || k==13 || k==21) #leg
+             end
+          end
+        end  
+      end
+      (0..5).each do |l|
+        r = 100*l + i
+        total = @percent[r][0] + @percent[r][1] + @percent[r][2] + @percent[r][3]
+        if total != 0
+          @percent[r][0] = ((@percent[r][0] / total.to_f)*100).round(1)
+          @percent[r][1] = ((@percent[r][1] / total.to_f)*100).round(1)
+          @percent[r][2] = ((@percent[r][2] / total.to_f)*100).round(1)
+          @percent[r][3] = ((@percent[r][3] / total.to_f)*100).round(1)
+        end  
+      end  
+      
+      
+    end 
+    
+  end
+  
+  
   # 計算
   
   def keisan

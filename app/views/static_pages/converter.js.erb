@@ -39,3 +39,148 @@ $("#bar2").html(
 '\n'+
 'total invalid dmg = <%= @invalid %>'
 );
+
+$("#bar3").html(
+'<% if @titan.include?("Terro the Seeker") || @titan.include?("テロー") %>'+
+'Terro'+
+'\n'+
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[i][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[i][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+
+'<% if @titan.include?("Sterl the Unmaker") || @titan.include?("スタール") %>'+
+'Sterl'+
+'\n'+
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[i+100][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[i+100][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+
+'<% if @titan.include?("Mohaca the Gale") || @titan.include?("モハカー") %>'+
+'Mohaca'+
+'\n'+
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[i+200][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[i+200][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+
+'<% if @titan.include?("Lojak the Fissure") || @titan.include?("ロジャク") %>'+
+'Lojak'+
+'\n'+
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[i+300][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[i+300][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+
+'<% if @titan.include?("Takedar the Reborn") || @titan.include?("テーケダー") %>'+
+'Takedar'+
+'\n'+
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[i+400][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[i+400][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+
+'<% if @titan.include?("Jukk the overseer") || @titan.include?("ジャック") %>'+
+'Jukk'+
+'\n'+
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[i+500][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[i+500][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'<% end %>'
+);
