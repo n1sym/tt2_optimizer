@@ -1,7 +1,7 @@
 <% provide(:title, "Cards") %>
 
 <h1>レイドカード 日本語訳</h1>
-<p><b>v3.1.1 対応</b></p>
+<p><b>20191114 : v3.4.2 対応</b></p>
 <br>
 <p> 
 カードのタイプ
@@ -133,6 +133,20 @@
   </tr>
 </table>
 <br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("pc.png", width:"55px") %></td>
+    <td>Psychic Chain / サイキックチェーン</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("burst.png", width:"20px") %> Burst / バーストカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">手足部位に対して特効効果を持つ。<br>
+<font color="#808080">Psychic Chain deals extra damage when used against the Titan Lord's Limbs.</font></td>
+  </tr>
+</table>
+<br>
 <br>
 <table>
   <tr>
@@ -231,6 +245,20 @@
   <tr>
      <td colspan="2">時間経過でダメージ上昇。この効果は同じ部位で発動している放射能すべてに掛かる。<br>
 <font color="#808080">For each second a part is afflicted by Radioactivity, all Radioactivity stacks on that part will deal additional damage per second.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("rs.png", width:"55px") %></td>
+    <td>Ravenous Swarm / 貪欲群れ</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("affliction.png", width:"20px") %> Affliction / 苦悩カード</td>
+  </tr>
+  <tr>
+     <td colspan="2">攻撃している部位でこのカードのスタック数が最大になった時、過剰分のスタックが他の部位に積まれる。<br>
+<font color="#808080">When a part is afflicted with the maximum number of Swarm stacks, all future Swarm stacks will find a random target.</font></td>
   </tr>
 </table>
 <br>
@@ -334,7 +362,34 @@
   </tr>
 </table>
 <br>
-
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("gv.png", width:"55px") %></td>
+    <td>Grasping Vines / ブドウの木を把握</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">胴部位へのダメージ上昇。<br>
+<font color="#808080">which incleases Raid Damage dealt to the Titan Lord's Limbs.</font></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td rowspan="2" width="70px"><%= image_tag("top.png", width:"55px") %></td>
+    <td>Totem of Power / ブドウの木を把握</td>
+  </tr>
+  <tr>
+    <td><%= image_tag("support.png", width:"20px") %> Support / サポートカード</td>
+  </tr>
+  <tr>
+     <td colspan="2">画面を横切るフェアリーをタップするとその位置でトーテムが発動する。トーテムに一番近い部位へのダメージが上昇する。<br>
+<font color="#808080">Fairies will fly across the screen. Tapping on them will drop a Totem of Power. The Totem of Power will increase Raid Damage dealt to a Titan Lord part near it.</font></td>
+  </tr>
+</table>
+<br>
 
 
 
