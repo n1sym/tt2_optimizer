@@ -162,6 +162,9 @@ class StaticPagesController < ApplicationController
       @resultmax = @result.max
       @resultmin = @result.min
       @resultavg = @result.sum.fdiv(@result.length).floor
+      @resultsort = @result.sort
+      ue = (cnt*0.8).floor
+      @result20p = @resultsort[ue]
     end  
     respond_to do |format|
       format.html { redirect_to root_path }
