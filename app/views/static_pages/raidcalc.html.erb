@@ -1,20 +1,46 @@
 <% provide(:title, "RaidCalc") %>
 <h1>レイドダメージ算出くん </h1>
-
-
+<hr>
+　<br>
 <%= form_for(:carddata, url: raidcalcpost_path, remote: true) do |f| %>
-  <%= f.label :試行回数 %>
-  <%= f.text_field :n, class: 'form-control', id: "log" %>
+<%= f.label :カード１ %>
+　<%= f.select :card1, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control" %>
+　<%= f.label :レベル %>
+　<%= f.select :level1, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control" %>
+　<br>
+<%= f.label :カード２ %>
+　<%= f.select :card2, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control" %>
+　<%= f.label :レベル %>
+　<%= f.select :level2, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control" %>
+　<br>
+<%= f.label :カード３ %>
+　<%= f.select :card3, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control" %>
+　<%= f.label :レベル %>
+　<%= f.select :level3, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control" %>
+　<br><br>
+<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">詳細設定（VM,totem,バフ,デバフ）▼</button>
+   <div id="demo" class="collapse">
+  <br>
+  <%= f.label :骨の部位数 %>
+  <%= f.number_field :totem, class: 'form-control', id: "log" %>
+  <br>
+  <%= f.label :トーテムのスタック数 %>
+  <%= f.number_field :totem, class: 'form-control', id: "log" %>
+   </div>
+  <br>
 
   <br>
   <%= f.submit "計算",  class: "btn btn-info"%>
 <% end %>
 <br>
 <br>
-<span id="#test1">暫定的に、部位バースト8,部位サポ9,層サポ9で計算中（試行回数は1000まで）</span>
+<span id="#test1">部位特化効果は一律で発動します。試行回数は500回。</span>
 <br><br>
 最大値：<span id="follow_form1"> </span><br>
 最小値：<span id="follow_form2"> </span><br>
 平均値：<span id="follow_form3"> </span><br>
-上から20%の値：<span id="follow_form4"> </span><br>
+上から10%の値：<span id="follow_form4"> </span><br>
+上から20%の値：<span id="follow_form5"> </span><br>
+上から30%の値：<span id="follow_form6"> </span><br>
+上から50%の値：<span id="follow_form7"> </span><br>
 <span id="follow_form"> </span><br>

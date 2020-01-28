@@ -153,9 +153,8 @@ class StaticPagesController < ApplicationController
   def raidcalcpost
     @calc_count = params[:carddata][:n]
     @result = []
-    cnt = @calc_count.to_i
-    if cnt <= 1000
-      (0..cnt).each do |i|
+    whatcard
+      (0..499).each do |i|
         raidcalc_core
         @result << @totaldamage
       end  
@@ -163,9 +162,15 @@ class StaticPagesController < ApplicationController
       @resultmin = @result.min
       @resultavg = @result.sum.fdiv(@result.length).floor
       @resultsort = @result.sort
-      ue = (cnt*0.8).floor
-      @result20p = @resultsort[ue]
-    end  
+      zyoui1 = (500*0.9).floor
+      zyoui2 = (500*0.8).floor
+      zyoui3 = (500*0.7).floor
+      zyoui4 = (500*0.5).floor
+      @result10p = @resultsort[zyoui1]
+      @result20p = @resultsort[zyoui2]
+      @result30p = @resultsort[zyoui3]
+      @result50p = @resultsort[zyoui4]
+
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js
