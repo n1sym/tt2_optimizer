@@ -1,0 +1,19 @@
+<% provide(:title, "RaidCalc") %>
+<h1>レイドダメージ算出くん </h1>
+
+
+<%= form_for(:carddata, url: raidcalcpost_path, remote: true) do |f| %>
+  <%= f.label :試行回数 %>
+  <%= f.text_field :n, class: 'form-control', id: "log" %>
+
+  <br>
+  <%= f.submit "計算",  class: "btn btn-info"%>
+<% end %>
+<br>
+<br>
+<span id="#test1">暫定的に、部位バースト8,部位サポ9,層サポ9で計算中（試行回数は1000まで）</span>
+<br><br>
+最大値：<span id="follow_form1"> </span><br>
+最小値：<span id="follow_form2"> </span><br>
+平均値：<span id="follow_form3"> </span><br>
+<span id="follow_form"> </span><br>

@@ -145,7 +145,28 @@ class StaticPagesController < ApplicationController
       format.html { redirect_to root_path }
       format.js
     end
+  end
   
+  def raidcalc
+  end
+  
+  def raidcalcpost
+    @calc_count = params[:carddata][:n]
+    @result = []
+    cnt = @calc_count.to_i
+    if cnt <= 1000
+      (0..cnt).each do |i|
+        raidcalc_core
+        @result << @totaldamage
+      end  
+      @resultmax = @result.max
+      @resultmin = @result.min
+      @resultavg = @result.sum.fdiv(@result.length).floor
+    end  
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
   
   def optimiser

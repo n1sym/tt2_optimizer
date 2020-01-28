@@ -8,6 +8,41 @@ module StaticPagesHelper
     x == s ? true : false
   end
   
+  def raidcalc_core
+    @stack1 = Array.new(600, 0)
+    @stack2 = Array.new(600, 0)
+    @stack3 = Array.new(600, 0)
+    @totaldamage = 0
+    @tapdamage = 214
+    
+    (0..599).each do |i|
+      #support_1_proc
+      if rand(1000) < 80 
+        tmp = i + 80
+        tmp = 599 if tmp > 599
+        (i..tmp).each do |j|
+          @stack1[j] = @stack1[j] + 1 if @stack1[j] < 3
+        end  
+      end
+      #support_2_proc
+      if rand(1000) < 80 
+        tmp = i + 80
+        tmp = 599 if tmp > 599
+        (i..tmp).each do |j|
+          @stack2[j] = @stack2[j] + 1 if @stack2[j] < 3
+        end  
+      end
+      #burst_proc
+      if rand(1000) < 120
+        @burstdmg = @tapdamage * ((100 + 62.4*@stack1[i]+ 56.9*@stack2[i])/100) *7.45*1.5
+        @totaldamage += @burstdmg
+      end 
+      #tapdamage_proc
+      @totaldamage += @tapdamage * ((100 + 62.4*@stack1[i]+ 56.9*@stack2[i])/100)
+    end
+    @totaldamage = @totaldamage.floor
+  end
+  
   def image_name(x)
     afname = [
    "Book of Shadows",
