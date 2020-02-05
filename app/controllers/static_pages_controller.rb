@@ -119,7 +119,7 @@ class StaticPagesController < ApplicationController
       @name.delete_at(i) if @tmp[i][1] == nil
     end  
     perce_check
-    layer_check
+    #layer_check
     kaiseki
     @checker = []
     if @buicheck == "1"
