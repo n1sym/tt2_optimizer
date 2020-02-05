@@ -100,6 +100,7 @@ class StaticPagesController < ApplicationController
     end
     @titan.uniq!
     @percent = Array.new(1000,0){ Array.new(4,0) }
+    @layer = Array.new(1000,0){ Array.new(2,0) }
     @name = Array.new(50){ Array.new(5) }
     (0..49).each do |i|
       total = 0
@@ -118,6 +119,7 @@ class StaticPagesController < ApplicationController
       @name.delete_at(i) if @tmp[i][1] == nil
     end  
     perce_check
+    layer_check
     kaiseki
     @checker = []
     if @buicheck == "1"
@@ -152,8 +154,18 @@ class StaticPagesController < ApplicationController
   
   def raidcalcpost
     @calc_count = params[:carddata][:n]
+    @card1 = cookies.permanent[:card1] = params[:carddata][:card1]
+    @card2 = cookies.permanent[:card2] = params[:carddata][:card2]
+    @card3 = cookies.permanent[:card3] = params[:carddata][:card3]
+    @level1 = cookies.permanent[:level1] = params[:carddata][:level1]
+    @level2 = cookies.permanent[:level2] = params[:carddata][:level2]
+    @level3 = cookies.permanent[:level3] = params[:carddata][:level3]
+    @buff = cookies.permanent[:buff] = params[:carddata][:buff]
+    @debuff = cookies.permanent[:debuff] = params[:carddata][:debuff]
+    @bone = cookies.permanent[:bone] = params[:carddata][:bone]
+    
     @result = []
-    whatcard
+    cardinputproc
       (0..499).each do |i|
         raidcalc_core
         @result << @totaldamage

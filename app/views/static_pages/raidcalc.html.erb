@@ -4,29 +4,31 @@
 　<br>
 <%= form_for(:carddata, url: raidcalcpost_path, remote: true) do |f| %>
 <%= f.label :カード１ %>
-　<%= f.select :card1, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control" %>
+　<%= f.select :card1, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control", :selected =>  cookies[:carc1] %>
 　<%= f.label :レベル %>
-　<%= f.select :level1, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control" %>
+　<%= f.select :level1, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control", :selected =>  cookies[:level1] %>
 　<br>
 <%= f.label :カード２ %>
-　<%= f.select :card2, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control" %>
+　<%= f.select :card2, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control", :selected =>  cookies[:card2] %>
 　<%= f.label :レベル %>
-　<%= f.select :level2, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control" %>
+　<%= f.select :level2, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control", :selected =>  cookies[:level2] %>
 　<br>
 <%= f.label :カード３ %>
-　<%= f.select :card3, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control" %>
+　<%= f.select :card3, [["SkullBash", "SkullBash"], ["MoonBeam", "MoonBeam"], ["Fragmentize", "Fragmentize"],["RazorWind", "RazorWind"], ["PsychicChain", "PsychicChain"] ,["InspiringForce", "InspiringForce"], ["CrushingInstinct", "CrushingInstinct"] ,["SoulFire", "SoulFire"] ,["VictoryMarch", "VictoryMarch"],["PrismaticRift", "PrismaticRift"],["AncestralFavor", "AncestralFavor"],["GraspingVines", "GraspingVines"],["TotemOfPower", "TotemOfPower"]], class:"form-control", :selected =>  cookies[:card3] %>
 　<%= f.label :レベル %>
-　<%= f.select :level3, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control" %>
+　<%= f.select :level3, [["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["6", "6"],["7", "7"],["8", "8"],["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]] , class:"form-control", :selected =>  cookies[:level3] %>
 　<br><br>
-<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">詳細設定（VM,totem,バフ,デバフ）▼</button>
-   <div id="demo" class="collapse">
+
+
+  <%= f.label :バフ　 %>
+　<%= f.select :buff, [["なし", "nobuff"], ["AllRaidDmg", "AllRaidDmg"], ["LayerDmg", "LayerDmg"],["PartDmg", "PartDmg"], ["BurstChance", "BurstChance"] ,["BurstDmg", "BurstDmg"], ["SupportEff", "SupportEff"] ], class:"form-control", :selected =>  cookies[:buff] %>
   <br>
-  <%= f.label :骨の部位数 %>
-  <%= f.number_field :totem, class: 'form-control', id: "log" %>
-  <br>
-  <%= f.label :トーテムのスタック数 %>
-  <%= f.number_field :totem, class: 'form-control', id: "log" %>
-   </div>
+  <%= f.label :デバフ %>
+　<%= f.select :debuff, [["なし", "nobuff"], ["AllRaidDmg", "AllRaidDmg"], ["LayerDmg", "LayerDmg"],["PartDmg", "PartDmg"], ["BurstChance", "BurstChance"] ,["BurstDmg", "BurstDmg"], ["SupportEff", "SupportEff"] ], class:"form-control", :selected =>  cookies[:debuff] %>
+  <br><br><%= f.label :骨の部位数 %>
+  <%= f.number_field :bone, class: 'form-control', id: "log", value: cookies[:bone]  %>
+
+
   <br>
 
   <br>

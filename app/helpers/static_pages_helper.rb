@@ -8,37 +8,61 @@ module StaticPagesHelper
     x == s ? true : false
   end
   
+  def cardinputproc
+    @flag_IF = true
+    @flag_CI = true
+    @flag_SB = true
+    @buff_supeff = 0
+    @buff_burstchance = 0
+    @debuff_burstchance = 0
+    
+  end
+  
   def raidcalc_core
-    @stack1 = Array.new(600, 0)
-    @stack2 = Array.new(600, 0)
-    @stack3 = Array.new(600, 0)
+    @stack_IF = Array.new(600, 0)
+    @stack_CI = Array.new(600, 0)
+    @stack_SF = Array.new(600, 0)
+    @stack_VM = Array.new(600, 0)
+    @stack_PR = Array.new(600, 0)
+    @stack_AF = Array.new(600, 0)
+    @stack_GV = Array.new(600, 0)
+    @stack_TOP = Array.new(600, 0)
     @totaldamage = 0
     @tapdamage = 214
     
     (0..599).each do |i|
-      #support_1_proc
-      if rand(1000) < 80 
-        tmp = i + 80
-        tmp = 599 if tmp > 599
-        (i..tmp).each do |j|
-          @stack1[j] = @stack1[j] + 1 if @stack1[j] < 3
-        end  
+      
+      #support_1_proc_InspiringForce
+      if @flag_IF
+        if rand(1000) < 80
+          tmp = i + 80
+          tmp = 599 if tmp > 599
+          (i..tmp).each do |j|
+            @stack_IF[j] = @stack_IF[j] + 1 if @stack_IF[j] < 3
+          end  
+        end
+      end  
+      
+      #support_2_proc_CrushingInstinct
+      if @flag_CI
+        if rand(1000) < 80
+          tmp = i + 80
+          tmp = 599 if tmp > 599
+          (i..tmp).each do |j|
+            @stack_CI[j] = @stack_CI[j] + 1 if @stack_CI[j] < 3
+          end  
+        end
       end
-      #support_2_proc
-      if rand(1000) < 80 
-        tmp = i + 80
-        tmp = 599 if tmp > 599
-        (i..tmp).each do |j|
-          @stack2[j] = @stack2[j] + 1 if @stack2[j] < 3
-        end  
-      end
-      #burst_proc
-      if rand(1000) < 120
-        @burstdmg = @tapdamage * ((100 + 62.4*@stack1[i]+ 56.9*@stack2[i])/100) *7.45*1.5
-        @totaldamage += @burstdmg
-      end 
+      
+      #burst_proc_skullBash
+      if @flag_SB
+        if rand(1000) < 120 * (1 + @buff_burstchance) * (1 - @debuff_burstchance) * (1.1)**(@stack_AF[i])
+          @burstdmg = @tapdamage * ((100 + 62.4*@stack_CI[i]+ 56.9*@stack_IF[i])/100) *@skullbash[@cardlvl["SkullBash"]]*1.5
+          @totaldamage += @burstdmg
+        end 
+      end  
       #tapdamage_proc
-      @totaldamage += @tapdamage * ((100 + 62.4*@stack1[i]+ 56.9*@stack2[i])/100)
+      @totaldamage += @tapdamage * ((100 + 62.4*@stack_CI[i]+ 56.9*@stack_IF[i])/100)
     end
     @totaldamage = @totaldamage.floor
   end
@@ -514,6 +538,51 @@ module StaticPagesHelper
     
   end
   
+  def layer_check
+    (0..(@name.size()-1)).each do |i|
+      m = @count
+      (m*(i)+1..m*(i+1)).each do |j|
+        (6..21).each do |k|
+          if @arr[j][k] != "0"
+             if (@arr[j][4]).include?("Terro") || (@arr[j][4]).include?("テロー")
+              @layer[i][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
+              @layer[i][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+             end
+             if (@arr[j][4]).include?("Sterl") || (@arr[j][4]).include?("スタール")
+              @layer[i+100][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
+              @layer[i+100][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+             end
+             if (@arr[j][4]).include?("Mohaca") || (@arr[j][4]).include?("モハカー")
+              @layer[i+200][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
+              @layer[i*200][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+             end
+             if (@arr[j][4]).include?("Lojak") || (@arr[j][4]).include?("ロジャク")
+              @layer[i+300][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
+              @layer[i+300][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+             end
+             if (@arr[j][4]).include?("Takedar") || (@arr[j][4]).include?("テーケダー")
+              @layer[i+400][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
+              @layer[i+400][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+             end
+             if (@arr[j][4]).include?("Jukk") || (@arr[j][4]).include?("ジャック")
+              @layer[i+500][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
+              @layer[i+500][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+             end
+          end
+        end  
+      end
+      (0..5).each do |l|
+        r = 100*l + i
+        total = @layer[r][0] + @layer[r][1]
+        if total != 0
+          @layer[r][0] = ((@layer[r][0] / total.to_f)*100).round(1)
+          @layer[r][1] = ((@layer[r][1] / total.to_f)*100).round(1)
+        end  
+      end  
+      
+      
+    end
+  end
   
   # 計算
   
