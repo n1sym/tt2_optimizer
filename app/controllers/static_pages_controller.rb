@@ -1,4 +1,8 @@
 class StaticPagesController < ApplicationController
+  
+require 'discordrb/webhooks'  
+WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZDEXR-RD4rpzG3IIgilFiJHjTF11MdMEdc56IHxe_ZfIy8Q0MZNZyMtHYB3V'.freeze
+
   def home
   end
 
@@ -79,7 +83,7 @@ class StaticPagesController < ApplicationController
     end
     
     @input = params[:data4][:log]
-    @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",")
+    @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",").gsub(/\n/, ",")
     @input3 = @input2.split(",")
     @arr = Array.new(1000){ Array.new(30) }
     (0..999).each do |i|
@@ -142,7 +146,16 @@ class StaticPagesController < ApplicationController
     (0..(@checker.size()-1)).reverse_each do |i|
       @checker.delete_at(i) if @checker[i] == "-"
     end  
-
+      
+    client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
+    client.execute do |builder|
+      builder.content = @name.join(',')
+      builder.add_embed do |embed|
+        embed.title = 'Embed title'
+        embed.description = 'Embed description'
+        embed.timestamp = Time.now
+      end
+    end
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js

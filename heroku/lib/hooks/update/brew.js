@@ -17,10 +17,10 @@ exports.brewHook = async function () {
     try {
         binPath = fs.realpathSync(path.join(brewRoot, 'bin/heroku'));
     }
-    catch (err) {
-        if (err.code === 'ENOENT')
+    catch (error) {
+        if (error.code === 'ENOENT')
             return;
-        throw err;
+        throw error;
     }
     let cellarPath;
     if (binPath && binPath.startsWith(path.join(brewRoot, 'Cellar'))) {
@@ -32,7 +32,7 @@ exports.brewHook = async function () {
         return fs.readJSON(path.join(cellarPath, 'INSTALL_RECEIPT.json'));
     };
     const needsMigrate = async () => {
-        let receipt = await fetchInstallReceipt();
+        const receipt = await fetchInstallReceipt();
         if (!receipt)
             return false;
         return receipt.source.tap === 'homebrew/core';

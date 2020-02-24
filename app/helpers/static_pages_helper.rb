@@ -571,14 +571,14 @@ module StaticPagesHelper
           end
         end  
       end
-      (0..5).each do |l|
-        r = 100*l + i
-        total = @layer[r][0] + @layer[r][1]
-        if total != 0
-          @layer[r][0] = ((@layer[r][0] / total.to_f)*100).round(1)
-          @layer[r][1] = ((@layer[r][1] / total.to_f)*100).round(1)
-        end  
-      end  
+      #(0..5).each do |l|
+      #  r = 100*l + i
+      #  total = @layer[r][0] + @layer[r][1]
+      #  if total != 0
+      #    @layer[r][0] = ((@layer[r][0] / total.to_f)*100).round(1)
+      #    @layer[r][1] = ((@layer[r][1] / total.to_f)*100).round(1)
+      #  end  
+      #end  
       
       
     end

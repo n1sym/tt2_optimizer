@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [7.26.2](https://github.com/heroku/cli/compare/v7.26.1...v7.26.2) (2019-06-27)
+# [7.38.0](https://github.com/heroku/cli/compare/v7.37.0...v7.38.0) (2020-02-06)
 
 **Note:** Version bump only for package heroku
 
@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [7.26.1](https://github.com/heroku/cli/compare/v7.26.0...v7.26.1) (2019-06-27)
+# [7.37.0](https://github.com/heroku/cli/compare/v7.36.3...v7.37.0) (2020-01-25)
 
 **Note:** Version bump only for package heroku
 
@@ -19,18 +19,99 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [7.26.0](https://github.com/heroku/cli/compare/v7.25.0...v7.26.0) (2019-06-26)
+## [7.36.3](https://github.com/heroku/cli/compare/v7.36.2...v7.36.3) (2020-01-21)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+## [7.36.2](https://github.com/heroku/cli/compare/v7.36.1...v7.36.2) (2020-01-21)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+## [7.36.1](https://github.com/heroku/cli/compare/v7.36.0...v7.36.1) (2020-01-21)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+# [7.36.0](https://github.com/heroku/cli/compare/v7.35.1...v7.36.0) (2020-01-20)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+## [7.35.1](https://github.com/heroku/cli/compare/v7.35.0...v7.35.1) (2019-12-19)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+# [7.35.0](https://github.com/heroku/cli/compare/v7.34.2...v7.35.0) (2019-11-07)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+## [7.34.2](https://github.com/heroku/cli/compare/v7.34.1...v7.34.2) (2019-11-05)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+## [7.34.1](https://github.com/heroku/cli/compare/v7.34.0...v7.34.1) (2019-11-05)
+
+
+### Bug Fixes
+
+* **cli:** missing apps plugin in oclif plugins list ([81db582](https://github.com/heroku/cli/commit/81db582))
+
+
+
+
+
+# [7.34.0](https://github.com/heroku/cli/compare/v7.33.3...v7.34.0) (2019-11-05)
+
+
+### Bug Fixes
+
+* **cli:** remove heroku-redis user installs ([#1357](https://github.com/heroku/cli/issues/1357)) ([6d409e2](https://github.com/heroku/cli/commit/6d409e2))
 
 
 ### Features
 
-* **local:** add oclif version of local plugin ([#1252](https://github.com/heroku/cli/issues/1252)) ([eb77c7c](https://github.com/heroku/cli/commit/eb77c7c))
+* **apps:** add oclif version of domains cmds  ([#1361](https://github.com/heroku/cli/issues/1361)) ([66c7c4e](https://github.com/heroku/cli/commit/66c7c4e))
+* **cli:** bump node version for oclif.update.node.version to node 12 ([#1368](https://github.com/heroku/cli/issues/1368)) ([72668ba](https://github.com/heroku/cli/commit/72668ba))
 
 
 
 
 
-# [7.25.0](https://github.com/heroku/cli/compare/v7.24.4...v7.25.0) (2019-06-03)
+## [7.33.3](https://github.com/heroku/cli/compare/v7.33.2...v7.33.3) (2019-10-09)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+## [7.33.2](https://github.com/heroku/cli/compare/v7.33.1...v7.33.2) (2019-10-09)
 
 **Note:** Version bump only for package heroku
 
@@ -38,10 +119,135 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [7.24.4](https://github.com/heroku/cli/compare/v7.24.3...v7.24.4) (2019-05-22)
+## [7.33.1](https://github.com/heroku/cli/compare/v7.33.0...v7.33.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* **cli:** bring back v5 run plugin ([#1349](https://github.com/heroku/cli/issues/1349)) ([15234fe](https://github.com/heroku/cli/commit/15234fe))
+
+
+
+
+
+# [7.33.0](https://github.com/heroku/cli/compare/v7.32.0...v7.33.0) (2019-10-01)
+
+
+### Features
+
+* **pipelines:** convert pipelines:setup to oclif ([#1344](https://github.com/heroku/cli/issues/1344)) ([9f94577](https://github.com/heroku/cli/commit/9f94577))
+
+
+
+
+
+# [7.32.0](https://github.com/heroku/cli/compare/v7.31.2...v7.32.0) (2019-10-01)
+
+
+### Features
+
+* **run:** covert run plugin to oclif ([#1317](https://github.com/heroku/cli/issues/1317)) ([49b19f1](https://github.com/heroku/cli/commit/49b19f1))
+
+
+
+
+
+## [7.31.2](https://github.com/heroku/cli/compare/v7.31.1...v7.31.2) (2019-09-30)
+
+
+### Bug Fixes
+
+* **cli:** uninstall old autocomplete plugin ([#1345](https://github.com/heroku/cli/issues/1345)) ([8dc20e7](https://github.com/heroku/cli/commit/8dc20e7))
+
+
+
+
+
+## [7.31.1](https://github.com/heroku/cli/compare/v7.31.0...v7.31.1) (2019-09-30)
 
 **Note:** Version bump only for package heroku
 
+
+
+
+
+# [7.31.0](https://github.com/heroku/cli/compare/v7.30.1...v7.31.0) (2019-09-30)
+
+
+### Bug Fixes
+
+* **pipelines-v5:** keep pipelines:setup v5 cmd ([#1340](https://github.com/heroku/cli/issues/1340)) ([9658f6a](https://github.com/heroku/cli/commit/9658f6a))
+
+
+### Features
+
+* **pipelines:** finishing converting pipelines plugin to oclif ([#1310](https://github.com/heroku/cli/issues/1310)) ([42adcbb](https://github.com/heroku/cli/commit/42adcbb))
+
+
+
+
+
+## [7.30.1](https://github.com/heroku/cli/compare/v7.30.0...v7.30.1) (2019-09-24)
+
+**Note:** Version bump only for package heroku
+
+
+
+
+
+# [7.30.0](https://github.com/heroku/cli/compare/v7.29.0...v7.30.0) (2019-09-16)
+
+
+### Features
+
+* **run:** convert run-v5 plugin to oclif ([#1289](https://github.com/heroku/cli/issues/1289)) ([8df77c0](https://github.com/heroku/cli/commit/8df77c0)), closes [#1302](https://github.com/heroku/cli/issues/1302)
+
+
+
+
+
+# [7.29.0](https://github.com/heroku/cli/compare/v7.28.0...v7.29.0) (2019-08-21)
+
+
+### Features
+
+* **webhooks:** add oclif version of webhooks plugin ([#1253](https://github.com/heroku/cli/issues/1253)) ([110c516](https://github.com/heroku/cli/commit/110c516))
+
+
+
+
+
+<a name="7.28.0"></a>
+# [7.28.0](https://github.com/heroku/cli/compare/v7.27.1...v7.28.0) (2019-08-19)
+
+
+
+
+**Note:** Version bump only for package heroku
+
+<a name="7.27.1"></a>
+## [7.27.1](https://github.com/heroku/cli/compare/v7.27.0...v7.27.1) (2019-07-30)
+
+
+### Bug Fixes
+
+* **cli:** upgrade v7 plugin-pipelines ([13ca934](https://github.com/heroku/cli/commit/13ca934))
+
+
+
+
+<a name="7.27.0"></a>
+# [7.27.0](https://github.com/heroku/cli/compare/v7.26.2...v7.27.0) (2019-07-30)
+
+
+### Bug Fixes
+
+* pin qqjs ([c04fad3](https://github.com/heroku/cli/commit/c04fad3))
+
+
+### Features
+
+* **pipelines:** add reviewapps:enable command ([#1269](https://github.com/heroku/cli/issues/1269)) ([c9b7dbb](https://github.com/heroku/cli/commit/c9b7dbb))
 
 
 
