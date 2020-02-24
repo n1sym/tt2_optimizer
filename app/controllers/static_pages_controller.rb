@@ -149,7 +149,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
       
     client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
     client.execute do |builder|
-      builder.content = @name.join(',')
+      builder.content = @name.join(',') + ", avg:" + @avg2.to_s
       builder.add_embed do |embed|
         embed.title = 'Embed title'
         embed.description = 'Embed description'
