@@ -146,10 +146,28 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     (0..(@checker.size()-1)).reverse_each do |i|
       @checker.delete_at(i) if @checker[i] == "-"
     end  
-      
+    
+    @name_export = ""
+    (0..(@name.size()-1)).each do |i|
+      @name_export += @name[i][0].to_s
+      @name_export += ","
+      @name_export += @name[i][1].to_s
+      @name_export += ","
+      @name_export += @name[i][2].to_s
+      @name_export += ","
+      @name_export += @name[i][3].to_s
+      @name_export += ","
+      @name_export += @name[i][4].to_s
+      @name_export += ","
+      @name_export += ((@name[i][4]).to_i/(@name[i][3]).to_i).round(3).to_s
+      @name_export += "\n"
+    end
+    
+    stre = @name.join("\n") + ", avg:" + @avg2.to_s
+    
     client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
     client.execute do |builder|
-      builder.content = @name.join(',') + ", avg:" + @avg2.to_s
+      builder.content = @name_export
       builder.add_embed do |embed|
         embed.title = 'Embed title'
         embed.description = 'Embed description'
