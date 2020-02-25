@@ -162,7 +162,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
       @name_export += ((@name[i][4]).to_i/(@name[i][3]).to_i).round(3).to_s
       @name_export += "\n"
     end
-    
+     @name_export += @avg2.to_s
     stre = @name.join("\n") + ", avg:" + @avg2.to_s
     
     client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
