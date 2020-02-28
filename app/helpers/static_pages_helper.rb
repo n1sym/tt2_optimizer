@@ -565,7 +565,7 @@ module StaticPagesHelper
              end
              if (@arr[j][4]).include?("Mohaca") || (@arr[j][4]).include?("モハカー")
               @layer[i+200][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
-              @layer[i*200][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
+              @layer[i+200][1] += (@arr[j][k]).to_i if k==14 || k==15 || k==16 || k==17 || k==18 || k==19 || k==20 || k==21 #body
              end
              if (@arr[j][4]).include?("Lojak") || (@arr[j][4]).include?("ロジャク")
               @layer[i+300][0] += (@arr[j][k]).to_i if k==6 || k==7 || k==8 || k==9 || k==10 || k==11 || k==12 || k==13 #armor
