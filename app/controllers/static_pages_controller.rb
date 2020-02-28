@@ -123,7 +123,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
       @name.delete_at(i) if @tmp[i][1] == nil
     end  
     perce_check
-    #layer_check
+    layer_check
     kaiseki
     @checker = []
     if @buicheck == "1"
@@ -163,7 +163,6 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
       @name_export += "\n"
     end
      @name_export += @avg2.to_s
-    stre = @name.join("\n") + ", avg:" + @avg2.to_s
     
     client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
     client.execute do |builder|

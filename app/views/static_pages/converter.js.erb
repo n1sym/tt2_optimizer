@@ -40,6 +40,47 @@ $("#bar2").html(
 'total invalid dmg = <%= @invalid %>'
 );
 
+$("#bar4").html(
+'Rank,Name,Head(%),Torso(%),Arm(%),Leg(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..3).each do |j| %>'+
+'<% if j < 3 %>'+
+'<%= @percent[600+i][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @percent[600+i][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'+
+'\n'+
+'Rank,Name,Armor(%),Body(%)'+
+'\n'+
+'<% (0..(@name.size()-1)).each do |i| %>'+
+'<%= @name[i][0] %>' +
+','+
+'<%= @name[i][1] %>' +
+','+
+'<% (0..1).each do |j| %>'+
+'<% if j < 1 %>'+
+'<%= @layer[i+600][j] %>' +
+'%,'+
+'<% else %>'+
+'<%= @layer[i+600][j] %>' +
+'%'+
+'<% end %>'+
+'<% end %>'+
+'\n'+
+'<% end %>'
+);
+
+
 $("#bar3").html(
 '<% if @titan.include?("Terro the Seeker") || @titan.include?("テロー") %>'+
 'Terro'+

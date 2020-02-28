@@ -525,6 +525,12 @@ module StaticPagesHelper
       (0..5).each do |l|
         r = 100*l + i
         total = @percent[r][0] + @percent[r][1] + @percent[r][2] + @percent[r][3]
+        
+          @percent[600+i][0] += @percent[r][0]
+          @percent[600+i][1] += @percent[r][1]
+          @percent[600+i][2] += @percent[r][2]
+          @percent[600+i][3] += @percent[r][3]
+        
         if total != 0
           @percent[r][0] = ((@percent[r][0] / total.to_f)*100).round(1)
           @percent[r][1] = ((@percent[r][1] / total.to_f)*100).round(1)
@@ -533,6 +539,11 @@ module StaticPagesHelper
         end  
       end  
       
+      total_total = @percent[600+i][0] + @percent[600+i][1] + @percent[600+i][2] + @percent[600+i][3]
+          @percent[600+i][0] = ((@percent[600+i][0] / total_total.to_f)*100).round(1)
+          @percent[600+i][1] = ((@percent[600+i][1] / total_total.to_f)*100).round(1)
+          @percent[600+i][2] = ((@percent[600+i][2] / total_total.to_f)*100).round(1)
+          @percent[600+i][3] = ((@percent[600+i][3] / total_total.to_f)*100).round(1)
       
     end 
     
@@ -571,16 +582,19 @@ module StaticPagesHelper
           end
         end  
       end
-      #(0..5).each do |l|
-      #  r = 100*l + i
-      #  total = @layer[r][0] + @layer[r][1]
-      #  if total != 0
-      #    @layer[r][0] = ((@layer[r][0] / total.to_f)*100).round(1)
-      #    @layer[r][1] = ((@layer[r][1] / total.to_f)*100).round(1)
-      #  end  
-      #end  
-      
-      
+      (0..5).each do |l|
+        r = 100*l + i
+        total = @layer[r][0] + @layer[r][1]
+          @layer[600+i][0] += @layer[r][0]
+          @layer[600+i][1] += @layer[r][1]
+        if total != 0
+          @layer[r][0] = ((@layer[r][0] / total.to_f)*100).round(1)
+          @layer[r][1] = ((@layer[r][1] / total.to_f)*100).round(1)
+        end  
+      end  
+      total_total = @layer[600+i][0] + @layer[600+i][1]
+          @layer[600+i][0] = ((@layer[600+i][0] / total_total.to_f)*100).round(1)
+          @layer[600+i][1] = ((@layer[600+i][1] / total_total.to_f)*100).round(1)
     end
   end
   

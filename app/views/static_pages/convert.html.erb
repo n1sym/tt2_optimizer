@@ -1,5 +1,5 @@
 <% provide(:title, "LogConverter") %>
-<h1>レイドログ変換くん</h1>
+<h1>レイドログ解析</h1>
 <hr>
 <p>新レイドログを旧式に変換するツール</p>
 <p>禁止部位を攻撃している人を抽出する機能を実装しました</p>
@@ -89,7 +89,15 @@
     クリップボードにコピー
 </button>
 <br><br>
-<p>攻撃部位パーセント表示</p>
+<p>攻撃部位パーセント表示(合計)</p>
+<textarea id="bar4"></textarea>
+
+<!-- Trigger -->
+<button class="btn btn-default clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bar4">
+    クリップボードにコピー
+</button>
+<br><br>
+<p>攻撃部位パーセント表示(タイタン別）</p>
 <textarea id="bar3"></textarea>
 
 <!-- Trigger -->
