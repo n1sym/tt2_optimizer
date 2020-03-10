@@ -633,6 +633,8 @@ module StaticPagesHelper
     (0..@r.size()-1).each do |i|
       cost_percent[i] = costweight[i]/costweight_sum;
     end
+    @afcost = 107 if @afcost.to_i > 107
+    @afcost.to_i
     @relican -= @af_cost[(@afcost.to_i)-1]
     ideal_relic = []
     ideal_relic[0] = @relican * @bos_percent

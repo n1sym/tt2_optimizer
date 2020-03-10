@@ -1,32 +1,24 @@
-
-
-<header class="navbar navbar-fixed-top navbar-default">
-  <div class="container">
-
-    <!-- 追記ここから-->
-    <div class="navbar-header">
-
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- 追記ここまで-->
-
-      <%= link_to "TapTitans2 ツール集", root_path, id: "logo" %>
-
-    <!-- 追記ここから-->
-    </div>
-    <!-- 追記ここまで-->
-
-    <nav>
-      <!-- ulタグ内に「id="navbar"」を追記、classに「navbar-collapse collapse」を追記 -->
-      <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
-        <li><%= link_to "トップページ",   root_path %></li>
-
-      </ul>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">TapTitans2 ツール集</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">トップページ<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/optimiser">AFオプティマイザー</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="optimiser2">AFオプティマイザー2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/convert">レイドログ変換</a>
+      </li>
+    </ul>
   </div>
-</header>
+</nav>
+
 

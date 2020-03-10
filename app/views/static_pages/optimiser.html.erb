@@ -1,24 +1,52 @@
 <% provide(:title, "Optimiser") %>
-
-<h1>簡易AFオプティマイザー</h1>
-
-<!-- タブ・メニュー -->
-<ul class="nav nav-tabs">
-	<li class="active"><a href="#sampleContentA" data-toggle="tab">説明</a></li>
-	<li><a href="#sampleContentT" data-toggle="tab">入力</a></li>
-
-	<li><a href="#sampleContentC" data-toggle="tab">結果</a></li>
-	<li><a href="#sampleContentE" data-toggle="tab">変更点</a></li>
-	<li><a href="#sampleContentH" data-toggle="tab">返信</a></li>
-
-	
-
+<br>
+<h4>簡易AFオプティマイザー</h4><br>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">説明</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">入力</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">結果</a>
+  </li>
 </ul>
-
-<!-- タブ内容 -->
-<div class="tab-content">
- <div class="tab-pane" id="sampleContentT">
-  <br>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  	<br>
+		<p>■ v2.2 (2019/12/10) </p><p>v3.2.5に対応しました。</p><p> エンチャントに関する問い合わせが多数きておりますが、
+		エンチャントは初期値がn倍になるだけなので結果に変わりはありません。また所持AF数の欄は総レリック量からAF発掘に使ったレリック量を引くために用いるだけなので、エンチャント解放後は特に気にしなくてもよいです。</p>
+		
+		<p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
+		   </p>
+		<p>返信は<a href="https://twitter.com/mr_nish_">twitter</a>で行っています。</p>
+		
+		<hr>
+		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
+		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p>
+		<p>できるだけ簡略化して設計したので、本家ツールとの誤差は1%前後あります。</p><hr>
+		<p>【使用方法】</p>
+		
+		<p>累計レリックはステータス(統計)欄で確認して入力してください。</p>
+		<p>影率は影の書に振ったレリック（AF説明欄から確認できます）を累計レリックで割った値のことです。</p>
+		<p>影率は各自で設定してください。特にこだわりが無い場合は0.5(50%)くらいが良いと思います。</p>
+		<p>またトーナメント中など影以外のAFにレリックを振りたい場合は、影の書に振ったレリックをそのまま入力してもらっても大丈夫です。</p>
+		<p>ヒーローの属性は、MS付近で最も強いヒーローの属性を入力してください。</p>
+		
+		<p>未所持AFがある場合は、AF選択タブから持っていないAFにチェックを入れてください</p><br>
+		<p></p>
+		<%= image_tag("relic22.png") %><br><br>
+		<%= image_tag("relic11.png") %><br><br>
+		
+		
+		
+		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a>までお願いします。</p>
+		
+  
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+   <br>
 	 
 		<%= form_for(:data, url: optimise_path, remote: true) do |f| %>
    <%= f.label :累計レリック %>
@@ -92,7 +120,9 @@
 
    
    <br><br>
-   <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">未所持AF選択 ▼</button>
+
+
+   <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#demo">未所持AF選択 ▼</button>
    <div id="demo" class="collapse">
     <br>
     持っていないAFにチェックをいれてください<br>画像クリックでチェックできます。<br>
@@ -129,53 +159,19 @@
 		<span id="#tsts_form"> </span>
 		
 　
-
-	</div>
-	
-	
-	<div class="tab-pane active" id="sampleContentA">
-		<br>
-		<p>■ v2.2 (2019/12/10) </p><p>v3.2.5に対応しました。</p><p> エンチャントに関する問い合わせが多数きておりますが、
-		エンチャントは初期値がn倍になるだけなので結果に変わりはありません。また所持AF数の欄は総レリック量からAF発掘に使ったレリック量を引くために用いるだけなので、エンチャント解放後は特に気にしなくてもよいです。</p>
-		
-		<p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
-		   </p>
-		<p>返信は<a href="https://twitter.com/mr_nish_">twitter</a>で行っています。</p>
-		
-		<hr>
-		<p>WEBで使える簡単なAF最適化ツールを作りました。</p>
-		<p>設計にあたって参考にしたのは <%= link_to "Mmlh 氏のシート型オプティマイザー", "https://www.reddit.com/r/TapTitans2/comments/bjt1ir/30_optimisers/"%>です。</p>
-		<p>できるだけ簡略化して設計したので、本家ツールとの誤差は1%前後あります。</p><hr>
-		<p>【使用方法】</p>
-		
-		<p>累計レリックはステータス(統計)欄で確認して入力してください。</p>
-		<p>影率は影の書に振ったレリック（AF説明欄から確認できます）を累計レリックで割った値のことです。</p>
-		<p>影率は各自で設定してください。特にこだわりが無い場合は0.5(50%)くらいが良いと思います。</p>
-		<p>またトーナメント中など影以外のAFにレリックを振りたい場合は、影の書に振ったレリックをそのまま入力してもらっても大丈夫です。</p>
-		<p>ヒーローの属性は、MS付近で最も強いヒーローの属性を入力してください。</p>
-		
-		<p>未所持AFがある場合は、AF選択タブから持っていないAFにチェックを入れてください</p><br>
-		<p></p>
-		<%= image_tag("relic22.png") %><br><br>
-		<%= image_tag("relic11.png") %><br><br>
-		
-		
-		
-		<p>分からないところがある、また動かなくなった値がおかしいなどのバグがありましたらお手数ですが<a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a>までお願いします。</p>
-		
-	</div>
-
-		
-	
-	<div class="tab-pane" id="sampleContentC">
-	  <br>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  <br>
 		
   <div id="result-area"></div>
+
 	
-	<table>
-	 <tr><td></td><td>適正LV</td><td>アーティファクト</td></tr>
-  <tr><td><%= image_tag("Book_of_Shadows.png", width:"30px") %></td><td><div id="af0"></div></td><td><div id="output0"></div></td></tr>
-  <tr><td><%= image_tag("Charged_Card.png", width:"30px") %></td><td><div id="af1"></div></td><td><div id="output1"></div></td></tr>
+		<table class="table table-bordered table-sm">
+  <thead>
+      <tbody>
+	 <tr> <th scope="col"></th><td scope="col">適正LV</td><td scope="col">アーティファクト名</td></tr>
+  <tr><td scope="row"><%= image_tag("Book_of_Shadows.png", width:"30px") %></td><td><div id="af0"></div></td><td><div id="output0"></div></td></tr>
+  <tr><td scope="row"><%= image_tag("Charged_Card.png", width:"30px") %></td><td><div id="af1"></div></td><td><div id="output1"></div></td></tr>
   <tr><td><%= image_tag("Stone_of_the_Valrunes.png", width:"30px") %></td><td><div id="af2"></div></td><td><div id="output2"></div></td></tr>
   <tr><td><%= image_tag("Chest_of_Contentment.png", width:"30px") %></td><td><div id="af3"></div></td><td><div id="output3"></div></td></tr>
   <tr><td><%= image_tag("Heroic_Shield.png", width:"30px") %></td><td><div id="af4"></div></td><td><div id="output4"></div></td></tr>
@@ -234,27 +230,11 @@
   <tr><td><%= image_tag("Elixir_of_Eden.png", width:"30px") %></td><td><div id="af57"></div></td><td><div id="output57"></div></td></tr>
     
 
+  </tbody>
 </table>
-<% if false %>
-<br>
-このページに表示されているAFレベルをオプティ2の入力欄に上書きできます。
-<br><br>
-<%= form_for(:data_export, url: export_path, remote: true) do |f| %>
-  <%= f.submit "適用",  class: "btn btn-primary", data: { confirm: "OK?"} %>
-<% end %>
-<% end %>
-		
-	</div>
-	<div class="tab-pane" id="sampleContentE">
-	 <%= render 'layouts/log' %>
-	 
-	 
-	 </div>
-	 <div class="tab-pane" id="sampleContentH">
-	 <%= render 'layouts/hensin' %>
-	 
-	 
-	 </div>
 
+		
+  </div>
 </div>
+
 
