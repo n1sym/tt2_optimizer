@@ -1048,8 +1048,8 @@ module StaticPagesHelper
    1.25,
    1,
    1.177,
-   1.132,
-   1.3,
+   1.177,
+   0.55,
    1.2,
    1.35,
    1.3,
@@ -1612,8 +1612,8 @@ module StaticPagesHelper
     @r[28] = buildv[1]+buildv[0]+buildv[2] #ORC
     @r[29] = 4*(0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2])+2*(0.6*buildv[0]+(buildv[1]+buildv[3]))+2 #HoS
     @r[30] = 0.79*2 #AO
-    @r[31] = 1 #EoP
-    @r[32] = 0 #AF
+    @r[31] = 2 #EoP
+    @r[32] = (1)+ 1.0*(buildv[3]) #AF
     @r[33] = 0 #CRH
     @r[34] = 0 #DSw
     @r[35] = 1 #HSk
