@@ -84,6 +84,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     
     @input = params[:data4][:log]
     @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",").gsub(/\n/, ",")
+    @input2 = @input.gsub(/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/, ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,").gsub(/\n/, ",").gsub(/\\n/, ",") if @kagen =="2480"
     @input3 = @input2.split(",")
     @arr = Array.new(1000){ Array.new(30) }
     (0..999).each do |i|
@@ -149,6 +150,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     
     @name_export = ""
     (0..(@name.size()-1)).each do |i|
+      @name[i][3] = 1 if @name[i][3] == "0" 
       @name_export += @name[i][0].to_s
       @name_export += ","
       @name_export += @name[i][1].to_s
