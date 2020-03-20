@@ -149,7 +149,10 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     end  
     
     @name_export = ""
+    check = 0
+    
     (0..(@name.size()-1)).each do |i|
+      check = 1 if @name[i][3] == "0" 
       @name[i][3] = 1 if @name[i][3] == "0" 
       @name_export += @name[i][0].to_s
       @name_export += ","
@@ -163,8 +166,14 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
       @name_export += ","
       @name_export += ((@name[i][4]).to_i/(@name[i][3]).to_i).round(3).to_s
       @name_export += "\n"
+      if check == 1 
+        @name[i][3] = "0" 
+        check = 0
+      end
     end
      @name_export += @avg2.to_s
+    
+    
     
     client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
     client.execute do |builder|
