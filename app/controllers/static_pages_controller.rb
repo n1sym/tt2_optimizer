@@ -273,7 +273,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     @letter = cookies[:letter]
     @nowrelic = cookies.permanent[:nowrelic] = params[:data3][:nowrelic]
     @aflvl = []
-    (0..57).each do |i|
+    (0..59).each do |i|
       @aflvl[i] = cookies[:"afnum#{i}"]
     end
     
@@ -293,7 +293,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     @hero2 = cookies.permanent[:hero2] = params[:data2][:hero2]
     @letter = cookies.permanent[:letter] = params[:data2][:letter]
     @aflvl = []
-    (0..57).each do |i|
+    (0..59).each do |i|
       @aflvl[i] = cookies.permanent[:"afnum#{i}"] = params[:data2][:"afnum#{i}"]
     end
     
@@ -305,7 +305,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
   end
 
   def export
-    (0..57).each do |i|
+    (0..59).each do |i|
       cookies.permanent[:"afnum#{i}"] = $round_lvl[i]
     end
     respond_to do |format|
@@ -326,7 +326,7 @@ WEBHOOK_URL = 'https://discordapp.com/api/webhooks/681393841273831426/-ITUQFV-ZD
     @ad = cookies.permanent[:AD] = params[:data][:AD]
     @effcheck = cookies.permanent[:effcheck] = params[:data][:effcheck]
     @af = []
-    (0..57).each do |i|
+    (0..59).each do |i|
       cookies.permanent[:"af#{i}"] = params[:data][:"af#{i}"]
       @af << params[:data][:"af#{i}"]
     end

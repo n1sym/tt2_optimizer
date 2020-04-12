@@ -127,6 +127,8 @@ module StaticPagesHelper
    "Bringer of Ragnarok",
    "Parchment of Foresight",
    "Elixir of Eden",
+   "Strange Fruit",
+   "Hades Orb"
    ]
    afname[x].gsub(/ /, "_") 
   end
@@ -667,7 +669,7 @@ module StaticPagesHelper
   
   def output_proc
     # round_lvl の e => KMBT変換
-    (0..57).each do |i|
+    (0..59).each do |i|
       @round_lvl[i] = search2(@round_lvl[i])
     end
     
@@ -712,7 +714,7 @@ module StaticPagesHelper
   
   def af_proc
     @c = []
-    (0..57).each do |i|
+    (0..59).each do |i|
       @c[i] = 0 if @af[i] == "1"
       @c[i] = 1 if @af[i] == "0"
     end
@@ -777,7 +779,9 @@ module StaticPagesHelper
         0.1,
         0.1,
         0.1,
-        0.1]  
+        0.1,
+        0.005,
+        0.02]  
     
     @letter_data_uni = [
     'aa',
@@ -818,7 +822,11 @@ module StaticPagesHelper
     'bj',
     'bk',
     'bl',
-    'bm' ]
+    'bm',
+    'bn',
+    'bo',
+    'bp',
+    'bq']
     
    @letter_data = [0,
     0,
@@ -952,6 +960,18 @@ module StaticPagesHelper
     'bm',
     'bm',
     'bm',
+    'bn',
+    'bn',
+    'bn',
+    'bo',
+    'bo',
+    'bo',
+    'bp',
+    'bp',
+    'bp',
+    'bq',
+    'bq',
+    'bq'
     ]
     
    @afname = [
@@ -1013,6 +1033,8 @@ module StaticPagesHelper
     "Bringer of Ragnarok",
     "Parchment of Foresight",
     "Elixir of Eden",
+    "Strange Fruit",
+    "Hades Orb"
    
    ]
 
@@ -1074,7 +1096,9 @@ module StaticPagesHelper
    1.35,
    1.25,
    1.25,
-   1.28
+   1.28,
+   0.8,
+   1.1
    ];
    
    @texpo = [
@@ -1135,7 +1159,9 @@ module StaticPagesHelper
    2.7000,
    2.7000,
    2.7000,
-   2.7000
+   2.7000,
+   3.2000,
+   3.2000
    ];
    
    @tcoef = [
@@ -1196,7 +1222,9 @@ module StaticPagesHelper
    0.2222,
    0.2222,
    0.2222,
-   0.2222
+   0.2222,
+   0.2188,
+   0.2188
    ];
   
    @effectWeight = [
@@ -1257,7 +1285,9 @@ module StaticPagesHelper
      1.032280,
      1.032280,
      1.032280,
-     1.032280
+     1.032280,
+     1.006623,
+     1.009902
      ];
   
    @af_cost = [
@@ -1361,13 +1391,36 @@ module StaticPagesHelper
      1.24E+58,
      1.97E+60,
      3.17E+62,
-     3.17E+64, #↓ここからテンポラリ定数　100
-     3.17E+67,
-     3.17E+70,
-     3.17E+72,
-     3.17E+74,
-     3.17E+76,
-     3.17E+78,
+5.12E+64,
+8.31E+66,
+1.35E+69,
+     2.22E+71,
+3.64E+73,
+6.01E+75,
+9.97E+77,
+1.66E+80,
+2.78E+82,
+4.66E+84,
+7.86E+86,
+1.33E+89,
+2.26E+91,
+3.87E+93,
+6.63E+95,
+1.14E+98,
+1.97E+100,
+3.43E+102,
+5.97E+104,
+1.050E+107,
+1.840E+109,
+3.240E+111,
+5.750E+113,
+1.020E+116,
+1.830E+118,
+3.280E+120,
+5.900E+122,
+1.070E+125,
+1.940E+127,
+3.530E+129
    ]
    
    @damage_bonus = [
@@ -1428,7 +1481,9 @@ module StaticPagesHelper
    0.2,
    0.2,
    0.2,
-   0.2
+   0.2,
+   0.5,
+   0.5
    ];   
    
    @cost_coef = [
@@ -1489,7 +1544,9 @@ module StaticPagesHelper
    0.6,
    0.6,
    0.6,
-   0.6
+   0.6,
+   0.7,
+   0.7
    ];
 
    @cost_expo = [
@@ -1550,7 +1607,9 @@ module StaticPagesHelper
    1.7,
    1.7,
    1.7,
-   1.7
+   1.7,
+   2.2,
+   2.2
    ]
   end
   
@@ -1639,6 +1698,8 @@ module StaticPagesHelper
     @r[55] = 0.6*buildv[0]+(buildv[1]+buildv[3]) #BoR
     @r[56] = 0.6*buildv[0]+0.5*(buildv[1]+buildv[3])+buildv[2] #PoF
     @r[57] = buildv[0] #EoE
+    @r[58] = 1.6*buildv[0]+1.5*(buildv[1]+buildv[3])+2*buildv[2] #fruit
+    @r[59] = 0.79 #hades
   end
   
   def bos_eff_to_relic # 数字でリターン
