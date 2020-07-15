@@ -2,10 +2,12 @@
 <br>
 <h4>レイドログ解析</h4>
 <hr>
-<p>新レイドログを旧式に変換するツール</p>
-<p>禁止部位を攻撃している人を抽出する機能を実装しました</p>
-<p>20200229 - Mohacaがタイタンに含まれていると機能しないバグを修正<br>
-20200320 - 攻撃回数が0のプレイヤーがいると機能しないバグを修正</p>
+<p>新レイドログを旧式に変換するツール</p><br>
+<p>
+移転しました。
+<a href="https://tt2tools.web.app/convert">レイドログ変換くん v2</a>
+</p>
+<p>今後はこちらで更新をします。こちらのサイトは近々閉鎖されます。ご了承ください。</p>
 <hr>
 
 
@@ -23,7 +25,7 @@
 <br><br>
 
     <%= image_tag("bangou.png", width:"240px") %><br>
-    
+
   <table class="table table-bordered table-sm">
   <thead class="thead-light">
     <tr>
@@ -38,12 +40,12 @@
       <th scope="col">8</th>
     </tr>
   </thead>
-  <tbody>  
+  <tbody>
     <tr>
       <th scope="row">
    <%= f.label :"Terro" %>
       </th>
-   <% (1..8).each do |i| %> 
+   <% (1..8).each do |i| %>
    <label class="radio-inline">
    <td><%= f.check_box :"tero#{i}" , id: "tero#{i}", checked: ischeck(cookies[:"tero#{i}"]) %></td>
    </label>
@@ -53,7 +55,7 @@
     <tr>
       <th scope="row">
    <%= f.label :"Sterl" %>
-   <% (1..8).each do |i| %> 
+   <% (1..8).each do |i| %>
    <label class="radio-inline">
    <td><%= f.check_box :"sterl#{i}" , id: "sterl#{i}", checked: ischeck(cookies[:"sterl#{i}"]) %></td>
    </label>
@@ -63,7 +65,7 @@
     <tr>
       <th scope="row">
    <%= f.label :"Mohaca" %>
-   <% (1..8).each do |i| %> 
+   <% (1..8).each do |i| %>
    <label class="radio-inline">
    <td><%= f.check_box :"mohaka#{i}" , id: "mohaka#{i}", checked: ischeck(cookies[:"mohaka#{i}"]) %></td>
    </label>
@@ -73,7 +75,7 @@
     <tr>
       <th scope="row">
    <%= f.label :"Lojak" %>
-   <% (1..8).each do |i| %> 
+   <% (1..8).each do |i| %>
    <label class="radio-inline">
    <td><%= f.check_box :"lojak#{i}" , id: "lojak#{i}", checked: ischeck(cookies[:"lojak#{i}"]) %></td>
    </label>
@@ -83,7 +85,7 @@
     <tr>
       <th scope="row">
    <%= f.label :"Takedar" %>
-   <% (1..8).each do |i| %> 
+   <% (1..8).each do |i| %>
    <label class="radio-inline">
    <td><%= f.check_box :"take#{i}" , id: "take#{i}", checked: ischeck(cookies[:"take#{i}"]) %></td>
    </label>
@@ -93,7 +95,7 @@
     <tr>
       <th scope="row">
    <%= f.label :"Jukk" %>
-   <% (1..8).each do |i| %> 
+   <% (1..8).each do |i| %>
    <label class="radio-inline">
    <td><%= f.check_box :"jukk#{i}" , id: "jukk#{i}", checked: ischeck(cookies[:"jukk#{i}"]) %></td>
    </label>
@@ -104,7 +106,7 @@
   <%= f.submit "設定を保存",  class: "btn btn-success"%> <span id="hozon"></span>
    </div>
 
-  
+
 <% end %>
 <br><br>
 <%= form_for(:data4, url: converter_path, remote: true) do |f| %>
@@ -112,7 +114,7 @@
   <%= f.text_area :log, class: 'form-control', id: "log" %>
   <br>
   <%= f.submit "変換",  class: "btn btn-info"%>
-  
+
 <% end %>
 
 <span id="kakunin_form"> </span><br>
@@ -168,6 +170,6 @@ $('.copy_code').on('touchstart click', function () {
 <br>
 
 <hr>
-<p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a> 
+<p>バグ報告・要望はこちらまでお願いします ⇒ <a href="https://forms.gle/uUj82KFCyEsdyeke7">googleフォーム</a>
 		   </p>
 		<p>返信は<a href="https://twitter.com/mr_nish_">twitter</a>で行っています。</p>
